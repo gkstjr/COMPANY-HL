@@ -1,0 +1,48 @@
+/* 
+  ============================================
+  전역 CSS 변수 (색상, 폰트, 브레이크포인트)
+  ============================================
+  - 모든 페이지에서 공통으로 사용하는 스타일 변수
+  - 디자인 이미지에서 추출한 색상 적용
+  - :root는 HTML 최상위 요소를 의미 (전역에서 사용 가능)
+*/
+
+:root {
+  /* 메인 색상 */
+  --primary-color: #D2691E;        /* 오렌지 (버튼, 강조) */
+  --primary-dark: #B8551A;         /* 오렌지 어두운 버전 (호버용) */
+  
+  /* 배경 색상 */
+  --dark-bg: #3A4F5F;              /* 다크 네이비 (푸터, 고객후기 섹션) */
+  --light-bg: #F8F9FA;             /* 밝은 회색 (섹션 배경) */
+  --white: #FFFFFF;
+  
+  /* 텍스트 색상 */
+  --text-dark: #2C3E50;            /* 진한 텍스트 */
+  --text-gray: #6C757D;            /* 회색 텍스트 */
+  --text-light: #FFFFFF;           /* 흰색 텍스트 */
+  
+  /* 폰트 크기 */
+  --font-xlarge: 3rem;             /* 48px - 메인 타이틀 */
+  --font-large: 2rem;              /* 32px - 섹션 제목 */
+  --font-medium: 1.25rem;          /* 20px - 카드 제목 */
+  --font-base: 1rem;               /* 16px - 기본 텍스트 */
+  --font-small: 0.875rem;          /* 14px - 작은 텍스트 */
+  
+  /* 간격 */
+  --spacing-xs: 0.5rem;            /* 8px */
+  --spacing-sm: 1rem;              /* 16px */
+  --spacing-md: 2rem;              /* 32px */
+  --spacing-lg: 4rem;              /* 64px */
+  --spacing-xl: 6rem;              /* 96px */
+  
+  /* 반응형 브레이크포인트 (미디어쿼리에서 사용) */
+  --breakpoint-mobile: 768px;
+  --breakpoint-tablet: 1024px;
+  
+  /* 기타 */
+  --border-radius: 8px;
+  --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+

@@ -1,0 +1,61 @@
+/* 
+  ============================================
+  Footer 스타일
+  ============================================
+*/
+
+.footer {
+  background-color: var(--dark-bg);
+  color: var(--text-light);
+  padding: var(--spacing-md) 0;
+  margin-top: var(--spacing-xl);
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;              /* 작은 화면에서 줄바꿈 */
+  gap: var(--spacing-sm);
+}
+
+.copyright {
+  font-size: var(--font-small);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.footer-links {
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: center;
+}
+
+.footer-links a {
+  font-size: var(--font-small);
+  color: rgba(255, 255, 255, 0.8);
+  transition: var(--transition);
+}
+
+.footer-links a:hover {
+  color: var(--primary-color);
+}
+
+.separator {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* 
+  ============================================
+  반응형: 모바일 (768px 이하)
+  ============================================
+*/
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+

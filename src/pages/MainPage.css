@@ -1,0 +1,302 @@
+/* 
+  ============================================
+  MainPage 스타일
+  ============================================
+*/
+
+/* 공통 컨테이너 */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+/* 섹션 제목 */
+.section-title {
+  text-align: center;
+  font-size: var(--font-large);
+  font-weight: bold;
+  margin-bottom: var(--spacing-lg);
+  color: var(--text-dark);
+}
+
+.section-title.light {
+  color: var(--text-light);
+}
+
+/* 공통 버튼 */
+.btn-primary {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+/* 
+  ===================================
+  1. Hero Section
+  ===================================
+*/
+.hero {
+  height: 70vh;                     /* 화면 높이의 70% */
+  min-height: 500px;
+  /* 임시: 이미지 대신 그라데이션 사용 (나중에 배경 이미지로 교체) */
+  background: linear-gradient(135deg, #3A4F5F 0%, #5A7A8F 100%);
+  background-size: cover;           /* 배경 이미지 꽉 차게 */
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* 배경 이미지 위에 어두운 오버레이 (텍스트 가독성 향상) */
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  color: var(--text-light);
+  padding: 0 var(--spacing-md);
+}
+
+.hero-content h1 {
+  font-size: var(--font-xlarge);
+  font-weight: bold;
+  margin-bottom: var(--spacing-sm);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content p {
+  font-size: var(--font-medium);
+  font-weight: 300;
+}
+
+/* 
+  ===================================
+  2. Information Section
+  ===================================
+*/
+.information {
+  padding: var(--spacing-xl) 0;
+  background-color: var(--white);
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);  /* 4개 컬럼 */
+  gap: var(--spacing-md);
+}
+
+.info-card {
+  text-align: center;
+  padding: var(--spacing-md);
+  transition: var(--transition);
+}
+
+.info-card:hover {
+  transform: translateY(-5px);
+}
+
+.info-icon {
+  font-size: 3rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.info-card h3 {
+  font-size: var(--font-medium);
+  font-weight: bold;
+  color: var(--text-dark);
+  margin-bottom: var(--spacing-sm);
+}
+
+.info-description {
+  font-size: var(--font-small);
+  color: var(--text-gray);
+  line-height: 1.6;
+}
+
+/* 
+  ===================================
+  3. Project Gallery
+  ===================================
+*/
+.projects {
+  padding: var(--spacing-xl) 0;
+  background-color: var(--light-bg);
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);  /* 2x2 그리드 */
+  gap: var(--spacing-md);
+}
+
+.project-card {
+  background-color: var(--white);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.project-image {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  background-color: var(--light-bg);  /* 이미지 없을 때 배경색 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;              /* 이미지 비율 유지하며 영역 채우기 */
+  transition: var(--transition);
+}
+
+.project-card:hover .project-image img {
+  transform: scale(1.05);         /* 호버 시 이미지 확대 */
+}
+
+.project-info {
+  padding: var(--spacing-md);
+}
+
+.project-info h3 {
+  font-size: var(--font-medium);
+  font-weight: bold;
+  color: var(--text-dark);
+  margin-bottom: var(--spacing-xs);
+}
+
+.project-info p {
+  font-size: var(--font-small);
+  color: var(--text-gray);
+  margin-bottom: var(--spacing-sm);
+  line-height: 1.6;
+}
+
+/* 
+  ===================================
+  4. Testimonials (고객 후기)
+  ===================================
+*/
+.testimonials {
+  padding: var(--spacing-xl) 0;
+  background-color: var(--dark-bg);
+}
+
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);  /* 4개 컬럼 */
+  gap: var(--spacing-md);
+}
+
+.testimonial-card {
+  background-color: var(--white);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius);
+  text-align: center;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.testimonial-text {
+  font-size: var(--font-small);
+  color: var(--text-gray);
+  font-style: italic;
+  margin-bottom: var(--spacing-sm);
+  line-height: 1.6;
+}
+
+.testimonial-author {
+  font-size: var(--font-small);
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+/* 
+  ===================================
+  반응형: 태블릿 (768px ~ 1024px)
+  ===================================
+*/
+@media (max-width: 1024px) {
+  .info-grid {
+    grid-template-columns: repeat(2, 1fr);  /* 2x2 그리드 */
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr;             /* 1개 컬럼 */
+  }
+
+  .testimonial-grid {
+    grid-template-columns: repeat(2, 1fr);  /* 2x2 그리드 */
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+}
+
+/* 
+  ===================================
+  반응형: 모바일 (768px 이하)
+  ===================================
+*/
+@media (max-width: 768px) {
+  .hero {
+    height: 50vh;
+    min-height: 400px;
+  }
+
+  .hero-content h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero-content p {
+    font-size: var(--font-base);
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;             /* 1개 컬럼 (세로 배치) */
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonial-grid {
+    grid-template-columns: 1fr;             /* 1개 컬럼 (세로 배치) */
+  }
+
+  .section-title {
+    font-size: var(--font-medium);
+  }
+}
+

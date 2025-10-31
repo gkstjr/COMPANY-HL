@@ -1,0 +1,111 @@
+/* 
+  ============================================
+  Header 스타일
+  ============================================
+*/
+
+.header {
+  background-color: var(--white);
+  box-shadow: var(--box-shadow);
+  position: sticky;              /* 스크롤해도 상단에 고정 */
+  top: 0;
+  z-index: 1000;                 /* 다른 요소 위에 표시 */
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-sm) var(--spacing-md);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 로고 */
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+/* 네비게이션 메뉴 (데스크톱) */
+.nav {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.nav a {
+  color: var(--text-dark);
+  font-weight: 500;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  transition: var(--transition);
+  border-bottom: 2px solid transparent;
+}
+
+.nav a:hover {
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--primary-color);
+}
+
+/* 햄버거 메뉴 버튼 (모바일에서만 표시) */
+.hamburger {
+  display: none;                 /* 기본적으로 숨김 */
+  flex-direction: column;
+  gap: 5px;
+  padding: var(--spacing-xs);
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background-color: var(--text-dark);
+  transition: var(--transition);
+}
+
+/* 
+  ============================================
+  반응형: 모바일 (768px 이하)
+  ============================================
+*/
+@media (max-width: 768px) {
+  /* 햄버거 버튼 표시 */
+  .hamburger {
+    display: flex;
+  }
+
+  /* 네비게이션을 세로로 변경 */
+  .nav {
+    position: absolute;
+    top: 100%;                   /* header 바로 아래 */
+    left: 0;
+    right: 0;
+    background-color: var(--white);
+    flex-direction: column;
+    gap: 0;
+    box-shadow: var(--box-shadow);
+    max-height: 0;               /* 기본적으로 숨김 */
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  /* 메뉴가 열렸을 때 */
+  .nav.active {
+    max-height: 300px;           /* 메뉴 표시 */
+  }
+
+  .nav a {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-bottom: 1px solid var(--light-bg);
+  }
+
+  .nav a:hover {
+    background-color: var(--light-bg);
+    border-bottom: 1px solid var(--light-bg);
+  }
+}
+
