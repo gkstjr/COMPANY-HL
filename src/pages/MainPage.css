@@ -1,6 +1,6 @@
 /* 
   ============================================
-  MainPage 스타일
+  MainPage 스타일 - 새 디자인
   ============================================
 */
 
@@ -18,47 +18,52 @@
   font-weight: bold;
   margin-bottom: var(--spacing-lg);
   color: var(--text-dark);
+  position: relative;
+  display: inline-block;
+  width: 100%;
 }
 
-.section-title.light {
-  color: var(--text-light);
-}
-
-/* 공통 버튼 */
-.btn-primary {
+/* 제목 밑줄 (보라색) */
+.title-underline {
+  display: block;
+  width: 80px;
+  height: 3px;
   background-color: var(--primary-color);
-  color: var(--text-light);
-  padding: var(--spacing-xs) var(--spacing-md);
-  border-radius: var(--border-radius);
-  font-weight: 600;
-  transition: var(--transition);
-}
-
-.btn-primary:hover {
-  background-color: var(--primary-dark);
-  transform: translateY(-2px);
+  margin: var(--spacing-sm) auto 0;
 }
 
 /* 
   ===================================
-  1. Hero Section
+  1. Hero Section (슬라이더)
   ===================================
 */
-.hero {
-  height: 70vh;                     /* 화면 높이의 70% */
+.hero-slider {
+  height: 70vh;
   min-height: 500px;
-  /* 임시: 이미지 대신 그라데이션 사용 (나중에 배경 이미지로 교체) */
-  background: linear-gradient(135deg, #3A4F5F 0%, #5A7A8F 100%);
-  background-size: cover;           /* 배경 이미지 꽉 차게 */
-  background-position: center;
   position: relative;
+  overflow: hidden;
+}
+
+.hero-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
 }
 
-/* 배경 이미지 위에 어두운 오버레이 (텍스트 가독성 향상) */
+.hero-slide.active {
+  opacity: 1;
+}
+
 .hero-overlay {
   position: absolute;
   top: 0;
@@ -85,160 +90,302 @@
 .hero-content p {
   font-size: var(--font-medium);
   font-weight: 300;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* 슬라이드 인디케이터 */
+.slider-indicators {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  gap: 0.75rem;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.indicator:hover {
+  background-color: rgba(255, 255, 255, 0.7);
+  transform: scale(1.2);
+}
+
+.indicator.active {
+  background-color: var(--white);
+  border-color: var(--white);
+  transform: scale(1.3);
 }
 
 /* 
   ===================================
-  2. Information Section
+  2. OVERVIEW Section
   ===================================
 */
-.information {
+.overview {
   padding: var(--spacing-xl) 0;
   background-color: var(--white);
 }
 
+.overview .section-title {
+  color: var(--primary-color);
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 700;
+  margin-bottom: var(--spacing-sm);
+  padding: 0 var(--spacing-md);  /* 좌우 패딩 추가 */
+}
+
+.overview-description {
+  text-align: center;
+  color: var(--text-gray);
+  margin-bottom: var(--spacing-xl);
+  line-height: 1.8;
+  font-size: var(--font-base);
+  padding: 0 var(--spacing-md);  /* 좌우 패딩 추가 */
+  max-width: 1200px;              /* 설명문은 너무 넓지 않게 */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-lg);
+  max-width: 1450px;  /* 각 카드 너비 약 460px */
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);  /* 좌우 여백 추가 */
+}
+
+.overview-card {
+  background-color: var(--white);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: var(--transition);
+  
+  /* 초기 상태: 투명하고 아래에 위치 */
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out, box-shadow 0.3s ease;
+}
+
+/* visible 클래스가 추가되면 나타남 */
+.overview-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.overview-card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px);
+}
+
+/* hover 시에도 visible 상태 유지 */
+.overview-card.visible:hover {
+  transform: translateY(-5px);
+}
+
+/* 이미지 + 제목 래퍼 */
+.overview-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 500px;                    /* 450px → 500px (50px 증가) */
+  overflow: hidden;
+}
+
+.overview-image {
+  width: 100%;
+  height: 100%;
+}
+
+.placeholder-img {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+/* data-label이 있는 경우에만 텍스트 표시 (실제 이미지가 없는 더미 상태) */
+/* 이미지를 교체하면 data-label과 data-size를 제거하면 자동으로 텍스트가 사라집니다 */
+.placeholder-img[data-label]::before {
+  content: attr(data-label);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  color: var(--white);
+  font-size: var(--font-medium);
+  font-weight: 700;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.placeholder-img[data-size]::after {
+  content: attr(data-size);
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  color: var(--white);
+  font-size: var(--font-small);
+  font-weight: 500;
+  text-align: center;
+  opacity: 0.9;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* 제목 오버레이 (이미지 하단) */
+.overview-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--white);   /* 하얀 배경 */
+  padding: var(--spacing-md);
+  /* border-top: 3px solid var(--primary-color);  상단 보라색 라인 */
+}
+
+.overview-title h3 {
+  color: var(--primary-color);      /* 보라색 글자 */
+  font-size: var(--font-medium);
+  font-weight: 700;                 /* 굵게 */
+  margin: 0;
+}
+
+/* 카드 콘텐츠 (텍스트) */
+.overview-content {
+  padding: 0 var(--spacing-md) var(--spacing-md) var(--spacing-md);  /* 위 / 오른쪽 / 아래 / 왼쪽 */
+  background-color: var(--white);
+}
+
+.overview-content p {
+  font-size: var(--font-small);
+  color: var(--text-dark);          /* 검은색 */
+  font-weight: 600;                 /* 굵은 글씨 */
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* 
+  ===================================
+  3. INFORMATION Section
+  ===================================
+*/
+.information {
+  padding: var(--spacing-xl) 0;
+  background-color: #f2f4f8;  /* 밝은 회색 배경 */
+}
+.information .section-title {
+  color: var(--primary-color);
+}
+
 .info-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);  /* 4개 컬럼 */
+  grid-template-columns: repeat(4, 1fr);
   gap: var(--spacing-md);
 }
 
 .info-card {
   text-align: center;
-  padding: var(--spacing-md);
+  padding: var(--spacing-md) 0;  /* 상하만 패딩, 좌우는 0 */
+  border-radius: var(--border-radius);
   transition: var(--transition);
 }
 
 .info-card:hover {
   transform: translateY(-5px);
+  box-shadow: var(--box-shadow);
 }
 
 .info-icon {
-  font-size: 3rem;
-  margin-bottom: var(--spacing-sm);
+  font-size: 3.5rem;  /* outline 스타일은 조금 더 크게 */
+  color: var(--primary-color);
+  transition: var(--transition);
+  stroke-width: 1.5;  /* outline 아이콘의 선 굵기 */
+}
+
+.info-card:hover .info-icon {
+  color: var(--secondary-color);
+  transform: scale(1.1);
 }
 
 .info-card h3 {
   font-size: var(--font-medium);
   font-weight: bold;
-  color: var(--text-dark);
-  margin-bottom: var(--spacing-sm);
-}
-
-.info-description {
-  font-size: var(--font-small);
-  color: var(--text-gray);
-  line-height: 1.6;
-}
-
-/* 
-  ===================================
-  3. Project Gallery
-  ===================================
-*/
-.projects {
-  padding: var(--spacing-xl) 0;
-  background-color: var(--light-bg);
-}
-
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);  /* 2x2 그리드 */
-  gap: var(--spacing-md);
-}
-
-.project-card {
-  background-color: var(--white);
-  border-radius: var(--border-radius);
-  overflow: hidden;
-  box-shadow: var(--box-shadow);
-  transition: var(--transition);
-}
-
-.project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-}
-
-.project-image {
-  width: 100%;
-  height: 250px;
-  overflow: hidden;
-  background-color: var(--light-bg);  /* 이미지 없을 때 배경색 */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.project-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;              /* 이미지 비율 유지하며 영역 채우기 */
-  transition: var(--transition);
-}
-
-.project-card:hover .project-image img {
-  transform: scale(1.05);         /* 호버 시 이미지 확대 */
-}
-
-.project-info {
-  padding: var(--spacing-md);
-}
-
-.project-info h3 {
-  font-size: var(--font-medium);
-  font-weight: bold;
-  color: var(--text-dark);
+  color: var(--primary-color);
   margin-bottom: var(--spacing-xs);
 }
 
-.project-info p {
-  font-size: var(--font-small);
+.info-description {
+  font-size: var(--font-base);  /* font-small → font-base로 증가 */
   color: var(--text-gray);
-  margin-bottom: var(--spacing-sm);
   line-height: 1.6;
 }
 
 /* 
   ===================================
-  4. Testimonials (고객 후기)
+  4. PARTNERS Section
   ===================================
 */
-.testimonials {
+.partners {
   padding: var(--spacing-xl) 0;
-  background-color: var(--dark-bg);
-}
-
-.testimonial-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);  /* 4개 컬럼 */
-  gap: var(--spacing-md);
-}
-
-.testimonial-card {
   background-color: var(--white);
-  padding: var(--spacing-md);
-  border-radius: var(--border-radius);
-  text-align: center;
-  min-height: 200px;
+}
+
+.partners .section-title {
+  color: var(--primary-color);
+}
+
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);  /* 6열 그리드 */
+  gap: var(--spacing-md);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.partner-logo {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: column;  /* 세로 배치: 이미지 + 텍스트 */
   align-items: center;
+  justify-content: center;
+  padding: var(--spacing-md);
+  background-color: var(--white);
+  border: 1px solid #E0E0E0;  /* 얇은 회색 테두리 */
+  border-radius: var(--border-radius);
+  min-height: 120px;
+  cursor: pointer;  /* 마우스 포인터로 변경 */
 }
 
-.testimonial-text {
-  font-size: var(--font-small);
-  color: var(--text-gray);
-  font-style: italic;
+/* 로고 이미지 영역 (더미) */
+.logo-image-placeholder {
+  width: 80px;
+  height: 60px;
+  background: linear-gradient(135deg, #E8E3F3 0%, #D1C9E5 100%);
+  border-radius: 4px;
   margin-bottom: var(--spacing-sm);
-  line-height: 1.6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.testimonial-author {
+/* 파트너사 이름 텍스트 */
+.partner-name {
   font-size: var(--font-small);
   color: var(--text-dark);
-  font-weight: 600;
+  text-align: center;
+  font-weight: 500;
+  line-height: 1.4;
 }
 
 /* 
@@ -247,16 +394,18 @@
   ===================================
 */
 @media (max-width: 1024px) {
+  /* OVERVIEW 섹션 - 태블릿 */
+  .overview-grid {
+    grid-template-columns: repeat(2, 1fr);  /* 2열 */
+    gap: var(--spacing-md);
+  }
+
   .info-grid {
-    grid-template-columns: repeat(2, 1fr);  /* 2x2 그리드 */
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  .project-grid {
-    grid-template-columns: 1fr;             /* 1개 컬럼 */
-  }
-
-  .testimonial-grid {
-    grid-template-columns: repeat(2, 1fr);  /* 2x2 그리드 */
+  .partners-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .hero-content h1 {
@@ -270,7 +419,8 @@
   ===================================
 */
 @media (max-width: 768px) {
-  .hero {
+  /* 히어로 슬라이더 - 모바일 */
+  .hero-slider {
     height: 50vh;
     min-height: 400px;
   }
@@ -283,20 +433,33 @@
     font-size: var(--font-base);
   }
 
-  .info-grid {
-    grid-template-columns: 1fr;             /* 1개 컬럼 (세로 배치) */
+  /* OVERVIEW 섹션 - 모바일 */
+  .overview-grid {
+    grid-template-columns: 1fr;  /* 1열 */
+    gap: var(--spacing-md);
   }
 
-  .project-grid {
+  .overview-image-wrapper {
+    height: 280px;  /* 모바일: 데스크톱 비율 유지 (500px의 56%) */
+  }
+
+  .overview-content {
+    padding: var(--spacing-sm);
+  }
+
+  .info-grid {
     grid-template-columns: 1fr;
   }
 
-  .testimonial-grid {
-    grid-template-columns: 1fr;             /* 1개 컬럼 (세로 배치) */
+  .partners-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .section-title {
     font-size: var(--font-medium);
   }
-}
 
+  .overview-description {
+    font-size: var(--font-small);
+  }
+}

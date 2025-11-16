@@ -7,8 +7,8 @@
 .footer {
   background-color: var(--dark-bg);
   color: var(--text-light);
-  padding: var(--spacing-md) 0;
-  margin-top: var(--spacing-xl);
+  padding: var(--spacing-lg) 0;
+  margin-top: 0;  /* PARTNERS 섹션과 바로 붙음 */
 }
 
 .footer-container {
@@ -16,35 +16,59 @@
   margin: 0 auto;
   padding: 0 var(--spacing-md);
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;              /* 작은 화면에서 줄바꿈 */
-  gap: var(--spacing-sm);
+  flex-direction: column;  /* 세로로 쌓기 */
+  gap: var(--spacing-xs);  /* 줄 간격 */
 }
 
-.copyright {
+/* 각 정보 라인 */
+.footer-info {
+  text-align: left;  /* 왼쪽 정렬 */
+}
+
+.footer-info p {
   font-size: var(--font-small);
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.6;
+  margin: 0;
 }
 
-.footer-links {
-  display: flex;
-  gap: var(--spacing-sm);
-  align-items: center;
+/* 구분자 */
+.separator {
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0 0.5rem;
 }
 
-.footer-links a {
-  font-size: var(--font-small);
-  color: rgba(255, 255, 255, 0.8);
+/* 이메일 링크 */
+.footer-info a {
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
   transition: var(--transition);
 }
 
-.footer-links a:hover {
-  color: var(--primary-color);
+.footer-info a:hover {
+  color: var(--white);
 }
 
-.separator {
-  color: rgba(255, 255, 255, 0.5);
+/* 메일함 링크 (파란색) */
+.mail-link {
+  color: var(--secondary-color) !important;  /* 파란색 */
+  margin-left: 0.25rem;
+}
+
+.mail-link:hover {
+  color: var(--primary-color) !important;  /* 호버 시 보라색 */
+}
+
+/* 저작권 */
+.footer-copyright {
+  text-align: left;  /* 왼쪽 정렬 */
+  margin-top: var(--spacing-sm);
+}
+
+.footer-copyright p {
+  font-size: var(--font-small);
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
 }
 
 /* 
@@ -53,9 +77,17 @@
   ============================================
 */
 @media (max-width: 768px) {
-  .footer-container {
-    flex-direction: column;
-    text-align: center;
+  .footer {
+    padding: var(--spacing-md) 0;
+  }
+
+  .footer-info p {
+    font-size: 0.75rem;  /* 모바일에서 조금 더 작게 */
+    line-height: 1.8;
+  }
+
+  .separator {
+    margin: 0 0.3rem;  /* 좁은 화면에서 간격 줄임 */
   }
 }
 

@@ -2,74 +2,300 @@
   ============================================
   MainPage (메인/회사소개 페이지)
   ============================================
-  디자인 이미지 기반 섹션 구성:
-  1. Hero Section - 큰 배경 이미지 + 메인 메시지
-  2. Information Section - 4개 카드 (ABOUT, BUSINESS, PROJECT, RECRUIT)
-  3. Project Gallery - 프로젝트 포트폴리오
-  4. Testimonials - 고객 후기
+  새로운 디자인 기반 섹션 구성:
+  1. Hero Section - 이미지 슬라이더 (3개 이미지 자동 전환)
+  2. OVERVIEW Section - 3개 카드 (About, 주요사업, 사업실적)
+  3. INFORMATION Section - 4개 아이콘 카드
+  4. PARTNERS Section - 파트너사 로고
 */
 
+import { useState, useEffect, useRef } from 'react';
+import { FiHome, FiTrendingUp, FiSettings, FiUsers } from 'react-icons/fi';
 import './MainPage.css';
 
 function MainPage() {
+  // 슬라이더 상태 관리
+  const [currentSlide, setCurrentSlide] = useState(0);
+  
+  // 카드 애니메이션 상태 관리
+  const [visibleCards, setVisibleCards] = useState([false, false, false]);
+  const cardRefs = useRef([]);
+
+  // 슬라이더 이미지 데이터 (더미)
+  // 권장 이미지 크기: 1920x1080px (FullHD, 16:9 비율)
+  // 파일 형식: JPG 또는 WebP
+  // 용량: 200-500KB (최적화 권장)
+  const slides = [
+    {
+      title: "메인 슬라이드 이미지 1",
+      subtitle: "1920x1080px 권장",
+      bgColor: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+    },
+    {
+      title: "메인 슬라이드 이미지 2",
+      subtitle: "1920x1080px 권장",
+      bgColor: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)"
+    },
+    {
+      title: "메인 슬라이드 이미지 3",
+      subtitle: "1920x1080px 권장",
+      bgColor: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)"
+    }
+  ];
+
+  // 자동 슬라이드 (5초마다)
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 5000);
+
+    return () => clearInterval(timer);
+  }, [slides.length]);
+
+  // 인디케이터 클릭
+  const handleIndicatorClick = (index) => {
+    setCurrentSlide(index);
+  };
+
+  // 스크롤 애니메이션 (Intersection Observer)
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const index = cardRefs.current.indexOf(entry.target);
+          if (index !== -1) {
+            if (entry.isIntersecting) {
+              // 화면에 들어오면: 순차적으로 나타나도록 딜레이 적용
+              setTimeout(() => {
+                setVisibleCards((prev) => {
+                  const newState = [...prev];
+                  newState[index] = true;
+                  return newState;
+                });
+              }, index * 200); // 0ms, 200ms, 400ms
+            } else {
+              // 화면 밖으로 나가면: 다시 숨김 (애니메이션 재실행 준비)
+              setVisibleCards((prev) => {
+                const newState = [...prev];
+                newState[index] = false;
+                return newState;
+              });
+            }
+          }
+        });
+      },
+      {
+        threshold: 0.2, // 카드의 20%가 보이면 트리거
+        rootMargin: '0px'
+      }
+    );
+
+    // 모든 카드 관찰 시작
+    cardRefs.current.forEach((card) => {
+      if (card) observer.observe(card);
+    });
+
+    // 클린업
+    return () => {
+      cardRefs.current.forEach((card) => {
+        if (card) observer.unobserve(card);
+      });
+    };
+  }, []);
+
   return (
     <div className="main-page">
       {/* 
-        ===== 1. Hero Section =====
-        - 배경: 건설 현장 이미지
-        - 메인 타이틀 + 서브 타이틀
+        ===== 1. Hero Section (슬라이더) =====
+        - 3개 이미지 자동 전환
+        - 하단 인디케이터
       */}
-      <section className="hero">
-        <div className="hero-overlay"></div>
-        <div className="hero-content">
-          <h1>YOUR TOTAL GROUND ENGINEERING PARTNER</h1>
-          <p>터파운데이션을 보장해드립니다.</p>
+      <section className="hero-slider">
+        {slides.map((slide, index) => (
+          <div
+            key={index}
+            className={`hero-slide ${index === currentSlide ? 'active' : ''}`}
+            style={{ background: slide.bgColor }}
+          >
+            <div className="hero-overlay"></div>
+            <div className="hero-content">
+              <h1>{slide.title}</h1>
+              <p>{slide.subtitle}</p>
+            </div>
+          </div>
+        ))}
+
+        {/* 슬라이드 인디케이터 */}
+        <div className="slider-indicators">
+          {slides.map((_, index) => (
+            <button
+              key={index}
+              className={`indicator ${index === currentSlide ? 'active' : ''}`}
+              onClick={() => handleIndicatorClick(index)}
+              aria-label={`슬라이드 ${index + 1}`}
+            />
+          ))}
         </div>
       </section>
 
       {/* 
-        ===== 2. Information Section =====
-        - 4개 정보 카드 (ABOUT, BUSINESS, PROJECT, RECRUIT)
+        ===== 2. OVERVIEW Section =====
+        - 3개 카드 (About S-TECH, 주요사업, 사업실적)
+      */}
+      <section className="overview">
+        <h2 className="section-title">
+          OVERVIEW
+        </h2>
+        
+        <p className="overview-description">
+          에스텍엔지니어링을 축적된 지반분야 기술력과 지속적인 관리의 서비스를 통해<br />
+          고객만족을 최선을 다하는 철학 업을하입니다.
+        </p>
+
+        <div className="overview-grid">
+            {/* About S-TECH 카드 */}
+            <div 
+              className={`overview-card ${visibleCards[0] ? 'visible' : ''}`}
+              ref={(el) => (cardRefs.current[0] = el)}
+            >
+              <div className="overview-image-wrapper">
+                <div className="overview-image">
+                  {/* 
+                    이미지 교체 시: style 속성만 변경
+                    예) style={{ backgroundImage: 'url(/images/overview/about-stech.jpg)' }}
+                  */}
+                  <div 
+                    className="placeholder-img" 
+                    data-label="소개 카드 이미지 1"
+                    data-size="1000x1100px 권장"
+                    style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }}
+                  ></div>
+                </div>
+                <div className="overview-title">
+                  <h3>About S-TECH</h3>
+                </div>
+              </div>
+              <div className="overview-content">
+                <p>
+                  동종업계로서 관련분야 역사 및 기술력을 바탕으로 내수는 외극보시를 보안하기 2042년부터 축적된 노하우를 기준으로 반출하고 있습니다. 신회사와 협력한 업적은 노하우를 기반으로 2024년부터 이루어져 노하리더 거듭되었습니다.
+                </p>
+              </div>
+            </div>
+
+            {/* 주요사업 카드 */}
+            <div 
+              className={`overview-card ${visibleCards[1] ? 'visible' : ''}`}
+              ref={(el) => (cardRefs.current[1] = el)}
+            >
+              <div className="overview-image-wrapper">
+                <div className="overview-image">
+                  {/* 
+                    이미지 교체 시: style 속성만 변경
+                    예) style={{ backgroundImage: 'url(/images/overview/business.jpg)' }}
+                  */}
+                  <div 
+                    className="placeholder-img" 
+                    data-label="소개 카드 이미지 2"
+                    data-size="1000x1100px 권장"
+                    style={{ background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)' }}
+                  ></div>
+                </div>
+                <div className="overview-title">
+                  <h3>주요사업</h3>
+                </div>
+              </div>
+              <div className="overview-content">
+                <p>
+                  지반공사와 부수로 중진으로 고속도로, 기초, 토목과 비탈등을 받은 안전분야 지하반전성옹지, 사유 등 기술이용, 사업 전문적인 회사가 토대로선대로 시공하는즉좋을일금하여 관리하고 있니다.
+                </p>
+              </div>
+            </div>
+
+            {/* 사업실적 카드 */}
+            <div 
+              className={`overview-card ${visibleCards[2] ? 'visible' : ''}`}
+              ref={(el) => (cardRefs.current[2] = el)}
+            >
+              <div className="overview-image-wrapper">
+                <div className="overview-image">
+                  {/* 
+                    이미지 교체 시: style 속성만 변경
+                    예) style={{ backgroundImage: 'url(/images/overview/performance.jpg)' }}
+                  */}
+                  <div 
+                    className="placeholder-img" 
+                    data-label="소개 카드 이미지 3"
+                    data-size="1000x1100px 권장"
+                    style={{ background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)' }}
+                  ></div>
+                </div>
+                <div className="overview-title">
+                  <h3>사업실적</h3>
+                </div>
+              </div>
+              <div className="overview-content">
+                <p>
+                  2001년 창업으로 지하철공사와 관리로부터 약 2,000여건 사업기간활 활고 약 700여건, 기초굴착 약 2,000건엄, 비탈등양 약 200건, 지반안전정방공사 약 300건으로 성공으로 달성하였습니다.
+                </p>
+              </div>
+            </div>
+          </div>
+      </section>
+
+      {/* 
+        ===== 3. INFORMATION Section =====
+        - 4개 아이콘 카드
       */}
       <section className="information">
         <div className="container">
-          <h2 className="section-title">INFORMATION</h2>
+          <h2 className="section-title">
+            INFORMATION
+            <span className="title-underline"></span>
+          </h2>
           
           <div className="info-grid">
-            {/* ABOUT 카드 */}
+            {/* About 카드 */}
             <div className="info-card">
-              <div className="info-icon">📋</div>
-              <h3>ABOUT</h3>
+              <div className="info-icon">
+                <FiHome />
+              </div>
+              <h3>About</h3>
               <p className="info-description">
-                축적된 기술력을 통해<br />
-                지반공사분야를 선도하는 기업입니다.
+                20년 축적된 기술력을 통해<br />
+                지반분석분야를 선도하는 기업입니다.
               </p>
             </div>
 
-            {/* BUSINESS 카드 */}
+            {/* Business 카드 */}
             <div className="info-card">
-              <div className="info-icon">🏗️</div>
-              <h3>BUSINESS</h3>
+              <div className="info-icon">
+                <FiTrendingUp />
+              </div>
+              <h3>Business</h3>
               <p className="info-description">
-                지반보강 중심으로 토목분야 다양한<br />
+                지반보강을 중심으로 토목분야 다양한<br />
                 사업영역을 보유한 기업입니다.
               </p>
             </div>
 
-            {/* PROJECT 카드 */}
+            {/* Project 카드 */}
             <div className="info-card">
-              <div className="info-icon">⚙️</div>
-              <h3>PROJECT</h3>
+              <div className="info-icon">
+                <FiSettings />
+              </div>
+              <h3>Project</h3>
               <p className="info-description">
                 기술과 경험으로 다양한 프로젝트를<br />
                 성공적으로 수행한 기업입니다.
               </p>
             </div>
 
-            {/* RECRUIT 카드 */}
+            {/* Recruit 카드 */}
             <div className="info-card">
-              <div className="info-icon">👥</div>
-              <h3>RECRUIT</h3>
+              <div className="info-icon">
+                <FiUsers />
+              </div>
+              <h3>Recruit</h3>
               <p className="info-description">
                 가능성이 높은 인재를<br />
                 기다리고 있습니다.
@@ -80,101 +306,61 @@ function MainPage() {
       </section>
 
       {/* 
-        ===== 3. Project Gallery =====
-        - 프로젝트 포트폴리오 4개
+        ===== 4. PARTNERS Section =====
+        - 파트너사 로고 그리드
       */}
-      <section className="projects">
+      <section className="partners">
         <div className="container">
-          <div className="project-grid">
-            {/* 프로젝트 카드 1 */}
-            <div className="project-card">
-              <div className="project-image" style={{ fontSize: '3rem' }}>
-                🏗️
-              </div>
-              <div className="project-info">
-                <h3>도로 건설 프로젝트</h3>
-                <p>주요 간선도로 건설 공사를 성공적으로 완료하였습니다.</p>
-                <button className="btn-primary">READ MORE</button>
-              </div>
-            </div>
-
-            {/* 프로젝트 카드 2 */}
-            <div className="project-card">
-              <div className="project-image" style={{ fontSize: '3rem' }}>
-                🌉
-              </div>
-              <div className="project-info">
-                <h3>교량 시공 프로젝트</h3>
-                <p>대규모 교량 시공을 안전하게 진행하였습니다.</p>
-                <button className="btn-primary">READ MORE</button>
-              </div>
-            </div>
-
-            {/* 프로젝트 카드 3 */}
-            <div className="project-card">
-              <div className="project-image" style={{ fontSize: '3rem' }}>
-                🚇
-              </div>
-              <div className="project-info">
-                <h3>지하철 공사</h3>
-                <p>도심 지하철 노선 공사를 완료하였습니다.</p>
-                <button className="btn-primary">READ MORE</button>
-              </div>
-            </div>
-
-            {/* 프로젝트 카드 4 */}
-            <div className="project-card">
-              <div className="project-image" style={{ fontSize: '3rem' }}>
-                🏢
-              </div>
-              <div className="project-info">
-                <h3>건물 기초 공사</h3>
-                <p>대형 건물의 지반 보강 공사를 수행하였습니다.</p>
-                <button className="btn-primary">READ MORE</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 
-        ===== 4. Testimonials (고객 후기) =====
-      */}
-      <section className="testimonials">
-        <div className="container">
-          <h2 className="section-title light">WHAT OUR CUSTOMERS SAY</h2>
+          <h2 className="section-title">
+            PARTNERS
+            <span className="title-underline"></span>
+          </h2>
           
-          <div className="testimonial-grid">
-            {/* 후기 카드 1 */}
-            <div className="testimonial-card">
-              <p className="testimonial-text">
-                "전문성과 신뢰성을 갖춘 최고의 파트너입니다."
-              </p>
-              <p className="testimonial-author">- A건설</p>
+          <div className="partners-grid">
+            {/* 파트너 로고들 - 이미지 받으면 교체 */}
+            <div className="partner-logo">
+              <div className="logo-image-placeholder"></div>
+              <div className="partner-name">고려대학교 지반</div>
             </div>
-
-            {/* 후기 카드 2 */}
-            <div className="testimonial-card">
-              <p className="testimonial-text">
-                "기술력과 경험이 뛰어난 기업입니다."
-              </p>
-              <p className="testimonial-author">- B종합건설</p>
+            <div className="partner-logo">
+              <div className="logo-image-placeholder"></div>
+              <div className="partner-name">한양대학교 지반</div>
             </div>
-
-            {/* 후기 카드 3 */}
-            <div className="testimonial-card">
-              <p className="testimonial-text">
-                "항상 믿고 맡길 수 있는 회사입니다."
-              </p>
-              <p className="testimonial-author">- C개발</p>
+            <div className="partner-logo">
+              <div className="logo-image-placeholder"></div>
+              <div className="partner-name">동양대학교 지반</div>
             </div>
-
-            {/* 후기 카드 4 */}
-            <div className="testimonial-card">
-              <p className="testimonial-text">
-                "안전하고 빠른 시공이 인상적이었습니다."
-              </p>
-              <p className="testimonial-author">- D건설</p>
+            <div className="partner-logo">
+              <div className="logo-image-placeholder"></div>
+              <div className="partner-name">연세대학교 지반</div>
+            </div>
+            <div className="partner-logo">
+              <div className="logo-image-placeholder"></div>
+              <div className="partner-name">한국조지니어링</div>
+            </div>
+            <div className="partner-logo">
+              <div className="logo-image-placeholder"></div>
+              <div className="partner-name">한국건설공법</div>
+            </div>
+            <div className="partner-logo">
+              <div className="logo-image-placeholder"></div>
+              <div className="partner-name">에스와이텍</div>
+            </div>
+            <div className="partner-logo">
+              <div className="logo-image-placeholder"></div>
+              <div className="partner-name">델타코리아</div>
+            </div>
+            <div className="partner-logo">
+              <div className="logo-image-placeholder"></div>
+              <div className="partner-name">한국소재</div>
+            </div>
+            <div className="partner-logo">
+              <div className="logo-image-placeholder"></div>
+              <div className="partner-name">가우리안</div>
+            </div>
+            <div className="partner-logo">
+              <div className="logo-image-placeholder"></div>
+              <div className="partner-name">도건이앤텍</div>
             </div>
           </div>
         </div>

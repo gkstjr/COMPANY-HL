@@ -16,30 +16,34 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import MainPage from './pages/MainPage';
-import BusinessPage from './pages/BusinessPage';
-import PortfolioPage from './pages/PortfolioPage';
-import CareersPage from './pages/CareersPage';
-import ContactPage from './pages/ContactPage';
+import Menu1Page from './pages/Menu1Page';
+import Menu2Page from './pages/Menu2Page';
+import Menu3Page from './pages/Menu3Page';
+import Menu4Page from './pages/Menu4Page';
+import Menu5Page from './pages/Menu5Page';
 
 function App() {
   return (
     <BrowserRouter>
       <Layout>
         <Routes>
-          {/* 메인 페이지 (회사소개) */}
+          {/* 메인 페이지 */}
           <Route path="/" element={<MainPage />} />
           
-          {/* 사업분야 */}
-          <Route path="/business" element={<BusinessPage />} />
+          {/* menu1: 회사소개 */}
+          <Route path="/menu1" element={<Menu1Page />} />
           
-          {/* 사업실적 */}
-          <Route path="/portfolio" element={<PortfolioPage />} />
+          {/* menu2: 사업분야 */}
+          <Route path="/menu2" element={<Menu2Page />} />
           
-          {/* 채용안내 */}
-          <Route path="/careers" element={<CareersPage />} />
+          {/* menu3: 사업실적 */}
+          <Route path="/menu3" element={<Menu3Page />} />
           
-          {/* 고객지원 */}
-          <Route path="/contact" element={<ContactPage />} />
+          {/* menu4: 채용안내 */}
+          <Route path="/menu4" element={<Menu4Page />} />
+          
+          {/* menu5: 고객지원 */}
+          <Route path="/menu5" element={<Menu5Page />} />
         </Routes>
       </Layout>
     </BrowserRouter>

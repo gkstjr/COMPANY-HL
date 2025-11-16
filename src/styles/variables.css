@@ -9,8 +9,9 @@
 
 :root {
   /* 메인 색상 */
-  --primary-color: #D2691E;        /* 오렌지 (버튼, 강조) */
-  --primary-dark: #B8551A;         /* 오렌지 어두운 버전 (호버용) */
+  --primary-color: #6B46C1;        /* 보라색 (버튼, 강조) */
+  --primary-dark: #5A38A3;         /* 보라색 어두운 버전 (호버용) */
+  --secondary-color: #3B82F6;      /* 파란색 (보조 색상) */
   
   /* 배경 색상 */
   --dark-bg: #3A4F5F;              /* 다크 네이비 (푸터, 고객후기 섹션) */

@@ -1,11 +1,12 @@
 /* 
   ============================================
-  채용안내 페이지
+  Menu4Page (채용안내 페이지)
   ============================================
+  - menu4: 채용안내
   - 나중에 내용 추가 예정
 */
 
-function CareersPage() {
+function Menu4Page() {
   return (
     <div style={{ padding: '4rem 2rem', textAlign: 'center' }}>
       <h1>채용안내</h1>
@@ -16,5 +17,5 @@ function CareersPage() {
   );
 }
 
-export default CareersPage;
+export default Menu4Page;
 

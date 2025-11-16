@@ -1,0 +1,61 @@
+/* 
+  ============================================
+  menuData.js - 전역 메뉴 데이터
+  ============================================
+  - Header, AboutPage 등에서 공통 사용
+  - 한 곳에서만 수정하면 모든 곳에 자동 반영
+*/
+
+export const menuData = [
+  {
+    title: "회사소개",
+    link: "/menu1",  // 첫 번째는 _1 없이
+    submenus: [
+      { title: "회사소개1", link: "/menu1" },
+      { title: "회사소개2", link: "/menu1-2" },
+      { title: "회사소개3", link: "/menu1-3" },
+      { title: "회사소개4", link: "/menu1-4" },
+    ]
+  },
+  {
+    title: "사업분야",
+    link: "/menu2",  // 첫 번째는 _1 없이
+    submenus: [
+      { title: "사업분야1", link: "/menu2" },
+      { title: "사업분야2", link: "/menu2-2" },
+      { title: "사업분야3", link: "/menu2-3" },
+      { title: "사업분야4", link: "/menu2-4" },
+    ]
+  },
+  {
+    title: "사업실적",
+    link: "/menu3",  // 첫 번째는 _1 없이
+    submenus: [
+      { title: "사업실적1", link: "/menu3" },
+      { title: "사업실적2", link: "/menu3-2" },
+      { title: "사업실적3", link: "/menu3-3" },
+      { title: "사업실적4", link: "/menu3-4" },
+    ]
+  },
+  {
+    title: "채용안내",
+    link: "/menu4",  // 첫 번째는 _1 없이
+    submenus: [
+      { title: "채용안내1", link: "/menu4" },
+      { title: "채용안내2", link: "/menu4-2" },
+      { title: "채용안내3", link: "/menu4-3" },
+      { title: "채용안내4", link: "/menu4-4" },
+    ]
+  },
+  {
+    title: "고객지원",
+    link: "/menu5",  // 첫 번째는 _1 없이
+    submenus: [
+      { title: "고객지원1", link: "/menu5" },
+      { title: "고객지원2", link: "/menu5-2" },
+      { title: "고객지원3", link: "/menu5-3" },
+      { title: "고객지원4", link: "/menu5-4" },
+    ]
+  },
+];
+
