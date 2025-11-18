@@ -21,9 +21,16 @@ function Menu1Page() {
   return (
     <div className="menu-page">
       {/* Hero Section - 큰 배너 이미지 + 탭 메뉴 */}
-      <section className="menu-hero">
-        <div className="hero-overlay"></div>
-        <div className="hero-content">
+      <section 
+        className="menu-hero"
+        style={{
+          backgroundImage: 'url(/menuhero.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center'
+        }}
+      >
+        <div className="menu-hero-overlay"></div>
+        <div className="menu-hero-content">
           <h1>회사소개</h1>
         </div>
         

@@ -77,13 +77,13 @@
   position: relative;
   z-index: 1;
   color: var(--text-light);
-  padding: 0 var(--spacing-md);
+  /* padding, margin 제거 - 완전한 정가운데 */
 }
 
 .hero-content h1 {
   font-size: var(--font-xlarge);
   font-weight: bold;
-  margin-bottom: var(--spacing-sm);
+  /* margin-bottom: var(--spacing-sm); */
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 

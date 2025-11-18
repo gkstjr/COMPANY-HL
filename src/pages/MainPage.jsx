@@ -21,25 +21,25 @@ function MainPage() {
   const [visibleCards, setVisibleCards] = useState([false, false, false]);
   const cardRefs = useRef([]);
 
-  // 슬라이더 이미지 데이터 (더미)
+  // 슬라이더 이미지 데이터
   // 권장 이미지 크기: 1920x1080px (FullHD, 16:9 비율)
   // 파일 형식: JPG 또는 WebP
   // 용량: 200-500KB (최적화 권장)
   const slides = [
     {
-      title: "메인 슬라이드 이미지 1",
-      subtitle: "1920x1080px 권장",
-      bgColor: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+      title: "한일지오이엔지",
+      // subtitle: "1920x1080px 권장",
+      image: "/mainSlide1.jpg"  // public 폴더에 저장
     },
     {
-      title: "메인 슬라이드 이미지 2",
-      subtitle: "1920x1080px 권장",
-      bgColor: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)"
+      title: "한일지오이엔지",
+      // subtitle: "1920x1080px 권장",
+      image: "/mainSlide2.jpg"  // public 폴더에 저장
     },
     {
-      title: "메인 슬라이드 이미지 3",
-      subtitle: "1920x1080px 권장",
-      bgColor: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)"
+      title: "한일지오이엔지",
+      // subtitle: "1920x1080px 권장",
+      image: "/mainSlide3.jpg"  // public 폴더에 저장
     }
   ];
 
@@ -115,7 +115,11 @@ function MainPage() {
           <div
             key={index}
             className={`hero-slide ${index === currentSlide ? 'active' : ''}`}
-            style={{ background: slide.bgColor }}
+            style={{ 
+              backgroundImage: `url(${slide.image})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center'
+            }}
           >
             <div className="hero-overlay"></div>
             <div className="hero-content">
@@ -160,15 +164,13 @@ function MainPage() {
             >
               <div className="overview-image-wrapper">
                 <div className="overview-image">
-                  {/* 
-                    이미지 교체 시: style 속성만 변경
-                    예) style={{ backgroundImage: 'url(/images/overview/about-stech.jpg)' }}
-                  */}
                   <div 
                     className="placeholder-img" 
-                    data-label="소개 카드 이미지 1"
-                    data-size="1000x1100px 권장"
-                    style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }}
+                    style={{ 
+                      backgroundImage: 'url(/overviewImage1.jpg)',
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center'
+                    }}
                   ></div>
                 </div>
                 <div className="overview-title">
@@ -189,15 +191,13 @@ function MainPage() {
             >
               <div className="overview-image-wrapper">
                 <div className="overview-image">
-                  {/* 
-                    이미지 교체 시: style 속성만 변경
-                    예) style={{ backgroundImage: 'url(/images/overview/business.jpg)' }}
-                  */}
                   <div 
                     className="placeholder-img" 
-                    data-label="소개 카드 이미지 2"
-                    data-size="1000x1100px 권장"
-                    style={{ background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)' }}
+                    style={{ 
+                      backgroundImage: 'url(/overviewImage2.jpg)',
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center'
+                    }}
                   ></div>
                 </div>
                 <div className="overview-title">
@@ -218,15 +218,13 @@ function MainPage() {
             >
               <div className="overview-image-wrapper">
                 <div className="overview-image">
-                  {/* 
-                    이미지 교체 시: style 속성만 변경
-                    예) style={{ backgroundImage: 'url(/images/overview/performance.jpg)' }}
-                  */}
                   <div 
                     className="placeholder-img" 
-                    data-label="소개 카드 이미지 3"
-                    data-size="1000x1100px 권장"
-                    style={{ background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)' }}
+                    style={{ 
+                      backgroundImage: 'url(/overviewImage3.jpg)',
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center'
+                    }}
                   ></div>
                 </div>
                 <div className="overview-title">

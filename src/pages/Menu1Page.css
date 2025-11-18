@@ -26,7 +26,7 @@
   position: relative;
 }
 
-.hero-overlay {
+.menu-hero-overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -35,7 +35,7 @@
   background-color: rgba(0, 0, 0, 0.5);  /* 어두운 오버레이 */
 }
 
-.hero-content {
+.menu-hero-content {
   position: relative;
   z-index: 1;
   color: var(--white);
@@ -44,7 +44,7 @@
   padding-top: var(--spacing-xl);
 }
 
-.hero-content h1 {
+.menu-hero-content h1 {
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: bold;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
@@ -130,11 +130,11 @@
     min-height: 280px;
   }
 
-  .hero-content {
+  .menu-hero-content {
     padding-top: var(--spacing-md);
   }
 
-  .hero-content h1 {
+  .menu-hero-content h1 {
     font-size: 1.5rem;
   }
 
