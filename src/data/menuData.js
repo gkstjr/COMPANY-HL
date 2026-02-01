@@ -11,10 +11,10 @@ export const menuData = [
     title: "회사소개",
     link: "/menu1",  // 첫 번째는 _1 없이
     submenus: [
-      { title: "회사소개1", link: "/menu1" },
-      { title: "회사소개2", link: "/menu1-2" },
-      { title: "회사소개3", link: "/menu1-3" },
-      { title: "회사소개4", link: "/menu1-4" },
+      { title: "인사말", link: "/menu1" },
+      { title: "회사연혁", link: "/menu1-2" },
+      { title: "조직도", link: "/menu1-3" },
+      { title: "찾아오시는 길", link: "/menu1-4" },
     ]
   },
   {
@@ -41,20 +41,15 @@ export const menuData = [
     title: "채용안내",
     link: "/menu4",  // 첫 번째는 _1 없이
     submenus: [
-      { title: "채용안내1", link: "/menu4" },
-      { title: "채용안내2", link: "/menu4-2" },
-      { title: "채용안내3", link: "/menu4-3" },
-      { title: "채용안내4", link: "/menu4-4" },
+      { title: "인재상", link: "/menu4" },
+      { title: "채용프로세스", link: "/menu4-2" },
     ]
   },
   {
     title: "고객지원",
     link: "/menu5",  // 첫 번째는 _1 없이
     submenus: [
-      { title: "고객지원1", link: "/menu5" },
-      { title: "고객지원2", link: "/menu5-2" },
-      { title: "고객지원3", link: "/menu5-3" },
-      { title: "고객지원4", link: "/menu5-4" },
+      { title: "온라인 문의", link: "/menu5" },
     ]
   },
 ];

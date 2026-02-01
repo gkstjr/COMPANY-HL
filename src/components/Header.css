@@ -5,11 +5,13 @@
 */
 
 .header {
-  background-color: var(--white);
-  box-shadow: var(--box-shadow);
-  position: sticky;              /* 스크롤해도 상단에 고정 */
+  background-color: transparent;  /* 투명 배경 */
+  box-shadow: none;               /* 그림자 제거 */
+  position: absolute;             /* 페이지 위에 띄우기 */
   top: 0;
-  z-index: 1000;                 /* 다른 요소 위에 표시 */
+  left: 0;
+  width: 100%;
+  z-index: 1000;                  /* 다른 요소 위에 표시 */
 }
 
 .header-container {
@@ -62,7 +64,7 @@
 
 /* 메인 메뉴 링크 */
 .nav-link {
-  color: var(--text-dark);
+  color: var(--white);           /* 흰색 텍스트 */
   font-size: clamp(1.2rem, 1.5vw, 1.125rem);  /* 유동적 크기 */
   font-weight: 700;              /* 굵게 (Bold) */
   padding: var(--spacing-xs) var(--spacing-sm);
@@ -74,8 +76,8 @@
 }
 
 .nav-link:hover {
-  color: var(--primary-color);
-  border-bottom: 2px solid var(--primary-color);
+  color: var(--white);
+  border-bottom: 2px solid var(--white);
 }
 
 /* 
@@ -99,12 +101,16 @@
   z-index: 999;
 }
 
-/* 메가 메뉴 활성화 */
-.mega-menu.active {
-  opacity: 1;
-  visibility: visible;
-  max-height: 300px;
-}
+/* 메가 메뉴 활성화 - 임시 비활성화 (추후 재활성화 가능) */
+/* 
+  재활성화 시 아래 주석 해제
+  
+  .mega-menu.active {
+    opacity: 1;
+    visibility: visible;
+    max-height: 300px;
+  }
+*/
 
 /* 메가 메뉴 내부 컨텐츠 */
 .mega-menu-content {
@@ -154,7 +160,7 @@
   gap: 0.5rem;                   /* 아이콘과 텍스트 사이 간격 */
   font-size: clamp(1rem, 1.5vw, 1.125rem);  /* 16px ~ 18px 자동 조절 */
   font-weight: 700;
-  color: var(--text-dark);
+  color: var(--white);           /* 흰색 텍스트 */
   padding: 0;
   border: none;
   background-color: transparent;
@@ -167,7 +173,7 @@
 }
 
 .menu-all-btn:hover {
-  color: var(--primary-color);
+  color: var(--white);
 }
 
 /* 햄버거 아이콘 (≡) */
@@ -182,12 +188,12 @@
   display: block;
   width: 100%;
   height: 2px;
-  background-color: var(--text-dark);
+  background-color: var(--white);  /* 흰색 아이콘 */
   transition: var(--transition);
 }
 
 .menu-all-btn:hover .menu-icon span {
-  background-color: var(--primary-color);
+  background-color: var(--white);
 }
 
 /* 전체메뉴 텍스트 */
@@ -210,7 +216,7 @@
 .hamburger span {
   width: 25px;
   height: 3px;
-  background-color: var(--text-dark);
+  background-color: var(--white);  /* 데스크톱 메뉴와 동일한 흰색 */
   transition: var(--transition);
 }
 

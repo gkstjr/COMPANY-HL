@@ -21,6 +21,9 @@ function MainPage() {
   const [visibleCards, setVisibleCards] = useState([false, false, false]);
   const cardRefs = useRef([]);
 
+  // 스크롤 상태 관리 (Scroll Indicator 표시 여부)
+  const [isScrolled, setIsScrolled] = useState(false);
+
   // 슬라이더 이미지 데이터
   // 권장 이미지 크기: 1920x1080px (FullHD, 16:9 비율)
   // 파일 형식: JPG 또는 WebP
@@ -29,17 +32,20 @@ function MainPage() {
     {
       title: "한일지오이엔지",
       // subtitle: "1920x1080px 권장",
-      image: "/mainSlide1.jpg"  // public 폴더에 저장
+      image: "/mainSlide1.jpg",  // public 폴더에 저장
+      name: "애니메이션1"
     },
     {
       title: "한일지오이엔지",
       // subtitle: "1920x1080px 권장",
-      image: "/mainSlide2.jpg"  // public 폴더에 저장
+      image: "/mainSlide2.jpg",  // public 폴더에 저장
+      name: "애니메이션2"
     },
     {
       title: "한일지오이엔지",
       // subtitle: "1920x1080px 권장",
-      image: "/mainSlide3.jpg"  // public 폴더에 저장
+      image: "/mainSlide3.jpg",  // public 폴더에 저장
+      name: "애니메이션3"
     }
   ];
 
@@ -51,6 +57,20 @@ function MainPage() {
 
     return () => clearInterval(timer);
   }, [slides.length]);
+
+  // 스크롤 감지 (Scroll Indicator 숨김 처리)
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // 인디케이터 클릭
   const handleIndicatorClick = (index) => {
@@ -122,23 +142,28 @@ function MainPage() {
             }}
           >
             <div className="hero-overlay"></div>
-            <div className="hero-content">
-              <h1>{slide.title}</h1>
-              <p>{slide.subtitle}</p>
-            </div>
           </div>
         ))}
 
-        {/* 슬라이드 인디케이터 */}
+        {/* Scroll down 인디케이터 */}
+        <div className={`scroll-indicator ${isScrolled ? 'hidden' : ''}`}>
+        </div>
+
+        {/* 슬라이드 인디케이터 (왼쪽 하단) */}
         <div className="slider-indicators">
           {slides.map((_, index) => (
             <button
               key={index}
               className={`indicator ${index === currentSlide ? 'active' : ''}`}
               onClick={() => handleIndicatorClick(index)}
-              aria-label={`슬라이드 ${index + 1}`}
+              aria-label={`슬라이드 ${index + 1}로 이동`}
             />
           ))}
+        </div>
+
+        {/* 슬라이드 이름 텍스트 (오른쪽 하단) */}
+        <div className="slide-name">
+          {slides[currentSlide].name}
         </div>
       </section>
 
@@ -147,6 +172,11 @@ function MainPage() {
         - 3개 카드 (About S-TECH, 주요사업, 사업실적)
       */}
       <section className="overview">
+        {/* Scroll down 텍스트 */}
+        <div className={`scroll-down-text ${isScrolled ? 'hidden' : ''}`}>
+          <span>Scroll down</span>
+        </div>
+
         <h2 className="section-title">
           OVERVIEW
         </h2>

@@ -13,41 +13,48 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="footer-container">
-        {/* 첫 번째 줄: 인증 정보 */}
-        <div className="footer-info">
-          <p>
-            엑지니어링평등증제 제 10-001108호 
-            <span className="separator">|</span>
-            인건전전문기업 제 291호 
-            <span className="separator">|</span>
-            지하안전영향평가 전문기업 서울 제 11호
-          </p>
+        {/* 왼쪽: 로고 및 회사명 */}
+        <div className="footer-left">
+          <div className="footer-logo">
+            <div className="logo-icon">
+              <div className="logo-layers">
+                <div className="layer layer-1"></div>
+                <div className="layer layer-2"></div>
+                <div className="layer layer-3"></div>
+                <div className="layer layer-4"></div>
+              </div>
+            </div>
+            <div className="logo-text-container">
+              <span className="logo-text-footer">한일지오이엔지</span>
+              <span className="footer-slogan">지하 구조물 철거 및 설계 전문기업</span>
+            </div>
+          </div>
         </div>
 
-        {/* 두 번째 줄: 주소 및 사업자번호 */}
-        <div className="footer-info">
-          <p>
-            04099 서울특별시 마포구 서강로 82 정상 JL빌딩, 6층
-            <span className="separator">|</span>
-            사업자번호 : 220-86-09157
-          </p>
-        </div>
+        {/* 오른쪽: 정보 */}
+        <div className="footer-right">
+          {/* 첫 번째 줄: 주소 및 사업자번호 */}
+          <div className="footer-info">
+            <p>
+              서울특별시 성동구 성수이로 51, 4층 404호 (04781)
+            </p>
+          </div>
 
-        {/* 세 번째 줄: 연락처 */}
-        <div className="footer-info">
-          <p>
-            Tel : 02-717-5784
-            <span className="separator">|</span>
-            Fax : 02-717-4330
-            <span className="separator">|</span>
-            E-mail : <a href="mailto:stech@s-tech.co.kr">stech@s-tech.co.kr</a>
-            <a href="mailto:stech@s-tech.co.kr" className="mail-link">[메일함]</a>
-          </p>
-        </div>
+          {/* 두 번째 줄: 연락처 */}
+          <div className="footer-info">
+            <p>
+              Tel : 02-2057-6264
+              <span className="separator">|</span>
+              Fax : 02-568-3923
+              <span className="separator">|</span>
+              E-mail : <a href="mailto:info@hanilgeo.com">hanilgeo@hanilgeo.com</a>
+            </p>
+          </div>
 
-        {/* 저작권 */}
-        <div className="footer-copyright">
-          <p>Copyright S-TECH Consulting group. All Rights Reserved.</p>
+          {/* 저작권 */}
+          <div className="footer-copyright">
+            <p>Copyright © 한일지오이엔지. All Rights Reserved.</p>
+          </div>
         </div>
       </div>
     </footer>

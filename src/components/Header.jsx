@@ -46,7 +46,7 @@ function Header() {
       <div className="header-container">
         {/* 로고 영역 (왼쪽) */}
         <Link to="/" className="logo">
-          <img src="/logo.jpg" alt="한일지오이엔지" className="logo-img" />
+          <img src="/logo.png" alt="한일지오이엔지" className="logo-img" />
         </Link>
 
         {/* 네비게이션 메뉴 (가운데) - 데스크톱용 */}

@@ -1,0 +1,182 @@
+/* 
+  ============================================
+  Menu4Page.css - 인재상 페이지 스타일
+  ============================================
+*/
+
+/* 인재상 소개 문구 */
+.talent-intro {
+  text-align: center;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #666;
+  margin: var(--spacing-md) 0 var(--spacing-lg);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 2px solid var(--primary-color);
+}
+
+/* 인재상 리스트 */
+.talent-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+/* 각 인재상 아이템 */
+.talent-item {
+  background: #f8f9fa;
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: 6px;
+  border-left: 3px solid var(--primary-color);
+}
+
+/* 인재상 헤더 (번호 + 제목) */
+.talent-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+}
+
+.talent-number {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  min-width: 40px;
+}
+
+.talent-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin: 0;
+}
+
+/* 인재상 설명 리스트 */
+.talent-description {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-left: 52px;  /* 번호 너비 + gap만큼 들여쓰기 */
+}
+
+.talent-description li {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #555;
+  position: relative;
+  padding-left: 1rem;
+}
+
+.talent-description li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+/* 반응형: 태블릿 */
+@media (max-width: 1024px) {
+  .talent-intro {
+    font-size: 1rem;
+  }
+
+  .talent-number {
+    font-size: 1.2rem;
+    min-width: 38px;
+  }
+
+  .talent-title {
+    font-size: 1.2rem;
+  }
+
+  .talent-description {
+    padding-left: 50px;
+  }
+
+  .talent-description li {
+    font-size: 0.925rem;
+  }
+}
+
+/* 반응형: 모바일 */
+@media (max-width: 768px) {
+  .talent-intro {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: var(--spacing-sm) 0 var(--spacing-md);
+  }
+
+  .talent-item {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+
+  .talent-header {
+    gap: var(--spacing-xs);
+  }
+
+  .talent-number {
+    font-size: 1.1rem;
+    min-width: 35px;
+  }
+
+  .talent-title {
+    font-size: 1.1rem;
+  }
+
+  .talent-description {
+    padding-left: 0;
+    margin-top: var(--spacing-xs);
+    gap: 0.4rem;
+  }
+
+  .talent-description li {
+    font-size: 0.875rem;
+    padding-left: 0.875rem;
+  }
+}
+
+/* 반응형: 작은 모바일 */
+@media (max-width: 480px) {
+  .talent-intro br {
+    display: none;  /* 작은 화면에서는 줄바꿈 제거 */
+  }
+
+  .talent-list {
+    gap: var(--spacing-sm);
+  }
+
+  .talent-item {
+    border-left-width: 2px;
+    padding: var(--spacing-sm);
+  }
+
+  .talent-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.125rem;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .talent-number {
+    font-size: 1rem;
+  }
+
+  .talent-title {
+    font-size: 1rem;
+  }
+
+  .talent-description {
+    gap: 0.35rem;
+  }
+
+  .talent-description li {
+    font-size: 0.85rem;
+  }
+}
+

@@ -7,7 +7,7 @@
 .footer {
   background-color: var(--dark-bg);
   color: var(--text-light);
-  padding: var(--spacing-lg) 0;
+  padding: clamp(2rem, 4vw, 3rem) 0;  /* 적절한 높이 */
   margin-top: 0;  /* PARTNERS 섹션과 바로 붙음 */
 }
 
@@ -16,8 +16,105 @@
   margin: 0 auto;
   padding: 0 var(--spacing-md);
   display: flex;
-  flex-direction: column;  /* 세로로 쌓기 */
-  gap: var(--spacing-xs);  /* 줄 간격 */
+  justify-content: space-between;  /* 양쪽 끝에 배치 */
+  align-items: flex-start;
+  gap: var(--spacing-xl);
+}
+
+/* 왼쪽: 로고 및 회사명 */
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  flex-shrink: 0;
+}
+
+/* CSS 로고 */
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo-icon {
+  width: 50px;
+  height: 40px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.logo-layers {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.layer {
+  position: absolute;
+  height: 12px;
+  border-radius: 20px;
+  opacity: 0.9;
+}
+
+.layer-1 {
+  top: 0;
+  left: 0;
+  width: 60%;
+  background: #6b6b6b;
+  transform: rotate(-8deg);
+}
+
+.layer-2 {
+  top: 8px;
+  left: 15%;
+  width: 55%;
+  background: #9b8b5a;
+  transform: rotate(-5deg);
+}
+
+.layer-3 {
+  top: 8px;
+  right: 0;
+  width: 50%;
+  background: #b8895f;
+  transform: rotate(5deg);
+}
+
+.layer-4 {
+  bottom: 0;
+  left: 20%;
+  width: 75%;
+  background: #5f736b;
+  transform: rotate(-3deg);
+}
+
+.logo-text-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.logo-text-footer {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+}
+
+.footer-slogan {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* 오른쪽: 정보 */
+.footer-right {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
 }
 
 /* 각 정보 라인 */
@@ -49,20 +146,12 @@
   color: var(--white);
 }
 
-/* 메일함 링크 (파란색) */
-.mail-link {
-  color: var(--secondary-color) !important;  /* 파란색 */
-  margin-left: 0.25rem;
-}
-
-.mail-link:hover {
-  color: var(--primary-color) !important;  /* 호버 시 보라색 */
-}
-
 /* 저작권 */
 .footer-copyright {
   text-align: left;  /* 왼쪽 정렬 */
   margin-top: var(--spacing-sm);
+  padding-top: var(--spacing-sm);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);  /* 위에 구분선 추가 */
 }
 
 .footer-copyright p {
@@ -78,7 +167,33 @@
 */
 @media (max-width: 768px) {
   .footer {
-    padding: var(--spacing-md) 0;
+    padding: var(--spacing-md) 0;  /* 모바일에서 적절한 높이 */
+  }
+
+  .footer-container {
+    flex-direction: column;  /* 모바일에서는 세로로 쌓기 */
+    gap: var(--spacing-md);
+  }
+
+  .footer-left {
+    gap: var(--spacing-xs);
+  }
+
+  .logo-icon {
+    width: 45px;
+    height: 35px;
+  }
+
+  .layer {
+    height: 10px;
+  }
+
+  .logo-text-footer {
+    font-size: 1.1rem;
+  }
+
+  .footer-slogan {
+    font-size: 0.8rem;
   }
 
   .footer-info p {
