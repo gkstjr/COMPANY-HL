@@ -8,6 +8,7 @@
 
 import { Link, useLocation } from 'react-router-dom';
 import { menuData } from '../../data/menuData';
+import Breadcrumb from '../../components/Breadcrumb';
 import '../MenuCommon.css';  // 공통 스타일
 import './Menu1Page.css';   // 인사말 전용 스타일
 
@@ -52,6 +53,7 @@ function Menu1Page() {
       {/* 메인 콘텐츠 */}
       <section className="menu-content">
         <div className="container">
+          <Breadcrumb />
           <h2 className="content-title">인사말</h2>
           
           {/* 인사말 섹션 (이미지 + 텍스트) */}

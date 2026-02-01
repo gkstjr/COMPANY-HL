@@ -3,7 +3,7 @@
   MainPage (메인/회사소개 페이지)
   ============================================
   새로운 디자인 기반 섹션 구성:
-  1. Hero Section - 이미지 슬라이더 (3개 이미지 자동 전환)
+  1. Hero Section - 이미지 슬라이더 (5개 이미지 자동 전환)
   2. OVERVIEW Section - 3개 카드 (About, 주요사업, 사업실적)
   3. INFORMATION Section - 4개 아이콘 카드
   4. PARTNERS Section - 파트너사 로고
@@ -46,6 +46,18 @@ function MainPage() {
       // subtitle: "1920x1080px 권장",
       image: "/mainSlide3.jpg",  // public 폴더에 저장
       name: "애니메이션3"
+    },
+    {
+      title: "한일지오이엔지",
+      // subtitle: "1920x1080px 권장",
+      image: "/mainSlide4.jpg",  // public 폴더에 저장
+      name: "애니메이션4"
+    },
+    {
+      title: "한일지오이엔지",
+      // subtitle: "1920x1080px 권장",
+      image: "/mainSlide5.jpg",  // public 폴더에 저장
+      name: "애니메이션5"
     }
   ];
 
@@ -127,7 +139,7 @@ function MainPage() {
     <div className="main-page">
       {/* 
         ===== 1. Hero Section (슬라이더) =====
-        - 3개 이미지 자동 전환
+        - 5개 이미지 자동 전환
         - 하단 인디케이터
       */}
       <section className="hero-slider">

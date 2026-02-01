@@ -10,9 +10,8 @@
   font-size: 1.05rem;
   line-height: 1.6;
   color: #666;
-  margin: var(--spacing-md) auto var(--spacing-xl);
-  padding-bottom: var(--spacing-md);
-  border-bottom: 2px solid var(--primary-color);
+  margin: var(--spacing-md) auto var(--spacing-sm);
+  padding-bottom: var(--spacing-sm);
   max-width: 900px;
 }
 

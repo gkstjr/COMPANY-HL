@@ -21,20 +21,14 @@ export const menuData = [
     title: "사업분야",
     link: "/menu2",  // 첫 번째는 _1 없이
     submenus: [
-      { title: "사업분야1", link: "/menu2" },
-      { title: "사업분야2", link: "/menu2-2" },
-      { title: "사업분야3", link: "/menu2-3" },
-      { title: "사업분야4", link: "/menu2-4" },
+      // { title: "사업분야", link: "/menu2" },
     ]
   },
   {
     title: "사업실적",
     link: "/menu3",  // 첫 번째는 _1 없이
     submenus: [
-      { title: "사업실적1", link: "/menu3" },
-      { title: "사업실적2", link: "/menu3-2" },
-      { title: "사업실적3", link: "/menu3-3" },
-      { title: "사업실적4", link: "/menu3-4" },
+      // { title: "사업실적", link: "/menu3" },
     ]
   },
   {

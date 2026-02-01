@@ -8,6 +8,7 @@
 
 import { Link, useLocation } from 'react-router-dom';
 import { menuData } from '../../data/menuData';
+import Breadcrumb from '../../components/Breadcrumb';
 import '../MenuCommon.css';  // 공통 스타일
 import './Menu4_2Page.css';  // 채용프로세스 전용 스타일
 
@@ -80,6 +81,7 @@ function Menu4_2Page() {
       {/* 메인 콘텐츠 */}
       <section className="menu-content">
         <div className="container">
+          <Breadcrumb />
           <h2 className="content-title">채용프로세스</h2>
           
           <p className="process-intro">

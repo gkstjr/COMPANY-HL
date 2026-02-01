@@ -8,6 +8,7 @@
 
 import { Link, useLocation } from 'react-router-dom';
 import { menuData } from '../../data/menuData';
+import Breadcrumb from '../../components/Breadcrumb';
 import '../MenuCommon.css';  // 공통 스타일
 import './Menu1_3Page.css';  // 조직도 전용 스타일
 
@@ -52,6 +53,7 @@ function Menu1_3Page() {
       {/* 메인 콘텐츠 */}
       <section className="menu-content">
         <div className="container">
+          <Breadcrumb />
           <h2 className="content-title">조직도</h2>
           
           {/* 조직도 이미지 */}

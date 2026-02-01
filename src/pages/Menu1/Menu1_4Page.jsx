@@ -9,6 +9,7 @@
 import { useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { menuData } from '../../data/menuData';
+import Breadcrumb from '../../components/Breadcrumb';
 import '../MenuCommon.css';  // 공통 스타일
 import './Menu1_4Page.css';  // 찾아오시는 길 전용 스타일
 
@@ -118,6 +119,7 @@ function Menu1_4Page() {
       {/* 메인 콘텐츠 */}
       <section className="menu-content">
         <div className="container">
+          <Breadcrumb />
           <h2 className="content-title">찾아오시는 길</h2>
           
           {/* 카카오맵 */}

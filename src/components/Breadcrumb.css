@@ -1,0 +1,59 @@
+/* 
+  ============================================
+  Breadcrumb.css - 브레드크럼 네비게이션 스타일
+  ============================================
+*/
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0;
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.breadcrumb-item {
+  color: #666;
+  text-decoration: none;
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+
+.breadcrumb-item:hover {
+  color: var(--primary-color);
+}
+
+.breadcrumb-item.current {
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+.breadcrumb-separator {
+  color: #999;
+  margin: 0 0.5rem;
+  flex-shrink: 0;
+}
+
+/* 반응형: 모바일 */
+@media (max-width: 768px) {
+  .breadcrumb {
+    font-size: 0.8rem;
+  }
+
+  .breadcrumb-separator {
+    margin: 0 0.4rem;
+  }
+}
+
+/* 반응형: 작은 모바일 */
+@media (max-width: 480px) {
+  .breadcrumb {
+    font-size: 0.75rem;
+  }
+
+  .breadcrumb-separator {
+    margin: 0 0.35rem;
+  }
+}
+

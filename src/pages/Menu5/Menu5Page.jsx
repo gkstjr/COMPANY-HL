@@ -11,6 +11,7 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 // import emailjs from '@emailjs/browser';  // 추후 이메일 기능 활성화 시 사용
 import { menuData } from '../../data/menuData';
+import Breadcrumb from '../../components/Breadcrumb';
 import '../MenuCommon.css';  // 공통 스타일
 import './Menu5Page.css';  // 온라인 문의 전용 스타일
 
@@ -90,6 +91,7 @@ function Menu5Page() {
       {/* 메인 콘텐츠 */}
       <section className="menu-content">
         <div className="container">
+          <Breadcrumb />
           <h2 className="content-title">온라인 문의</h2>
           
           <p className="inquiry-intro">
