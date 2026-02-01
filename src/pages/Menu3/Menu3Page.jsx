@@ -54,15 +54,6 @@ function Menu3Page() {
       ]
     },
     {
-      year: '2023',
-      hasImage: false,
-      projects: [
-        '◇◇지하차도 구조설계',
-        '☆☆물류센터 지반보강 설계',
-        '●●도시개발 기반시설 설계'
-      ]
-    },
-    {
       year: '2022',
       hasImage: false,
       projects: [
