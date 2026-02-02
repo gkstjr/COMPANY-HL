@@ -16,7 +16,7 @@
 
 .header-container {
   width: 100%;                          /* 화면 전체 너비 */
-  padding: var(--spacing-xs) var(--spacing-xs);   /* 20px 상하 패딩 */
+  padding: var(--spacing-sm) var(--spacing-xs);   /* 20px 상하 패딩 */
   display: flex;
   justify-content: space-between;       /* 양쪽 끝에 배치 */
   align-items: center;
@@ -27,6 +27,7 @@
 .logo {
   display: flex;
   align-items: center;
+  gap: clamp(0.1rem, 1vw, 0.2rem);
   z-index: 10;                    /* 메뉴 위에 표시 */
   position: relative;
   margin-left: clamp(1.5rem, 3vw, 3rem);  /* 24px ~ 48px 자동 조절 */
@@ -34,17 +35,19 @@
 
 /* 로고 이미지 */
 .logo-img {
-  height: clamp(40px, 5vw, 75px);  /* 40px ~ 55px 자동 조절 */
+  height: clamp(3rem, 2vw, 2rem);
+  margin-top: clamp(0.2rem, 1vw, 0.4rem);  
   width: auto;                      /* 가로 비율 자동 유지 */
   object-fit: contain;              /* 비율 유지하며 맞춤 */
   display: block;
 }
 
-.logo-text {
-  font-size: clamp(1.5rem, 2.5vw, 1.875rem);  /* 24px ~ 30px 자동 조절 */
-  font-weight: bold;
-  color: var(--primary-color);
-  letter-spacing: -0.5px;        /* 가독성 향상 */
+/* 로고 텍스트 이미지 */
+.logo-text-img {
+  height: clamp(1.5rem, 1.5vw, 1.125rem);  /* 헤더 메뉴 글자 크기와 동일 */
+  width: auto;                      /* 가로 비율 자동 유지 */
+  object-fit: contain;              /* 비율 유지하며 맞춤 */
+  display: block;
 }
 
 /* 네비게이션 메뉴 (데스크톱 - 화면 정중앙) */
@@ -421,12 +424,12 @@
 
   /* 로고 이미지 크기 조정 (태블릿) */
   .logo-img {
-    height: 65px;  /* 태블릿에서는 중간 크기 */
+    height: clamp(0.9rem, 1.3vw, 1rem);  /* 헤더 메뉴 글자 크기와 동일 */
   }
 
-  /* 로고 텍스트 크기 줄이기 */
-  .logo-text {
-    font-size: clamp(1.2rem, 2vw, 1.5rem);
+  /* 로고 텍스트 이미지 크기 조정 (태블릿) */
+  .logo-text-img {
+    height: clamp(0.9rem, 1.3vw, 1rem);  /* 헤더 메뉴 글자 크기와 동일 */
   }
 
   /* 전체메뉴 버튼 마진 줄이기 */
@@ -484,7 +487,12 @@
 
   /* 로고 이미지 크기 조정 (모바일) */
   .logo-img {
-    height: 55px;  /* 모바일에서는 작게 */
+    height: clamp(0.85rem, 1.2vw, 0.95rem);  /* 모바일에서 적절한 크기 */
+  }
+
+  /* 로고 텍스트 이미지 크기 조정 (모바일) */
+  .logo-text-img {
+    height: clamp(0.85rem, 1.2vw, 0.95rem);  /* 모바일에서 적절한 크기 */
   }
 
   /* 전체메뉴 버튼 숨김 */

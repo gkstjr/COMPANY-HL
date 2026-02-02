@@ -87,7 +87,7 @@ function Menu2Page() {
       >
         <div className="menu-hero-overlay"></div>
         <div className="menu-hero-content">
-          <h1>사업분야</h1>
+      <h1>사업분야</h1>
         </div>
         
         {/* 탭 메뉴 (배너 안쪽 하단) */}
@@ -113,7 +113,7 @@ function Menu2Page() {
           <p className="business-intro">
             한일지오이엔지는 지하 구조물 철거 및 설계 전문업체로<br />
             굴착 및 기초설계부터 안전점검, 감리업무까지 컨설팅해드립니다.
-          </p>
+      </p>
 
           {/* 사업분야 카드 */}
           <div className="business-cards">
