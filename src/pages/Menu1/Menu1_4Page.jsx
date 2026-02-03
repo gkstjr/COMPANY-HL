@@ -148,7 +148,7 @@ function Menu1_4Page() {
                 <h3 className="section-label">Fax</h3>
               </div>
               <div className="section-value">
-                <p>02-717-5784</p>
+                <p>02-2057-6264</p>
                 <p>02-568-3923</p>
               </div>
             </div>

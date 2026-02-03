@@ -17,15 +17,10 @@ function Footer() {
         <div className="footer-left">
           <div className="footer-logo">
             <div className="logo-icon">
-              <div className="logo-layers">
-                <div className="layer layer-1"></div>
-                <div className="layer layer-2"></div>
-                <div className="layer layer-3"></div>
-                <div className="layer layer-4"></div>
-              </div>
+              <img src="/logoImage.png" alt="한일지오이엔지 로고" />
             </div>
             <div className="logo-text-container">
-              <span className="logo-text-footer">한일지오이엔지</span>
+              <span className="logo-text-footer">(주)한일지오이엔지</span>
               <span className="footer-slogan">지하 구조물 철거 및 설계 전문기업</span>
             </div>
           </div>
