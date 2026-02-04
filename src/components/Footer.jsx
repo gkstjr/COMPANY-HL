@@ -48,7 +48,7 @@ function Footer() {
 
           {/* 저작권 */}
           <div className="footer-copyright">
-            <p>Copyright © 한일지오이엔지. All Rights Reserved.</p>
+            <p>Copyright © (주)한일지오이엔지. All Rights Reserved.</p>
           </div>
         </div>
       </div>
