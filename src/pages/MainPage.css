@@ -172,18 +172,35 @@
   width: 50px;  /* 활성 상태에서 조금 더 길게 */
 }
 
-/* 슬라이드 이름 텍스트 (오른쪽 하단) */
-.slide-name {
+/* 슬라이드 텍스트 (중앙 하단) */
+.hero-slide-text {
   position: absolute;
-  bottom: calc(3rem - 1.5px);  /* 인디케이터 중앙과 정렬 (3px 높이의 절반) */
-  right: 3rem;   /* 오른쪽에서 3rem */
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 10;
+  text-align: center;
   color: var(--white);
-  font-size: clamp(1rem, 1.5vw, 1.25rem);  /* 유동적 크기 */
-  font-weight: 700;  /* 굵게 */
-  letter-spacing: -0.5px;
-  line-height: 1;  /* 라인 높이 고정으로 정확한 정렬 */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);  /* 가독성 향상 */
+}
+
+.hero-slide-title {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 700;
+  color: var(--white);
+  margin: 0;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7), 0 0 20px rgba(0, 0, 0, 0.5);
+  letter-spacing: 0.05em;
+  line-height: 1.3;
+}
+
+.hero-slide-subtitle {
+  font-size: clamp(1rem, 1.8vw, 1.5rem);
+  font-weight: 400;
+  color: var(--white);
+  margin: var(--spacing-sm) 0 0 0;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7), 0 0 20px rgba(0, 0, 0, 0.5);
+  letter-spacing: 0.02em;
+  line-height: 1.5;
 }
 
 /* 
@@ -541,11 +558,19 @@
     left: 1.5rem;  /* 왼쪽 여백 줄임 */
   }
 
-  /* 슬라이드 이름 - 모바일 */
-  .slide-name {
-    bottom: calc(2rem - 1.5px);  /* 인디케이터 중앙과 정렬 */
-    right: 1.5rem;  /* 오른쪽 여백 줄임 */
-    font-size: 0.9rem;  /* 폰트 크기 축소 */
+  /* 슬라이드 텍스트 - 모바일 */
+  .hero-slide-text {
+    bottom: 2rem;
+    padding: 0 var(--spacing-md);
+  }
+
+  .hero-slide-title {
+    font-size: 1.25rem;
+  }
+
+  .hero-slide-subtitle {
+    font-size: 0.9rem;
+    margin-top: var(--spacing-xs);
   }
 
   /* OVERVIEW 섹션 - 모바일 */

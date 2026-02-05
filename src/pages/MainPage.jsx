@@ -173,10 +173,12 @@ function MainPage() {
           ))}
         </div>
 
-        {/* 슬라이드 이름 텍스트 (오른쪽 하단) */}
-        <div className="slide-name">
-          {slides[currentSlide].name}
+        {/* 슬라이드 텍스트 (중앙 하단) */}
+        <div className="hero-slide-text">
+          <p className="hero-slide-title">Deep Insight, Perfect Solution</p>
+          <p className="hero-slide-subtitle">지하 공간의 새로운 가치를 창조하는 엔지니어링 파트너.</p>
         </div>
+
       </section>
 
       {/* 
