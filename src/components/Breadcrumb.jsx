@@ -11,7 +11,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { menuData } from '../data/menuData';
 import './Breadcrumb.css';
 
-function Breadcrumb() {
+function Breadcrumb({ additionalItem = null }) {
   const location = useLocation();
   const currentPath = location.pathname;
 
@@ -65,6 +65,12 @@ function Breadcrumb() {
           )}
         </span>
       ))}
+      {additionalItem && (
+        <span>
+          <span className="breadcrumb-separator">&gt;</span>
+          <span className="breadcrumb-item current">{additionalItem}</span>
+        </span>
+      )}
     </nav>
   );
 }

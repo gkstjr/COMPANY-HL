@@ -8,7 +8,7 @@
 
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { menuData } from '../../data/menuData';
+import { menuData, getMenuHeroImage } from '../../data/menuData';
 import Breadcrumb from '../../components/Breadcrumb';
 import '../MenuCommon.css';  // 공통 스타일
 import './Menu1_2Page.css';  // 회사연혁 전용 스타일
@@ -20,6 +20,9 @@ function Menu1_2Page() {
   
   // 현재 URL 경로 가져오기
   const location = useLocation();
+  
+  // Hero 이미지 가져오기
+  const heroImage = getMenuHeroImage(location.pathname);
 
   // 연도 필터 상태 (기본값: 최신년도)
   const [activeFilter, setActiveFilter] = useState('2020~2024');
@@ -99,7 +102,7 @@ function Menu1_2Page() {
       <section 
         className="menu-hero"
         style={{
-          backgroundImage: 'url(/menuhero.jpg)',
+          backgroundImage: `url(${heroImage})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center'
         }}
@@ -114,7 +117,7 @@ function Menu1_2Page() {
           {tabs.map((tab, index) => (
             <Link 
               key={index} 
-              to={tab.link} 
+              to={tab.link}  
               className={`tab-item ${location.pathname === tab.link ? 'active' : ''}`}
             >
               {tab.title}

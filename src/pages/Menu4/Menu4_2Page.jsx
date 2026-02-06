@@ -7,7 +7,7 @@
 */
 
 import { Link, useLocation } from 'react-router-dom';
-import { menuData } from '../../data/menuData';
+import { menuData, getMenuHeroImage } from '../../data/menuData';
 import Breadcrumb from '../../components/Breadcrumb';
 import '../MenuCommon.css';  // 공통 스타일
 import './Menu4_2Page.css';  // 채용프로세스 전용 스타일
@@ -19,6 +19,9 @@ function Menu4_2Page() {
   
   // 현재 URL 경로 가져오기
   const location = useLocation();
+  
+  // Hero 이미지 가져오기
+  const heroImage = getMenuHeroImage(location.pathname);
 
   // 채용 프로세스 단계
   const processSteps = [
@@ -54,7 +57,7 @@ function Menu4_2Page() {
       <section 
         className="menu-hero"
         style={{
-          backgroundImage: 'url(/menuhero.jpg)',
+          backgroundImage: `url(${heroImage})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center'
         }}

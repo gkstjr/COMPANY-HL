@@ -8,7 +8,7 @@
 
 import { useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { menuData } from '../../data/menuData';
+import { menuData, getMenuHeroImage } from '../../data/menuData';
 import Breadcrumb from '../../components/Breadcrumb';
 import '../MenuCommon.css';  // 공통 스타일
 import './Menu1_4Page.css';  // 찾아오시는 길 전용 스타일
@@ -20,6 +20,9 @@ function Menu1_4Page() {
   
   // 현재 URL 경로 가져오기
   const location = useLocation();
+  
+  // Hero 이미지 가져오기
+  const heroImage = getMenuHeroImage(location.pathname);
 
   // 지도를 표시할 div 참조
   const mapContainer = useRef(null);
@@ -92,7 +95,7 @@ function Menu1_4Page() {
       <section 
         className="menu-hero"
         style={{
-          backgroundImage: 'url(/menuhero.jpg)',
+          backgroundImage: `url(${heroImage})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center'
         }}

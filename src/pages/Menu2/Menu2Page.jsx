@@ -3,11 +3,11 @@
   Menu2Page (사업분야 페이지)
   ============================================
   - menu2: 사업분야 메인 페이지
-  - Hero 배너 + 탭 메뉴 + 사업분야 카드
+  - Hero 배너 + 탭 메뉴 + 사업분야 섹션
 */
 
 import { Link, useLocation } from 'react-router-dom';
-import { menuData } from '../../data/menuData';
+import { menuData, getMenuHeroImage } from '../../data/menuData';
 import Breadcrumb from '../../components/Breadcrumb';
 import '../MenuCommon.css';  // 공통 스타일
 import './Menu2Page.css';  // 사업분야 전용 스타일
@@ -19,57 +19,84 @@ function Menu2Page() {
   
   // 현재 URL 경로 가져오기
   const location = useLocation();
+  
+  // Hero 이미지 가져오기
+  const heroImage = getMenuHeroImage(location.pathname);
 
   // 사업분야 데이터
   const businessData = [
     {
-      title: '설계 분야',
-      image: '/menuhero.jpg',
-      items: [
-        '지반조사 및 현황측량',
-        '지하굴착흙막이 설계',
-        '기초설계 및 적용공법',
-        '비탈면안정 및 보강공법',
-        '연약지반안정 및 처리대책',
-        '터널 및 기술제안(건축토아)',
-        '지하안전영향평가',
-        '사후지하안전영향평가',
-        'V.E.(Value Engineering) 검토',
-        '용벽 및 토류벽 검토',
-        '양압력 및 처리대책 검토',
-        '건축구조분야 파트너사 운용'
+      title: '지반·구조 설계',
+      image: '/menu2_1Image.png',
+      imagePosition: 'left', // 이미지 왼쪽
+      categories: [
+        {
+          categoryTitle: '조사업무',
+          items: [
+            '지반조사 및 현황측량',
+            'GPR탐사 및 관로 CCTV 촬영',
+            '3D Scaner를 이용한 구조물 입체측량'
+          ]
+        },
+        {
+          categoryTitle: '지하굴착',
+          items: [
+            '설계 및 기술지원',
+            '현장 최적화를 위한 기술지원',
+            '계측결과를 통한 공사관리 기술지원'
+          ]
+        }
       ]
     },
     {
-      title: '철거 분야',
-      image: '/menuhero.jpg',
-      items: [
-        '건축물 해체 철거',
-        '내부 구조물 철거',
-        '콘크리트 구조물 철거',
-        '석면 제거 작업',
-        '폐기물 처리 및 반출',
-        '철거 계획 수립',
-        '안전 관리 계획 수립',
-        '철거 장비 운용',
-        '분진 및 소음 관리',
-        '주변 구조물 보호 대책'
+      title: '지하구조물 철거',
+      image: '/menu2_2Image.png',
+      imagePosition: 'right', // 이미지 오른쪽
+      categories: [
+        {
+          categoryTitle: '철거심의 설계·협의',
+          items: [
+            '철거를 위한 지하굴착 설계',
+            '현장 여건을 고려한 적정 장비 조합 검토',
+            '공사를 위한 법리검토(신고, 허가, 심의절차 등)',
+            '지하수 처리 방안 수립',
+            '철거심의를 위한 토목분야 대관업무협업'
+          ]
+        },
+        {
+          categoryTitle: '철거공사 현장지원',
+          items: [
+            '철거현장 감리업무',
+            '설계와 다른 여건에서의 시공방안 검토',
+            '정기적인 현장 기술지원'
+          ]
+        }
       ]
     },
     {
-      title: '감리 분야',
-      image: '/menuhero.jpg',
-      items: [
-        '건설사업 감리',
-        '토목공사 감리',
-        '안전관리 감리',
-        '품질관리 감리',
-        '공정관리 감리',
-        '기술지도 및 자문',
-        '설계도서 검토',
-        '시공계획 검토',
-        '준공 검사 업무',
-        '하자보수 관리'
+      title: '감리·계측',
+      image: '/menu2_3Image.png',
+      imagePosition: 'left', // 이미지 왼쪽
+      categories: [
+        {
+          categoryTitle: '감리',
+          items: [
+            '건진법에 의한 굴토감리',
+            '철거공사 현장 감리',
+            '사전설계도서 검토',
+            '안전확인을 위한 도서 검토',
+            '시공계획서 검토',
+            '신규 또는 계량 공법에 대한 사업성 검토'
+          ]
+        },
+        {
+          categoryTitle: '계측',
+          items: [
+            '지하굴착 계측업무(수동·자동)',
+            '지하철 계측(유지관리)',
+            '구조물 안전진단(파트너사 운용)'
+          ]
+        }
       ]
     }
   ];
@@ -80,7 +107,7 @@ function Menu2Page() {
       <section 
         className="menu-hero"
         style={{
-          backgroundImage: 'url(/menuhero.jpg)',
+          backgroundImage: `url(${heroImage})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center'
         }}
@@ -110,24 +137,38 @@ function Menu2Page() {
           <Breadcrumb />
           <h2 className="content-title">사업분야</h2>
           
-          <p className="business-intro">
-            한일지오이엔지는 지하 구조물 철거 및 설계 전문업체로<br />
-            굴착 및 기초설계부터 안전점검, 감리업무까지 컨설팅해드립니다.
-      </p>
-
-          {/* 사업분야 카드 */}
-          <div className="business-cards">
+          {/* 사업분야 섹션 */}
+          <div className="business-sections">
             {businessData.map((business, index) => (
-              <div key={index} className="business-card">
-                <div className="card-image">
+              <div 
+                key={index} 
+                className={`business-section ${business.imagePosition === 'right' ? 'reverse' : ''}`}
+              >
+                {/* 이미지 */}
+                <div className="business-image">
                   <img src={business.image} alt={business.title} />
                 </div>
-                <h3 className="card-title">{business.title}</h3>
-                <ul className="card-items">
-                  {business.items.map((item, idx) => (
-                    <li key={idx}>{item}</li>
-                  ))}
-                </ul>
+
+                {/* 텍스트 내용 */}
+                <div className="business-content">
+                  <h3 className="business-title">{business.title}</h3>
+                  
+                  <div className="business-categories-wrapper">
+                    {business.categories.map((category, catIndex) => (
+                      <div key={catIndex} className="business-category">
+                        <h4 className="category-title">-{category.categoryTitle}</h4>
+                        <ul className="category-items">
+                          {category.items.map((item, itemIndex) => (
+                            <li key={itemIndex}>
+                              <span className="item-bullet">·</span>
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
             ))}
           </div>

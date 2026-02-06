@@ -4,48 +4,16 @@
   ============================================
 */
 
-/* 기간 필터 탭 */
-.period-tabs {
+/* 기간 필터 탭 (menu-tabs 안에 포함) */
+.period-tabs-inline {
   display: flex;
-  gap: var(--spacing-sm);
-  margin-top: var(--spacing-lg);
-  margin-bottom: var(--spacing-sm);
-  border-bottom: 2px solid #ddd;
-  padding-bottom: var(--spacing-xs);
+  gap: var(--spacing-xs);
 }
 
-.period-tab {
-  padding: var(--spacing-sm) var(--spacing-md);
-  background: transparent;
+.period-tab-btn {
   border: none;
-  border-bottom: 3px solid transparent;
-  font-size: var(--font-base);
-  font-weight: 600;
-  color: var(--text-gray);
   cursor: pointer;
-  transition: all 0.3s ease;
-  margin-bottom: -3px;
-  position: relative;
-}
-
-.period-tab:not(:last-child)::after {
-  content: '';
-  position: absolute;
-  right: calc(var(--spacing-sm) * -0.5 - 1px);
-  top: 50%;
-  transform: translateY(-50%);
-  width: 1px;
-  height: 60%;
-  background-color: #ddd;
-}
-
-.period-tab:hover {
-  color: var(--primary-color);
-}
-
-.period-tab.active {
-  color: var(--primary-color);
-  border-bottom-color: var(--primary-color);
+  font-family: inherit;
 }
 
 /* 게시판 헤더 (검색 및 정보) */
@@ -157,6 +125,11 @@
   padding-left: var(--spacing-sm) !important;
 }
 
+.board-table th.col-title {
+  text-align: center !important;
+  padding-left: 0 !important;
+}
+
 .col-year {
   width: 12%;
 }
@@ -165,6 +138,11 @@
   width: 20%;
   text-align: left !important;
   padding-left: var(--spacing-sm) !important;
+}
+
+.board-table th.col-client {
+  text-align: center !important;
+  padding-left: 0 !important;
 }
 
 /* 데이터 없음 */
@@ -223,7 +201,11 @@
     gap: var(--spacing-xs);
   }
 
-  .period-tab {
+  .period-tabs-inline {
+    gap: var(--spacing-xs);
+  }
+
+  .period-tab-btn {
     font-size: var(--font-small);
     padding: var(--spacing-xs) var(--spacing-sm);
   }
@@ -249,19 +231,21 @@
 
 /* 반응형: 모바일 (768px 이하) */
 @media (max-width: 768px) {
-  .period-tabs {
+  .period-tabs-inline {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
+    gap: var(--spacing-xs);
   }
 
-  .period-tabs::-webkit-scrollbar {
+  .period-tabs-inline::-webkit-scrollbar {
     display: none;
   }
 
-  .period-tab {
+  .period-tab-btn {
     white-space: nowrap;
     font-size: 0.875rem;
+    padding: var(--spacing-xs) var(--spacing-sm);
   }
 
   .board-table {

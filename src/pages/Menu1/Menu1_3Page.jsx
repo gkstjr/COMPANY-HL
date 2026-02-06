@@ -7,7 +7,7 @@
 */
 
 import { Link, useLocation } from 'react-router-dom';
-import { menuData } from '../../data/menuData';
+import { menuData, getMenuHeroImage } from '../../data/menuData';
 import Breadcrumb from '../../components/Breadcrumb';
 import '../MenuCommon.css';  // 공통 스타일
 import './Menu1_3Page.css';  // 조직도 전용 스타일
@@ -19,6 +19,9 @@ function Menu1_3Page() {
   
   // 현재 URL 경로 가져오기
   const location = useLocation();
+  
+  // Hero 이미지 가져오기
+  const heroImage = getMenuHeroImage(location.pathname);
 
   return (
     <div className="menu-page">
@@ -26,7 +29,7 @@ function Menu1_3Page() {
       <section 
         className="menu-hero"
         style={{
-          backgroundImage: 'url(/menuhero.jpg)',
+          backgroundImage: `url(${heroImage})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center'
         }}

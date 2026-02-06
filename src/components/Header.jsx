@@ -146,7 +146,9 @@ function Header() {
         <div className="all-menu-content">
           {menuData.map((menu, index) => (
             <div key={index} className="all-menu-column">
-              <h3 className="all-menu-title">{menu.title}</h3>
+              <Link to={menu.link} onClick={toggleAllMenu} className="all-menu-title">
+                {menu.title}
+              </Link>
               <ul className="all-menu-list">
                 {menu.submenus.map((submenu, subIndex) => (
                   <li key={subIndex}>
