@@ -321,6 +321,7 @@
   height: 100vh;
   background: rgba(0, 0, 0, 0.85);
   backdrop-filter: blur(10px);
+  /* background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);  네이비 → 블루 그라데이션 */
   z-index: 9999;
   display: flex;
   align-items: center;
@@ -328,7 +329,6 @@
   opacity: 0;
   visibility: hidden;
   transition: all 0.4s ease;
-  overflow-y: auto;
 }
 
 .all-menu-overlay.active {
@@ -340,59 +340,49 @@
 .all-menu-close {
   position: absolute;
   top: 2rem;
-  right: 2rem;
+  right: 3rem;
   background: transparent;
   border: none;
   color: var(--white);
-  font-size: 2rem;
-  font-weight: 300;
+  font-size: 2.5rem;
   cursor: pointer;
   transition: var(--transition);
   padding: 0.5rem;
   line-height: 1;
   z-index: 10000;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .all-menu-close:hover {
+  transform: rotate(90deg);
   opacity: 0.7;
 }
 
 /* 전체메뉴 컨텐츠 */
 .all-menu-content {
   display: grid;
-  grid-template-columns: repeat(5, auto);
-  gap: 1.5rem;
-  max-width: 1200px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: clamp(2rem, 5vw, 6rem);
+  max-width: 1400px;
+  padding: var(--spacing-xl) var(--spacing-md);
   width: 100%;
-  padding: 4rem 2rem;
-  margin: 0 auto;
-  justify-content: center;
 }
 
 /* 각 메뉴 컬럼 */
 .all-menu-column {
-  text-align: left;
+  text-align: center;
 }
 
 /* 메뉴 제목 */
 .all-menu-title {
   color: var(--white);
-  font-size: 2.4rem;
-  font-weight: 600;
-  margin: 0;
-  padding: 0 0 0.8rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-  letter-spacing: 0.02em;
-  margin-bottom: 1rem;
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
   text-decoration: none;
   display: block;
   cursor: pointer;
-  white-space: nowrap;
 }
 
 /* 메뉴 리스트 */
@@ -402,7 +392,7 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 1rem;
 }
 
 .all-menu-list li {
@@ -410,78 +400,22 @@
 }
 
 .all-menu-list a {
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 1.725rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
   font-weight: 400;
   text-decoration: none;
+  transition: var(--transition);
   display: block;
-  padding: 0.5rem 0;
-  line-height: 1.6;
-  white-space: nowrap;
+  padding: 0.5rem;
+  border-radius: 4px;
 }
 
-/* 전체메뉴 반응형 */
-@media (max-width: 1200px) {
-  .all-menu-content {
-    gap: 1.2rem;
-    padding: 3rem 1.5rem;
-    max-width: 100%;
-  }
-
-  .all-menu-title {
-    font-size: 2.25rem;
-  }
-
-  .all-menu-list a {
-    font-size: 1.65rem;
-  }
+.all-menu-list a:hover {
+  color: var(--white);
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateX(5px);
 }
 
-@media (max-width: 768px) {
-  .all-menu-content {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    padding: 3rem 1.5rem;
-    max-width: 100%;
-  }
-
-  .all-menu-title {
-    font-size: 2.1rem;
-    padding-bottom: 0.7rem;
-    margin-bottom: 0.8rem;
-  }
-
-  .all-menu-list a {
-    font-size: 1.575rem;
-    padding: 0.5rem 0;
-  }
-
-  .all-menu-close {
-    top: 1.5rem;
-    right: 1.5rem;
-    font-size: 1.8rem;
-    width: 35px;
-    height: 35px;
-  }
-}
-
-@media (max-width: 480px) {
-  .all-menu-content {
-    padding: 2.5rem 1rem;
-    gap: 1.5rem;
-  }
-
-  .all-menu-title {
-    font-size: 1.95rem;
-    padding-bottom: 0.6rem;
-    margin-bottom: 0.7rem;
-  }
-
-  .all-menu-list a {
-    font-size: 1.5rem;
-    padding: 0.45rem 0;
-  }
-}
 
 /* 
   ============================================
