@@ -88,7 +88,7 @@ function Menu4_2Page() {
           <h2 className="content-title">채용프로세스</h2>
           
           <p className="process-intro">
-            한일지오이엔지의 채용 절차는 다음과 같습니다.<br />
+            (주)한일지오이엔지의 채용 절차는 다음과 같습니다.<br />
             모든 단계는 지원자의 역량과 잠재력을 공정하게 평가합니다.
           </p>
 

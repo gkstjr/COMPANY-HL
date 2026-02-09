@@ -83,9 +83,16 @@
   font-size: var(--font-base);
   font-weight: 600;
   color: var(--text-dark);
-  text-align: right;
   margin-top: var(--spacing-sm);
   padding-top: var(--spacing-sm);
+  display: flex;
+  gap: var(--spacing-md);  /* 대표이사와 이름 사이 간격 */
+  justify-content: flex-end;  /* 오른쪽 정렬 */
+}
+
+.signature-title,
+.signature-name {
+  display: inline-block;
 }
 
 /* 반응형: 태블릿 (1024px 이하) */
@@ -145,5 +152,6 @@
     font-size: var(--font-small);
     margin-top: var(--spacing-xs);
     padding-top: var(--spacing-xs);
+    gap: var(--spacing-sm);  /* 모바일에서는 간격 조금 줄임 */
   }
 }

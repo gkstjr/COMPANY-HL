@@ -4,250 +4,160 @@
   ============================================
 */
 
-/* 사업분야 섹션 컨테이너 */
-.business-sections {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-md);
-  margin-top: var(--spacing-md);
+/* 섹션 래퍼 (부서소개, 사업소개 공통) */
+.section-wrapper {
+  margin: var(--spacing-lg) 0;
 }
 
-/* 각 사업분야 섹션 */
-.business-section {
-  display: flex;
+/* 섹션 타이틀 (목차 제목 스타일) */
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin: 0 0 var(--spacing-md) 0;
+  padding: 0 0 0 1.2rem;
+  text-align: left;
+  position: relative;
+}
+
+.section-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 1.2rem;
+  background-color: var(--primary-color);
+  border-radius: 2px;
+  opacity: 0.6;
+}
+
+/* 섹션 콘텐츠 */
+.section-content {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-color);
+}
+
+.section-content p {
+  margin: 0 0 var(--spacing-sm) 0;
+}
+
+.section-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* 사업소개 이미지 */
+.business-intro-image {
+  width: 100%;
+  text-align: center;
+}
+
+.business-intro-image img {
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  padding: var(--spacing-sm);
+  box-sizing: border-box;
+}
+
+/* 이미지 섹션 (2개 이미지) */
+.business-images-section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-lg);
+  margin: var(--spacing-lg) 0;
   align-items: stretch;
-  gap: var(--spacing-md);
-  background: var(--white);
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
-  transition: box-shadow 0.3s ease, transform 0.2s ease;
 }
 
-.business-section:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transform: translateY(-2px);
-}
-
-
-/* 이미지 위치 반전 (오른쪽 배치) */
-.business-section.reverse {
-  flex-direction: row-reverse;
-}
-
-/* 이미지 영역 */
-.business-image {
-  flex: 0 0 40%;
-  min-width: 0;
+.business-image-item {
+  width: 100%;
+  text-align: center;
   display: flex;
-  align-items: stretch;
-  overflow: hidden;
+  align-items: center;
+  justify-content: center;
 }
 
-.business-image img {
+.business-image-item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
-  transition: transform 0.3s ease;
-}
-
-.business-section:hover .business-image img {
-  transform: scale(1.02);
-}
-
-/* 텍스트 내용 영역 */
-.business-content {
-  flex: 1;
-  padding: var(--spacing-md);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: var(--spacing-sm);
-}
-
-/* 카테고리 래퍼 (가로 배치) */
-.business-categories-wrapper {
-  display: flex;
-  flex-direction: row;
-  gap: var(--spacing-lg);
-  align-items: flex-start;
-}
-
-/* 사업분야 제목 */
-.business-title {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--primary-color);
-  padding-bottom: var(--spacing-xs);
-  border-bottom: 1.5px solid var(--primary-color);
-}
-
-/* 카테고리 컨테이너 */
-.business-category {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  flex: 1;
-  min-width: 0;
-}
-
-/* 카테고리 제목 */
-.category-title {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #333;
-  margin: 0;
-  letter-spacing: -0.01em;
-}
-
-/* 카테고리 항목 리스트 */
-.category-items {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-  padding-left: var(--spacing-sm);
-}
-
-.category-items li {
-  font-size: 0.9rem;
-  line-height: 1.6;
-  color: #444;
-  display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
-}
-
-.item-bullet {
-  color: var(--primary-color);
-  font-weight: 700;
-  flex-shrink: 0;
-  font-size: 1.1em;
-  line-height: 1;
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 /* 반응형: 태블릿 */
 @media (max-width: 1024px) {
-  .business-sections {
-    gap: var(--spacing-sm);
-  }
-
-  .business-section {
-    gap: var(--spacing-sm);
-  }
-
-  .business-image {
-    flex: 0 0 38%;
-  }
-
-  .business-content {
-    padding: var(--spacing-sm);
-    gap: var(--spacing-xs);
-  }
-
-  .business-categories-wrapper {
+  .business-images-section {
     gap: var(--spacing-md);
   }
 
-  .business-title {
-    font-size: 1.3rem;
+  .section-wrapper {
+    margin: var(--spacing-md) 0;
   }
 
-  .category-title {
-    font-size: 0.95rem;
+  .section-title {
+    font-size: 1.4rem;
+    padding-left: 1rem;
   }
 
-  .category-items li {
-    font-size: 0.85rem;
+  .section-title::before {
+    width: 3px;
+    height: 1rem;
   }
 }
 
 /* 반응형: 모바일 */
 @media (max-width: 768px) {
-  .business-sections {
+  .section-wrapper {
+    margin: var(--spacing-md) 0;
+  }
+
+  .section-title {
+    font-size: 1.3rem;
+    padding-left: 0.9rem;
+  }
+
+  .section-title::before {
+    width: 3px;
+    height: 0.9rem;
+  }
+
+  .section-content {
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  .business-intro-image {
+    /* margin-top: var(--spacing-sm); */
+  }
+
+  .business-images-section {
+    grid-template-columns: 1fr;
     gap: var(--spacing-md);
-    margin-top: var(--spacing-md);
-  }
-
-  .business-section {
-    flex-direction: column !important;
-    gap: 0;
-  }
-
-  .business-image {
-    flex: none;
-    width: 100%;
-    height: 220px;
-  }
-  
-  .business-image img {
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .business-content {
-    padding: var(--spacing-sm);
-    gap: var(--spacing-xs);
-  }
-
-  .business-categories-wrapper {
-    flex-direction: column;
-    gap: var(--spacing-sm);
-  }
-
-  .business-title {
-    font-size: 1.2rem;
-    margin-bottom: var(--spacing-xs);
-  }
-
-  .category-title {
-    font-size: 0.9rem;
-  }
-
-  .category-items {
-    padding-left: var(--spacing-sm);
-    gap: 0.35rem;
-  }
-
-  .category-items li {
-    font-size: 0.85rem;
-    line-height: 1.5;
+    margin: var(--spacing-md) 0;
   }
 }
 
 /* 반응형: 작은 모바일 */
 @media (max-width: 480px) {
-  .business-image {
-    height: 200px;
-  }
-  
-  .business-image img {
-    height: 100%;
+  .section-title {
+    font-size: 1.2rem;
+    padding-left: 0.8rem;
   }
 
-  .business-content {
-    padding: var(--spacing-xs);
-    gap: var(--spacing-xs);
+  .section-title::before {
+    width: 3px;
+    height: 0.8rem;
   }
 
-  .business-categories-wrapper {
-    flex-direction: column;
-    gap: var(--spacing-xs);
-  }
-
-  .business-title {
-    font-size: 1.1rem;
-  }
-
-  .category-title {
-    font-size: 0.85rem;
-  }
-
-  .category-items li {
-    font-size: 0.8rem;
-    line-height: 1.4;
+  .section-content {
+    font-size: 0.9rem;
   }
 }

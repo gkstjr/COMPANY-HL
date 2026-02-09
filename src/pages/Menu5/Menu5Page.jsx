@@ -98,7 +98,7 @@ function Menu5Page() {
           <h2 className="content-title">온라인 문의</h2>
           
           <p className="inquiry-intro">
-            한일지오이엔지를 찾아주셔서 감사합니다.<br />
+            (주)한일지오이엔지를 찾아주셔서 감사합니다.<br />
             온라인으로 내용을 남겨 주시면 검토 후 빠르게 연락드리겠습니다.
           </p>
 

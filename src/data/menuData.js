@@ -23,7 +23,9 @@ export const menuData = [
     link: "/menu2",  // 첫 번째는 _1 없이
     heroImage: "/menuHero2.jpg",
     submenus: [
-      // { title: "사업분야", link: "/menu2" },
+      { title: "지반·구조 설계", link: "/menu2" },
+      { title: "지하구조물 철거", link: "/menu2-2" },
+      { title: "감리·계측", link: "/menu2-3" },
     ]
   },
   {
@@ -62,6 +64,8 @@ export const getMenuHeroImage = (pathname) => {
     '/menu1-3': '/menuHero1.jpg',
     '/menu1-4': '/menuHero1.jpg',
     '/menu2': '/menuHero2.jpg',
+    '/menu2-2': '/menuHero2.jpg',
+    '/menu2-3': '/menuHero2.jpg',
     '/menu3': '/menuHero3.jpg',
     '/menu4': '/menuHero4.jpg',
     '/menu4-2': '/menuHero4.jpg',

@@ -21,6 +21,8 @@ import Menu1_2Page from './pages/Menu1/Menu1_2Page';
 import Menu1_3Page from './pages/Menu1/Menu1_3Page';
 import Menu1_4Page from './pages/Menu1/Menu1_4Page';
 import Menu2Page from './pages/Menu2/Menu2Page';
+import Menu2_2Page from './pages/Menu2/Menu2_2Page';
+import Menu2_3Page from './pages/Menu2/Menu2_3Page';
 import Menu3Page from './pages/Menu3/Menu3Page';
 import Menu4Page from './pages/Menu4/Menu4Page';
 import Menu4_2Page from './pages/Menu4/Menu4_2Page';
@@ -42,6 +44,8 @@ function App() {
           
           {/* menu2: 사업분야 */}
           <Route path="/menu2" element={<Menu2Page />} />
+          <Route path="/menu2-2" element={<Menu2_2Page />} />
+          <Route path="/menu2-3" element={<Menu2_3Page />} />
           
           {/* menu3: 사업실적 */}
           <Route path="/menu3" element={<Menu3Page />} />

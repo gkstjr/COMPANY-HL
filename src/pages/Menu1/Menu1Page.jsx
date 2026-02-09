@@ -77,7 +77,7 @@ function Menu1Page() {
               {/* 본문 내용 */}
               <div className="greeting-text">
                 <p>
-                  (주)한일지오이엔지는 2001년 패기와 경륜을 가진 지반분야 전문가들이 모여
+                  (주)한일지오이엔지는 2002년 패기와 경륜을 가진 지반분야 전문가들이 모여
                   토목설계 엔지니어링분야 중심의 회사설립을 시작으로, 도심지 지하굴착분야의
                   설계, 공사 시 굴토감리, 계측업무에 이르기까지 꾸준히 사업영역을 확장하며
                   지속적인 성장을 이뤄 왔습니다.
@@ -91,9 +91,9 @@ function Menu1Page() {
                 </p>
 
                 <p>
-                  앞으로도 지하구조물의 신규와 철거를 위한 지하 굴착 공법들의 특징들이 현장에
-                  적절하게 도입될 수 있도록 함으로써, 사회적 손실을 최소화 할 수 있는
-                  전문엔지니어링 업체로서의 역활을 하고자 합니다.
+                  앞으로도 토목 관련 분야 및 지하구조물의 신규와 철거를 위한 지하 굴착
+                  공법들의 특징들이 현장에 적절하게 도입될 수 있도록 함으로써, 사회적
+                  손실을 최소화 할 수 있는 전문엔지니어링 업체로서의 역활을 하고자 합니다.
                 </p>
 
                 <p>
@@ -106,7 +106,10 @@ function Menu1Page() {
               <p className="greeting-closing">감사합니다.</p>
 
               {/* 서명 */}
-              <p className="greeting-signature">대 표 이 사</p>
+              <p className="greeting-signature">
+                <span className="signature-title">대 표 이 사</span>
+                <span className="signature-name">한  정  훈</span>
+              </p>
             </div>
           </div>
         </div>

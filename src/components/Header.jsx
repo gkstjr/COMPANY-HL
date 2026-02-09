@@ -18,8 +18,6 @@ function Header() {
   // useState: React의 상태관리 Hook
   // isMenuOpen이 true면 모바일 메뉴가 열림, false면 닫힘
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  // 메가 메뉴 (전체 서브메뉴) 열림/닫힘
-  const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
   // 전체메뉴 오버레이 열림/닫힘
   const [isAllMenuOpen, setIsAllMenuOpen] = useState(false);
   // 모바일에서 열린 서브메뉴 인덱스 (아코디언용)
@@ -51,16 +49,28 @@ function Header() {
         </Link>
 
         {/* 네비게이션 메뉴 (가운데) - 데스크톱용 */}
-        <nav 
-          className="nav desktop-nav"
-          onMouseEnter={() => setIsMegaMenuOpen(true)}
-          onMouseLeave={() => setIsMegaMenuOpen(false)}
-        >
-          {menuData.map((menu, index) => (
-            <Link key={index} to={menu.link} className="nav-link">
-              {menu.title}
-            </Link>
-          ))}
+        <nav className="nav desktop-nav">
+          <ul className="nav-list">
+            {menuData.map((menu, index) => (
+              <li key={index} className="nav-item">
+                <Link to={menu.link} className="nav-link">
+                  {menu.title}
+                </Link>
+                {/* 서브메뉴를 nav-item 안에 배치 */}
+                {menu.submenus && menu.submenus.length > 0 && (
+                  <ul className="nav-submenu">
+                    {menu.submenus.map((submenu, subIndex) => (
+                      <li key={subIndex}>
+                        <Link to={submenu.link}>
+                          {submenu.title}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </li>
+            ))}
+          </ul>
         </nav>
 
         {/* 모바일 메뉴 (햄버거 메뉴) */}
@@ -93,31 +103,6 @@ function Header() {
             </div>
           ))}
         </nav>
-
-        {/* 메가 메뉴 (전체 서브메뉴) */}
-        <div 
-          className={`mega-menu ${isMegaMenuOpen ? 'active' : ''}`}
-          onMouseEnter={() => setIsMegaMenuOpen(true)}
-          onMouseLeave={() => setIsMegaMenuOpen(false)}
-        >
-          <div className="mega-menu-content">
-            {menuData.map((menu, index) => (
-              <div key={index} className="mega-column">
-                <div className="mega-submenu">
-                  {menu.submenus.map((submenu, subIndex) => (
-                    <Link 
-                      key={subIndex} 
-                      to={submenu.link}
-                      onClick={() => setIsMegaMenuOpen(false)}
-                    >
-                      {submenu.title}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
 
         {/* 전체메뉴 버튼 (오른쪽) */}
         <button className="menu-all-btn" onClick={toggleAllMenu}>

@@ -117,7 +117,7 @@ function Menu1_2Page() {
           {tabs.map((tab, index) => (
             <Link 
               key={index} 
-              to={tab.link}  
+              to={tab.link} 
               className={`tab-item ${location.pathname === tab.link ? 'active' : ''}`}
             >
               {tab.title}

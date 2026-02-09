@@ -100,7 +100,7 @@ function Menu4Page() {
           <h2 className="content-title">인재상</h2>
           
           <p className="talent-intro">
-            한일지오이엔지는 전문성과 책임감을 바탕으로<br />
+            (주)한일지오이엔지는 전문성과 책임감을 바탕으로<br />
             협업과 혁신을 통해 함께 성장하는 인재를 찾습니다.
       </p>
 

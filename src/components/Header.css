@@ -52,17 +52,60 @@
 
 /* 네비게이션 메뉴 (데스크톱 - 화면 정중앙) */
 .desktop-nav {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(100px, auto));  /* 5개 컬럼, 최소 100px */
-  gap: clamp(1rem, 3vw, 4rem);   /* 16px ~ 64px 자동 조절 */
   position: absolute;             /* 절대 위치 */
   left: 50%;                      /* 왼쪽에서 50% */
   transform: translateX(-50%);    /* 자기 너비의 50%만큼 왼쪽으로 (정중앙) */
 }
 
-/* 모바일 네비게이션 (기본 숨김) */
-.mobile-nav {
-  display: none;
+.nav-list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: clamp(1rem, 3vw, 4rem);   /* 16px ~ 64px 자동 조절 */
+  justify-content: center;        /* 중앙 정렬 */
+  align-items: center;
+}
+
+.nav-item {
+  position: relative;
+  display: flex;
+  justify-content: center;       /* 중앙 정렬 */
+  flex: 0 1 auto;                /* flex shrink/grow 설정 */
+}
+
+/* 서브메뉴 (nav-item 안에 위치) */
+.nav-submenu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  list-style: none;
+  margin: 0;
+  padding: var(--spacing-sm) var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  align-items: flex-start;
+  min-width: max-content;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 1000;
+  background-color: #ffffff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  margin-top: 0;  /* 간격 제거하여 마우스 이동 시 끊기지 않도록 */
+  padding-top: var(--spacing-xs);  /* 상단 패딩으로 간격 대체 */
+}
+
+/* nav-item에 마우스를 올리면 서브메뉴 표시 */
+.nav-item:hover .nav-submenu,
+.nav-submenu:hover {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
 
 /* 메인 메뉴 링크 */
@@ -76,6 +119,8 @@
   display: block;
   text-align: center;            /* 중앙 정렬 */
   white-space: nowrap;           /* 한 줄로 유지 */
+  text-decoration: none;
+  width: 100%;
 }
 
 .nav-link:hover {
@@ -83,77 +128,36 @@
   border-bottom: 2px solid var(--white);
 }
 
-/* 
-  ===================================
-  메가 메뉴 (전체 서브메뉴)
-  ===================================
-*/
-.mega-menu {
-  position: absolute;
-  top: 100%;                      /* 헤더 바로 아래 */
-  left: 0;
-  right: 0;
-  background-color: var(--white);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border-top: 1px solid var(--light-bg);
-  opacity: 0;
-  visibility: hidden;
-  max-height: 0;
-  overflow: hidden;
-  transition: all 0.3s ease;
-  z-index: 999;
+/* 모바일 네비게이션 (기본 숨김) */
+.mobile-nav {
+  display: none;
 }
 
-/* 메가 메뉴 활성화 - 임시 비활성화 (추후 재활성화 가능) */
-/* 
-  재활성화 시 아래 주석 해제
-  
-  .mega-menu.active {
-    opacity: 1;
-    visibility: visible;
-    max-height: 300px;
-  }
-*/
 
-/* 메가 메뉴 내부 컨텐츠 */
-.mega-menu-content {
-  padding: var(--spacing-md) 0;
-  display: grid;
-  grid-template-columns: repeat(5, minmax(100px, auto));  /* .nav와 완전 동일 */
-  gap: clamp(1rem, 3vw, 4rem);    /* 상단 메뉴와 동일한 간격 */
-  width: fit-content;              /* 내용물 크기만큼 */
-  margin: 0 auto;                  /* 중앙 정렬 */
-}
-
-/* 각 컬럼 */
-.mega-column {
-  display: flex;
-  flex-direction: column;
-  /* grid가 자동으로 너비 조정 */
-}
 
 /* 서브메뉴 링크들 */
-.mega-submenu {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  align-items: center;            /* 중앙 정렬 */
+.nav-submenu li {
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
 
-.mega-submenu a {
-  color: var(--text-dark);
+.nav-submenu a {
+  color: #333333;                 /* 명시적으로 어두운 회색 글자 */
   font-size: 0.9rem;
-  font-weight: 500;
-  padding: 0.5rem 1rem;           /* 좌우 패딩 추가 */
-  transition: var(--transition);
-  border-radius: 4px;
-  text-align: center;             /* 텍스트 중앙 정렬 */
-  width: 100%;                    /* 전체 너비 */
+  font-weight: 400;
+  padding: 0.4rem 0;              /* 상하 패딩만 */
+  transition: all 0.2s ease;
+  text-align: left;               /* 왼쪽 정렬 */
+  text-decoration: none;
+  white-space: nowrap;
+  width: 100%;
+  line-height: 1.5;
+  display: block;
 }
 
-.mega-submenu a:hover {
+.nav-submenu a:hover {
   color: var(--primary-color);
-  background-color: var(--light-bg);
 }
 
 /* 전체메뉴 버튼 (오른쪽) */
@@ -445,9 +449,8 @@
   }
 
   /* 네비게이션 폰트 크기와 간격 줄이기 */
-  .desktop-nav {
+  .nav-list {
     gap: clamp(0.5rem, 2vw, 2rem);  /* 간격 더 줄이기 */
-    grid-template-columns: repeat(5, minmax(80px, auto));  /* 최소 너비 줄이기 */
   }
 
   .nav-link {
@@ -456,9 +459,8 @@
   }
 
   /* 메가 메뉴도 동일하게 */
-  .mega-menu-content {
+  .mega-menu-list {
     gap: clamp(0.5rem, 1vw, 2rem);
-    grid-template-columns: repeat(5, minmax(80px, auto));
   }
 
   /* 전체메뉴 오버레이 - 태블릿 */
