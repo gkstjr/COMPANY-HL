@@ -17,7 +17,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import MainPage from './pages/MainPage';
 import Menu1Page from './pages/Menu1/Menu1Page';
-import Menu1_2Page from './pages/Menu1/Menu1_2Page';
 import Menu1_3Page from './pages/Menu1/Menu1_3Page';
 import Menu1_4Page from './pages/Menu1/Menu1_4Page';
 import Menu2Page from './pages/Menu2/Menu2Page';
@@ -38,7 +37,6 @@ function App() {
           
           {/* menu1: 회사소개 */}
           <Route path="/menu1" element={<Menu1Page />} />
-          <Route path="/menu1-2" element={<Menu1_2Page />} />
           <Route path="/menu1-3" element={<Menu1_3Page />} />
           <Route path="/menu1-4" element={<Menu1_4Page />} />
           

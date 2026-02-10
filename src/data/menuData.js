@@ -13,7 +13,6 @@ export const menuData = [
     heroImage: "/menuHero1.jpg",
     submenus: [
       { title: "인사말", link: "/menu1" },
-      { title: "회사연혁", link: "/menu1-2" },
       { title: "조직도", link: "/menu1-3" },
       { title: "찾아오시는 길", link: "/menu1-4" },
     ]
@@ -60,7 +59,6 @@ export const getMenuHeroImage = (pathname) => {
   // 메인 메뉴 경로 매핑
   const menuMap = {
     '/menu1': '/menuHero1.jpg',
-    '/menu1-2': '/menuHero1.jpg',
     '/menu1-3': '/menuHero1.jpg',
     '/menu1-4': '/menuHero1.jpg',
     '/menu2': '/menuHero2.jpg',
