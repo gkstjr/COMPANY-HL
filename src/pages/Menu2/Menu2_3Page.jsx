@@ -59,13 +59,13 @@ function Menu2_3Page() {
           <Breadcrumb />
           <h2 className="content-title">감리·계측</h2>
           
-          {/* 부서소개 섹션 (맨 위) */}
+          {/* 주요업무 섹션 (맨 위) */}
           <div className="section-wrapper">
-            <h3 className="section-title">부서소개</h3>
+            <h3 className="section-title">주요업무</h3>
             <div className="section-content">
               <p>
-                지반 공사는 눈에 보이지 않는 지하 공간을 다루기에 설계와 실제 현장 조건 사이의 불확실성이 항상 존재합니다.
-                저희 감리·계측사업부는 이러한 간극을 메우고 프로젝트의 완벽한 안전을 담보하는 역할을 수행합니다.
+                지반굴착공사와 지하층 철거공사는 눈에 보이지 않는 지하 공간을 다루기에 설계와 실제 현장 조건 사이의 불확실성이 항상 존재합니다.
+                저희 감리·계측사업부는 이러한 불확실성을 사전에 감지하여 대처하도록 하기 때문에 프로젝트의 완벽한 안전을 담보하는 역할을 수행합니다.
               </p>
               <p>
                 오랜 경험을 가진 지반 분야 특급 기술자들과 최첨단 IoT 기반 자동화 계측 시스템을 융합하여, 굴착 중 발생하는
@@ -89,9 +89,9 @@ function Menu2_3Page() {
             </div>
           </div>
 
-          {/* 사업소개 이미지 (맨 아래) */}
+          {/* 사업영역 이미지 (맨 아래) */}
           <div className="section-wrapper">
-            <h3 className="section-title">사업소개</h3>
+            <h3 className="section-title">사업영역</h3>
             <div className="business-intro-image">
               <img src="/businessIntro3-3.jpg" alt="감리·계측 사업소개" />
             </div>

@@ -59,9 +59,9 @@ function Menu2_2Page() {
           <Breadcrumb />
           <h2 className="content-title">지하구조물 철거</h2>
           
-          {/* 부서소개 섹션 (맨 위) */}
+          {/* 주요업무 섹션 (맨 위) */}
           <div className="section-wrapper">
-            <h3 className="section-title">부서소개</h3>
+            <h3 className="section-title">주요업무</h3>
             <div className="section-content">
               <p>
                 도심지 재개발과 재건축이 활발해짐에 따라 기존 지하구조물의 안전하고 효율적인 해체는 신축 사업의 성패를
@@ -69,8 +69,8 @@ function Menu2_2Page() {
               </p>
               <p>
                 강화된 법적 기준에 부합하는 정밀한 해체계획 수립 및 심의부터, 예측 불가능한 변수가 많은 철거 현장의 기술
-                지원까지, 철거 전 과정에 걸쳐 원스톱 엔지니어링 솔루션을 제공합니다. 단순한 파괴가 아닌, 안전하고
-                친환경적인 공간 재생의 토대를 마련해 드립니다.
+                지원까지, 철거 전과정에 걸쳐 원스톱 엔지니어링 솔루션을 제공합니다. 단순한 파괴가 아닌, 안전하고
+                친환경적인 공간 재생의 토대를 구조전문가와 함께 마련해 드립니다.
               </p>
             </div>
           </div>
@@ -85,9 +85,9 @@ function Menu2_2Page() {
             </div>
           </div>
 
-          {/* 사업소개 이미지 (맨 아래) */}
+          {/* 사업영역 이미지 (맨 아래) */}
           <div className="section-wrapper">
-            <h3 className="section-title">사업소개</h3>
+            <h3 className="section-title">사업영역</h3>
             <div className="business-intro-image">
               <img src="/businessIntro2-3.jpg" alt="지하구조물 철거 사업소개" />
             </div>

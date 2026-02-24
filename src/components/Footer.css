@@ -110,12 +110,51 @@
   color: var(--white);
 }
 
-/* 저작권 */
-.footer-copyright {
-  text-align: left;  /* 왼쪽 정렬 */
+/* 개인정보처리방침 및 이메일무단수집거부 + 저작권 컨테이너 */
+.footer-bottom {
   margin-top: var(--spacing-sm);
   padding-top: var(--spacing-sm);
   border-top: 1px solid rgba(255, 255, 255, 0.1);  /* 위에 구분선 추가 */
+}
+
+/* 개인정보처리방침 및 이메일무단수집거부 링크 */
+.footer-links {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+}
+
+.footer-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  font-size: var(--font-small);
+  transition: var(--transition);
+}
+
+.footer-link:hover {
+  color: var(--white);
+}
+
+.footer-link-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.footer-link-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* 저작권 */
+.footer-copyright {
+  text-align: left;  /* 왼쪽 정렬 */
 }
 
 .footer-copyright p {
@@ -163,6 +202,245 @@
 
   .separator {
     margin: 0 0.3rem;  /* 좁은 화면에서 간격 줄임 */
+  }
+
+  .footer-links {
+    flex-direction: column;  /* 모바일에서는 세로로 배치 */
+    gap: var(--spacing-xs);
+  }
+
+  .footer-link {
+    font-size: 0.75rem;
+  }
+
+  .footer-bottom {
+    margin-top: var(--spacing-xs);
+    padding-top: var(--spacing-xs);
+  }
+}
+
+/* 
+  ============================================
+  모달 (팝업)
+  ============================================
+*/
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-content {
+  background-color: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  max-width: 600px;
+  width: 90%;
+  max-height: 90vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-header {
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: var(--spacing-sm) var(--spacing-md);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.modal-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--white);
+}
+
+.modal-close {
+  background: transparent;
+  border: none;
+  color: var(--white);
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+
+.modal-close:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: rotate(90deg);
+}
+
+.modal-close svg {
+  width: 100%;
+  height: 100%;
+}
+
+.modal-body {
+  padding: var(--spacing-md);
+  color: var(--text-dark);
+  line-height: 1.8;
+  overflow-y: auto;
+}
+
+.modal-body p {
+  font-size: var(--font-base);
+  margin: 0;
+  color: var(--text-dark);
+  line-height: 1.8;
+}
+
+/* 개인정보처리방침 모달 전용 스타일 */
+.modal-content-privacy {
+  max-width: 800px;  /* 더 넓게 */
+}
+
+.modal-body-privacy {
+  max-height: 70vh;  /* 스크롤 가능하도록 */
+}
+
+.privacy-intro {
+  margin-bottom: var(--spacing-sm) !important;
+}
+
+.privacy-section {
+  margin-top: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.privacy-section-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0 0 var(--spacing-sm) 0;
+  padding-bottom: var(--spacing-xs);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.privacy-subtitle {
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-top: var(--spacing-sm) !important;
+  margin-bottom: var(--spacing-xs) !important;
+}
+
+.privacy-section p {
+  margin-bottom: var(--spacing-xs) !important;
+}
+
+/* 9번 섹션 연락처 박스 (2열 레이아웃) */
+.privacy-contact-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-md);
+  margin: var(--spacing-md) 0;
+  padding: var(--spacing-md);
+  background-color: var(--light-bg);
+  border-radius: var(--border-radius);
+  position: relative;
+}
+
+.privacy-contact-box::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: var(--spacing-md);
+  bottom: var(--spacing-md);
+  width: 1px;
+  background-color: rgba(0, 0, 0, 0.1);
+  transform: translateX(-50%);
+}
+
+.privacy-contact-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  position: relative;
+}
+
+.privacy-contact-column .privacy-subtitle {
+  margin-bottom: var(--spacing-xs) !important;
+}
+
+.privacy-contact-column p {
+  margin: 0 !important;
+  font-size: var(--font-base);
+  line-height: 1.6;
+}
+
+/* 모바일 반응형 */
+@media (max-width: 768px) {
+  .privacy-contact-box {
+    grid-template-columns: 1fr;  /* 모바일에서는 1열 */
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm);
+  }
+
+  .privacy-contact-box::before {
+    display: none;  /* 모바일에서는 구분선 숨김 */
+  }
+}
+
+/* 모바일 반응형 */
+@media (max-width: 768px) {
+  .modal-content {
+    width: 95%;
+    max-height: 85vh;
+  }
+
+  .modal-header {
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
+
+  .modal-title {
+    font-size: 1.1rem;
+  }
+
+  .modal-body {
+    padding: var(--spacing-sm);
+  }
+
+  .modal-body p {
+    font-size: var(--font-small);
   }
 }
 

@@ -59,20 +59,20 @@ function Menu2Page() {
           <Breadcrumb />
           <h2 className="content-title">지반·구조 설계</h2>
           
-          {/* 부서소개 섹션 (맨 위) */}
+          {/* 주요업무 섹션 (맨 위) */}
           <div className="section-wrapper">
-            <h3 className="section-title">부서소개</h3>
+            <h3 className="section-title">주요업무</h3>
             <div className="section-content">
               <p>
                 도심지 고층화와 지하공간 개발 수요가 급증함에 따라, 지하굴착은 단순한 토공사를 넘어 프로젝트의 성패를 
-                좌우하는 핵심 공정으로 자리 잡았습니다. 복잡한 도심지 지반 조건과 인접 구조물의 영향을 정밀하게 분석하여,
-                대심도 지하굴착시 발생할 수 있는 리스크를 원천적으로 차단합니다.
+                좌우하는 핵심 공정으로 자리 잡았습니다. 복잡한 도심지 지중화 여건과 인접 구조물의 영향을 정밀하게 분석하여,
+                지하굴착시 발생할 수 있는 리스크를 기술적 해법으로 해결해 드립니다.
               </p>
               <p>
                 특히 흙막이 가시설의 최적 설계를 통해 공기 단축과 공사비 절감을 실현하고 있으며,
-                3차원 지반 거동 해석과 자동화 계측 관리 시스템을 연계하여 시공 중 안정성을 실시간으로 확보하고 있습니다.
-                난공사 구간에서도 검증된 기술력으로 고객의 자산을 보호하고 성공적인 프로젝트 완수를 약속드립니다.
-      </p>
+                3차원 지반 거동 해석과 계측 관리 시스템을 연계하여 시공 중 안정성을 실시간으로 확보하고 있습니다.
+                난공사 구간에서도 검증된 기술력으로 안전하고 시공성이 입증된 방식으로 성공적인 프로젝트 완수를 위한 기술서비스를 제공합니다.
+              </p>
             </div>
           </div>
 
@@ -86,9 +86,9 @@ function Menu2Page() {
             </div>
           </div>
 
-          {/* 사업소개 이미지 (맨 아래) */}
+          {/* 사업영역 이미지 (맨 아래) */}
           <div className="section-wrapper">
-            <h3 className="section-title">사업소개</h3>
+            <h3 className="section-title">사업영역</h3>
             <div className="business-intro-image">
               <img src="/businessIntro1-3.jpg" alt="지반·구조 설계 사업소개" />
             </div>
