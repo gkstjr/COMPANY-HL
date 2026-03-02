@@ -68,6 +68,8 @@
   line-height: 1.7;
   margin: 0;
   text-align: justify;
+  word-break: keep-all;  /* 한글 단어 단위로 줄바꿈 */
+  overflow-wrap: break-word;  /* 긴 단어는 줄바꿈 허용 */
 }
 
 /* 마무리 인사 */
