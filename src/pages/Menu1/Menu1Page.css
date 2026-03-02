@@ -68,8 +68,7 @@
   line-height: 1.7;
   margin: 0;
   text-align: justify;
-  word-break: keep-all;  /* 한글 단어 단위로 줄바꿈 */
-  overflow-wrap: break-word;  /* 긴 단어는 줄바꿈 허용 */
+  letter-spacing: -0.02em;  /* 자간을 조금 줄여서 줄넘김 개선 */
 }
 
 /* 마무리 인사 */
