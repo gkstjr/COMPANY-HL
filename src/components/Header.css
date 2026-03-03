@@ -16,7 +16,7 @@
 
 .header-container {
   width: 100%;                          /* 화면 전체 너비 */
-  padding: var(--spacing-sm) var(--spacing-xs) var(--spacing-xs) var(--spacing-xs);   /* 20px 상하 패딩 */
+  padding: var(--spacing-sm) var(--spacing-xs) var(--spacing-sm) var(--spacing-xs);   /* 20px 상하 패딩 */
   display: flex;
   justify-content: space-between;       /* 양쪽 끝에 배치 */
   align-items: center;
@@ -106,7 +106,7 @@
 /* 각 nav-item의 서브메뉴 */
 .nav-submenu {
   position: absolute;
-  top: calc(100% + 0.5rem);  /* nav-item 아래로 조금 띄움 */
+  top: calc(80% + 0.5rem);  /* nav-item 아래로 조금 띄움 */
   left: 50%;
   transform: translateX(-50%);
   list-style: none;
@@ -127,7 +127,7 @@
 /* 전체 서브메뉴 배경 */
 .nav-submenu-bg {
   position: absolute;
-  top: calc(100% + 0.5rem);  /* header-container 아래로 조금 띄움 */
+  top: calc(100% + 1.0rem);  /* header-container 아래로 조금 띄움 */
   left: 50%;
   transform: translateX(-50%);
   width: 100vw;
