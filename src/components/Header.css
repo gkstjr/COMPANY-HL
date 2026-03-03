@@ -16,11 +16,39 @@
 
 .header-container {
   width: 100%;                          /* 화면 전체 너비 */
-  padding: var(--spacing-sm) var(--spacing-xs);   /* 20px 상하 패딩 */
+  padding: var(--spacing-sm) var(--spacing-xs) var(--spacing-xs) var(--spacing-xs);   /* 20px 상하 패딩 */
   display: flex;
   justify-content: space-between;       /* 양쪽 끝에 배치 */
   align-items: center;
   position: relative;                   /* 메뉴를 절대 중앙에 배치하기 위함 */
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+/* header-container hover 시 배경색 추가 */
+.header-container:hover:not(.hover-disabled) {
+  background-color: rgba(36, 41, 66, 0.75);  /* #242942 with higher transparency */
+  backdrop-filter: blur(10px);
+}
+
+/* hover 비활성화 시 즉시 제거 */
+.header-container.hover-disabled {
+  background-color: transparent !important;
+  backdrop-filter: none !important;
+  transition: none !important;
+}
+
+.header-container.hover-disabled .nav-submenu {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transition: none !important;
+}
+
+.header-container.hover-disabled .nav-submenu-bg {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  padding: 0 !important;
+  transition: none !important;
 }
 
 /* 로고 (왼쪽) */
@@ -65,6 +93,7 @@
   gap: clamp(1rem, 3vw, 4rem);   /* 16px ~ 64px 자동 조절 */
   justify-content: center;        /* 중앙 정렬 */
   align-items: center;
+  position: relative;             /* 서브메뉴 배경의 기준점 */
 }
 
 .nav-item {
@@ -74,38 +103,56 @@
   flex: 0 1 auto;                /* flex shrink/grow 설정 */
 }
 
-/* 서브메뉴 (nav-item 안에 위치) */
+/* 각 nav-item의 서브메뉴 */
 .nav-submenu {
   position: absolute;
-  top: 100%;
+  top: calc(100% + 0.5rem);  /* nav-item 아래로 조금 띄움 */
   left: 50%;
   transform: translateX(-50%);
   list-style: none;
   margin: 0;
-  padding: var(--spacing-sm) var(--spacing-md);
+  padding: var(--spacing-md) 0;
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
-  align-items: flex-start;
+  gap: 0.6rem;
+  align-items: center;
   min-width: max-content;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  z-index: 1000;
-  background-color: #ffffff;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
   transition: all 0.3s ease;
-  margin-top: 0;  /* 간격 제거하여 마우스 이동 시 끊기지 않도록 */
-  padding-top: var(--spacing-xs);  /* 상단 패딩으로 간격 대체 */
+  z-index: 1001;
 }
 
-/* nav-item에 마우스를 올리면 서브메뉴 표시 */
-.nav-item:hover .nav-submenu,
-.nav-submenu:hover {
+/* 전체 서브메뉴 배경 */
+.nav-submenu-bg {
+  position: absolute;
+  top: calc(100% + 0.5rem);  /* header-container 아래로 조금 띄움 */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 0;
+  background-color: rgba(36, 41, 66, 0.75);  /* #242942 with higher transparency */
+  backdrop-filter: blur(10px);  /* 블러 효과 추가 */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);  /* 상단 구분선 */
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 999;
+}
+
+/* header-container에 마우스를 올리면 모든 서브메뉴와 배경 표시 */
+.header-container:hover:not(.hover-disabled) .nav-submenu,
+.header-container:hover:not(.hover-disabled) .nav-submenu-bg {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
+}
+
+.header-container:hover:not(.hover-disabled) .nav-submenu-bg {
+  height: 180px;  /* 적절한 높이 */
+  padding: var(--spacing-md) 0;
 }
 
 /* 메인 메뉴 링크 */
@@ -143,12 +190,12 @@
 }
 
 .nav-submenu a {
-  color: #333333;                 /* 명시적으로 어두운 회색 글자 */
+  color: rgba(255, 255, 255, 0.8);  /* 기본 상태는 조금 연하게 */
   font-size: 0.9rem;
   font-weight: 400;
   padding: 0.4rem 0;              /* 상하 패딩만 */
   transition: all 0.2s ease;
-  text-align: left;               /* 왼쪽 정렬 */
+  text-align: center;             /* 중앙 정렬 */
   text-decoration: none;
   white-space: nowrap;
   width: 100%;
@@ -157,7 +204,9 @@
 }
 
 .nav-submenu a:hover {
-  color: var(--primary-color);
+  color: var(--white);            /* hover 시 완전한 흰색 */
+  font-weight: 500;               /* 약간 더 굵게 */
+  transform: translateY(-2px);
 }
 
 /* 전체메뉴 버튼 (오른쪽) */

@@ -7,8 +7,8 @@
   - 반응형: 모바일에서는 햄버거 메뉴로 변경
 */
 
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { menuData } from '../data/menuData';  // 전역 메뉴 데이터 import
 import './Header.css';
 
@@ -22,6 +22,10 @@ function Header() {
   const [isAllMenuOpen, setIsAllMenuOpen] = useState(false);
   // 모바일에서 열린 서브메뉴 인덱스 (아코디언용)
   const [openMobileSubmenu, setOpenMobileSubmenu] = useState(null);
+  // hover 비활성화 상태
+  const [isHoverDisabled, setIsHoverDisabled] = useState(false);
+  
+  const location = useLocation();
 
   // 햄버거 메뉴 토글 함수
   const toggleMenu = () => {
@@ -39,9 +43,29 @@ function Header() {
     setOpenMobileSubmenu(openMobileSubmenu === index ? null : index);
   };
 
+  // 페이지 변경 시 hover 비활성화
+  useEffect(() => {
+    setIsHoverDisabled(true);
+  }, [location.pathname]);
+
+  // 메뉴 클릭 시 hover 비활성화
+  const handleMenuClick = () => {
+    setIsHoverDisabled(true);
+  };
+
+  // header에서 마우스 이동 시 hover 활성화
+  const handleMouseMove = () => {
+    if (isHoverDisabled) {
+      setIsHoverDisabled(false);
+    }
+  };
+
   return (
     <header className="header">
-      <div className="header-container">
+      <div 
+        className={`header-container ${isHoverDisabled ? 'hover-disabled' : ''}`}
+        onMouseMove={handleMouseMove}
+      >
         {/* 로고 영역 (왼쪽) */}
         <Link to="/" className="logo">
           <img src="/logoImage.png" alt="한일지오이엔지" className="logo-img" />
@@ -53,23 +77,24 @@ function Header() {
           <ul className="nav-list">
             {menuData.map((menu, index) => (
               <li key={index} className="nav-item">
-                <Link to={menu.link} className="nav-link">
+                <Link to={menu.link} className="nav-link" onClick={handleMenuClick}>
                   {menu.title}
                 </Link>
-                {/* 서브메뉴를 nav-item 안에 배치 */}
-                {menu.submenus && menu.submenus.length > 0 && (
-                  <ul className="nav-submenu">
-                    {menu.submenus.map((submenu, subIndex) => (
-                      <li key={subIndex}>
-                        <Link to={submenu.link}>
-                          {submenu.title}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                )}
+                {/* 각 nav-item 안에 서브메뉴 배치 */}
+                <ul className="nav-submenu">
+                  {menu.submenus && menu.submenus.map((submenu, subIndex) => (
+                    <li key={subIndex}>
+                      <Link to={submenu.link} onClick={handleMenuClick}>
+                        {submenu.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               </li>
             ))}
+            
+            {/* 전체 서브메뉴 배경 */}
+            <div className="nav-submenu-bg"></div>
           </ul>
         </nav>
 

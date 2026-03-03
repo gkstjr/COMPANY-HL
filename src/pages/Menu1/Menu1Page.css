@@ -71,12 +71,20 @@
   letter-spacing: -0.02em;  /* 자간을 조금 줄여서 줄넘김 개선 */
 }
 
+/* 마무리 인사 + 서명 영역 */
+.greeting-footer {
+  display: flex;
+  justify-content: space-between;  /* 양쪽 끝에 배치 */
+  align-items: center;             /* 중앙 정렬 */
+  margin-top: var(--spacing-sm);
+}
+
 /* 마무리 인사 */
 .greeting-closing {
   font-size: var(--font-base);
   font-weight: 600;
   color: var(--text-dark);
-  margin: var(--spacing-sm) 0 0 0;
+  margin: 0;
 }
 
 /* 서명 */
@@ -84,16 +92,19 @@
   font-size: var(--font-base);
   font-weight: 600;
   color: var(--text-dark);
-  margin-top: var(--spacing-sm);
-  padding-top: var(--spacing-sm);
+  margin: 0;
   display: flex;
   gap: var(--spacing-md);  /* 대표이사와 이름 사이 간격 */
-  justify-content: flex-end;  /* 오른쪽 정렬 */
+  align-items: center;     /* 대표이사와 이름 수직 정렬 */
 }
 
 .signature-title,
 .signature-name {
   display: inline-block;
+}
+
+.signature-name {
+  font-size: calc(var(--font-base) * 1.5);  /* 1.5배 크기 */
 }
 
 /* 반응형: 태블릿 (1024px 이하) */

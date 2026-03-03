@@ -102,14 +102,14 @@ function Menu1Page() {
                 </p>
               </div>
 
-              {/* 마무리 인사 */}
-              <p className="greeting-closing">감사합니다.</p>
-
-              {/* 서명 */}
-              <p className="greeting-signature">
-                <span className="signature-title">대 표 이 사</span>
-                <span className="signature-name">한  정  훈</span>
-              </p>
+              {/* 마무리 인사 + 서명 */}
+              <div className="greeting-footer">
+                <p className="greeting-closing">감사합니다.</p>
+                <p className="greeting-signature">
+                  <span className="signature-title">대 표 이 사</span>
+                  <span className="signature-name">한  정  훈</span>
+                </p>
+              </div>
             </div>
           </div>
         </div>
