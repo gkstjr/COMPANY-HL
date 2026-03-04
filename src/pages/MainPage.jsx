@@ -10,7 +10,9 @@
 */
 
 import { useState, useEffect, useRef } from 'react';
-import { FiHome, FiTrendingUp, FiSettings, FiUsers } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
+import { FiHome, FiTrendingUp, FiSettings, FiUsers, FiChevronLeft, FiChevronRight, FiArrowRight } from 'react-icons/fi';
+import { menuData } from '../data/menuData';
 import './MainPage.css';
 
 function MainPage() {
@@ -23,6 +25,13 @@ function MainPage() {
 
   // 스크롤 상태 관리 (Scroll Indicator 표시 여부)
   const [isScrolled, setIsScrolled] = useState(false);
+
+  // 사업분야 슬라이더 상태 관리
+  const [currentBusiness, setCurrentBusiness] = useState(0);
+  
+  // 사업분야 데이터 가져오기
+  const businessMenu = menuData.find(menu => menu.title === '사업분야');
+  const businessItems = businessMenu ? businessMenu.submenus : [];
 
   // 슬라이더 이미지 데이터
   // 권장 이미지 크기: 1920x1080px (FullHD, 16:9 비율)
@@ -70,6 +79,15 @@ function MainPage() {
     return () => clearInterval(timer);
   }, [slides.length]);
 
+  // 사업분야 자동 슬라이드 (5초마다)
+  useEffect(() => {
+    const businessTimer = setInterval(() => {
+      setCurrentBusiness((prev) => (prev + 1) % businessItems.length);
+    }, 5000);
+
+    return () => clearInterval(businessTimer);
+  }, [businessItems.length]);
+
   // 스크롤 감지 (Scroll Indicator 숨김 처리)
   useEffect(() => {
     const handleScroll = () => {
@@ -87,6 +105,15 @@ function MainPage() {
   // 인디케이터 클릭
   const handleIndicatorClick = (index) => {
     setCurrentSlide(index);
+  };
+
+  // 사업분야 슬라이더 제어
+  const handleBusinessPrev = () => {
+    setCurrentBusiness((prev) => (prev - 1 + businessItems.length) % businessItems.length);
+  };
+
+  const handleBusinessNext = () => {
+    setCurrentBusiness((prev) => (prev + 1) % businessItems.length);
   };
 
   // 스크롤 애니메이션 (Intersection Observer)
@@ -221,6 +248,7 @@ function MainPage() {
                   <h3>About S-TECH</h3>
                 </div>
               </div>
+              <div className="overview-divider"></div>
               <div className="overview-content">
                 <p>
                   동종업계로서 관련분야 역사 및 기술력을 바탕으로 내수는 외극보시를 보안하기 2042년부터 축적된 노하우를 기준으로 반출하고 있습니다. 신회사와 협력한 업적은 노하우를 기반으로 2024년부터 이루어져 노하리더 거듭되었습니다.
@@ -248,6 +276,7 @@ function MainPage() {
                   <h3>주요사업</h3>
                 </div>
               </div>
+              <div className="overview-divider"></div>
               <div className="overview-content">
                 <p>
                   지반공사와 부수로 중진으로 고속도로, 기초, 토목과 비탈등을 받은 안전분야 지하반전성옹지, 사유 등 기술이용, 사업 전문적인 회사가 토대로선대로 시공하는즉좋을일금하여 관리하고 있니다.
@@ -275,6 +304,7 @@ function MainPage() {
                   <h3>사업실적</h3>
                 </div>
               </div>
+              <div className="overview-divider"></div>
               <div className="overview-content">
                 <p>
                   2001년 창업으로 지하철공사와 관리로부터 약 2,000여건 사업기간활 활고 약 700여건, 기초굴착 약 2,000건엄, 비탈등양 약 200건, 지반안전정방공사 약 300건으로 성공으로 달성하였습니다.
@@ -285,7 +315,71 @@ function MainPage() {
       </section>
 
       {/* 
-        ===== 3. INFORMATION Section =====
+        ===== 3. BUSINESS Section =====
+        - 사업분야 프리뷰 슬라이더
+      */}
+      <section className="business-preview">
+        {/* 왼쪽 화살표 */}
+        <button className="business-arrow business-arrow-left" onClick={handleBusinessPrev}>
+          <FiChevronLeft />
+        </button>
+
+        {/* 오른쪽 화살표 */}
+        <button className="business-arrow business-arrow-right" onClick={handleBusinessNext}>
+          <FiChevronRight />
+        </button>
+
+        {/* 슬라이드 인디케이터 (동그라미 숫자) */}
+        <div className="business-slide-indicators">
+          {businessItems.map((_, index) => (
+            <button
+              key={index}
+              className={`business-slide-indicator ${index === currentBusiness ? 'active' : ''}`}
+              onClick={() => setCurrentBusiness(index)}
+            >
+              {index + 1}
+            </button>
+          ))}
+        </div>
+
+        <div className="business-container">
+          {/* 왼쪽: 이미지 */}
+          <div className="business-image">
+            <img 
+              key={currentBusiness}
+              src="/menuHero2.jpg" 
+              alt={businessItems[currentBusiness]?.title || '사업분야'}
+              className="business-image-slide"
+            />
+          </div>
+
+          {/* 오른쪽: 설명 */}
+          <div className="business-content">
+            <span key={`label-${currentBusiness}`} className="business-label business-fade-in">BUSINESS</span>
+            <h2 key={`title-${currentBusiness}`} className="business-title business-fade-in">
+              {businessItems[currentBusiness]?.title}
+            </h2>
+            <p key={`desc-${currentBusiness}`} className="business-description business-fade-in">
+              사업 구성원 위한 사업 등급 및 방법 보다 소요 시간, 사업 전략 방법, 예상 공정에 대한
+              단순업체의 승인결과 과정에서 수도 건축 계획에 도출하기 위한 단순기술 중심으로
+              업무지원을 하고 있습니다.
+            </p>
+            
+            {/* VIEW MORE 버튼 */}
+            <Link 
+              key={`btn-${currentBusiness}`}
+              to={businessItems[currentBusiness]?.link || '/menu2'} 
+              className="business-view-more business-fade-in"
+            >
+              VIEW MORE
+              <FiArrowRight className="arrow-icon" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* 
+        ===== 4. INFORMATION Section =====
         - 4개 아이콘 카드
       */}
       <section className="information">
@@ -342,67 +436,6 @@ function MainPage() {
                 가능성이 높은 인재를<br />
                 기다리고 있습니다.
               </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 
-        ===== 4. PARTNERS Section =====
-        - 파트너사 로고 그리드
-      */}
-      <section className="partners">
-        <div className="container">
-          <h2 className="section-title">
-            PARTNERS
-            <span className="title-underline"></span>
-          </h2>
-          
-          <div className="partners-grid">
-            {/* 파트너 로고들 - 이미지 받으면 교체 */}
-            <div className="partner-logo">
-              <div className="logo-image-placeholder"></div>
-              <div className="partner-name">고려대학교 지반</div>
-            </div>
-            <div className="partner-logo">
-              <div className="logo-image-placeholder"></div>
-              <div className="partner-name">한양대학교 지반</div>
-            </div>
-            <div className="partner-logo">
-              <div className="logo-image-placeholder"></div>
-              <div className="partner-name">동양대학교 지반</div>
-            </div>
-            <div className="partner-logo">
-              <div className="logo-image-placeholder"></div>
-              <div className="partner-name">연세대학교 지반</div>
-            </div>
-            <div className="partner-logo">
-              <div className="logo-image-placeholder"></div>
-              <div className="partner-name">한국조지니어링</div>
-            </div>
-            <div className="partner-logo">
-              <div className="logo-image-placeholder"></div>
-              <div className="partner-name">한국건설공법</div>
-            </div>
-            <div className="partner-logo">
-              <div className="logo-image-placeholder"></div>
-              <div className="partner-name">에스와이텍</div>
-            </div>
-            <div className="partner-logo">
-              <div className="logo-image-placeholder"></div>
-              <div className="partner-name">델타코리아</div>
-            </div>
-            <div className="partner-logo">
-              <div className="logo-image-placeholder"></div>
-              <div className="partner-name">한국소재</div>
-            </div>
-            <div className="partner-logo">
-              <div className="logo-image-placeholder"></div>
-              <div className="partner-name">가우리안</div>
-            </div>
-            <div className="partner-logo">
-              <div className="logo-image-placeholder"></div>
-              <div className="partner-name">도건이앤텍</div>
             </div>
           </div>
         </div>

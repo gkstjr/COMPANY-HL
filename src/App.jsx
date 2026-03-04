@@ -15,6 +15,7 @@
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
+import ScrollToTop from './components/ScrollToTop';
 import MainPage from './pages/MainPage';
 import Menu1Page from './pages/Menu1/Menu1Page';
 import Menu1_3Page from './pages/Menu1/Menu1_3Page';
@@ -30,6 +31,7 @@ import Menu5Page from './pages/Menu5/Menu5Page';
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Layout>
         <Routes>
           {/* 메인 페이지 */}
