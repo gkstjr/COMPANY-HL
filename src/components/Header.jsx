@@ -93,6 +93,17 @@ function Header() {
     }
   };
 
+  // 로고 클릭 시 메인페이지면 스크롤 맨 위로
+  const handleLogoClick = (e) => {
+    if (isMainPage) {
+      e.preventDefault();
+      const mainPage = document.querySelector('.main-page');
+      if (mainPage) {
+        mainPage.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+  };
+
   return (
     <header className={`header ${isDarkHeader ? 'dark' : ''}`}>
       <div 
@@ -100,7 +111,7 @@ function Header() {
         onMouseMove={handleMouseMove}
       >
         {/* 로고 영역 (왼쪽) */}
-        <Link to="/" className="logo">
+        <Link to="/" className="logo" onClick={handleLogoClick}>
           <img src="/logoImage.png" alt="한일지오이엔지" className="logo-img" />
           <img src="/logoText.png" alt="한일지오이엔지" className="logo-text-img" />
         </Link>
