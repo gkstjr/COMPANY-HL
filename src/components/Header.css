@@ -30,6 +30,28 @@
   backdrop-filter: blur(10px);
 }
 
+/* hover 시 메뉴 색상은 항상 흰색 */
+.header-container:hover:not(.hover-disabled) .nav-link {
+  color: var(--white) !important;
+}
+
+.header-container:hover:not(.hover-disabled) .nav-link:hover {
+  color: var(--white) !important;
+  border-bottom: 2px solid var(--white) !important;
+}
+
+.header-container:hover:not(.hover-disabled) .menu-all-btn {
+  color: var(--white) !important;
+}
+
+.header-container:hover:not(.hover-disabled) .menu-icon span {
+  background-color: var(--white) !important;
+}
+
+.header-container:hover:not(.hover-disabled) .logo-text-img {
+  filter: none !important;  /* 원래 흰색으로 */
+}
+
 /* hover 비활성화 시 즉시 제거 */
 .header-container.hover-disabled {
   background-color: transparent !important;
@@ -173,6 +195,33 @@
 .nav-link:hover {
   color: var(--white);
   border-bottom: 2px solid var(--white);
+}
+
+/* 어두운 헤더 (overview 섹션 이후) */
+.header.dark {
+  background-color: var(--white);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header.dark .nav-link {
+  color: var(--text-dark);
+}
+
+.header.dark .nav-link:hover {
+  color: var(--text-dark);
+  border-bottom: 2px solid var(--text-dark);
+}
+
+.header.dark .menu-all-btn {
+  color: var(--text-dark);
+}
+
+.header.dark .menu-icon span {
+  background-color: var(--text-dark);
+}
+
+.header.dark .logo-text-img {
+  filter: brightness(0) saturate(100%);  /* 흰색 → 검은색 */
 }
 
 /* 모바일 네비게이션 (기본 숨김) */

@@ -17,6 +17,43 @@
   padding: 0 var(--spacing-md);
 }
 
+/* 메인페이지 스냅 스크롤 */
+.main-page {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  height: 100vh;
+  /* 스크롤바 숨기기 */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+/* 스크롤바 숨기기 - Webkit (Chrome, Safari) */
+.main-page::-webkit-scrollbar {
+  display: none;
+}
+
+.main-page > section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  min-height: 100vh;
+  padding-top: calc(var(--spacing-sm) * 2 + 3rem);  /* 헤더 높이만큼 */
+  box-sizing: border-box;
+}
+
+/* Hero 섹션은 padding-top 제외 (헤더가 투명하게 겹쳐야 함) */
+.hero-slider {
+  padding-top: 0 !important;
+}
+
+/* Footer는 min-height 제외 */
+.main-page > footer {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  min-height: auto;
+  padding-top: calc(var(--spacing-sm) * 2 + 3rem);  /* 헤더 높이만큼 */
+  box-sizing: border-box;
+}
+
 /* 섹션 제목 */
 .section-title {
   text-align: center;
@@ -124,11 +161,12 @@
 
 .scroll-indicator span {
   font-size: 12px;
-  font-weight: 400;
+  font-weight: 700;
   letter-spacing: -0.5px;
   color: var(--white);
   line-height: 1;
   white-space: nowrap;
+  padding-bottom: 1px;
 }
 
 .scroll-indicator::after {
@@ -209,43 +247,19 @@
   ===================================
 */
 
-/* Scroll down 텍스트 (Overview 상단) */
-.scroll-down-text {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  z-index: 10;
-  opacity: 1;
-  transition: opacity 0.3s ease;
-}
-
-.scroll-down-text.hidden {
-  opacity: 0;
-  pointer-events: none;  /* 클릭 이벤트 방지 */
-}
-
-.scroll-down-text span {
-  font-size: 12px;
-  font-weight: 700;  /* 헤더 메뉴와 동일 (Bold) */
-  letter-spacing: -0.5px;
-  color: #333;
-  line-height: 1;
-  white-space: nowrap;
-}
-
 .overview {
-  position: relative;  /* absolute 포지셔닝을 위한 기준 */
-  padding: var(--spacing-xl) 0;
+  padding: var(--spacing-lg) 0;
   background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.overview .section-title {
+.overview-section-title {
   color: var(--primary-color);
   font-size: clamp(1.8rem, 3vw, 2.5rem);
   font-weight: 700;
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: var(--spacing-xs);
   padding: 0 var(--spacing-md);  /* 좌우 패딩 추가 */
   text-align: center;  /* 가운데 정렬 */
 }
@@ -253,7 +267,7 @@
 .overview-description {
   text-align: center;
   color: var(--text-gray);
-  margin-bottom: var(--spacing-xl);
+  margin-bottom: var(--spacing-lg);
   line-height: 1.8;
   font-size: var(--font-base);
   padding: 0 var(--spacing-md);  /* 좌우 패딩 추가 */
@@ -265,7 +279,7 @@
 .overview-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--spacing-lg);
+  gap: var(--spacing-md);
   max-width: 1450px;  /* 각 카드 너비 약 460px */
   margin: 0 auto;
   padding: 0 var(--spacing-md);  /* 좌우 여백 추가 */
@@ -750,6 +764,7 @@
 
   .scroll-indicator span {
     font-size: 11px;
+    font-weight: 600;
   }
 
   /* 슬라이드 인디케이터 - 모바일 */

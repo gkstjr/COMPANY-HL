@@ -13,6 +13,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { FiHome, FiTrendingUp, FiSettings, FiUsers, FiChevronLeft, FiChevronRight, FiArrowRight } from 'react-icons/fi';
 import { menuData } from '../data/menuData';
+import Footer from '../components/Footer';
 import './MainPage.css';
 
 function MainPage() {
@@ -32,6 +33,13 @@ function MainPage() {
   // 사업분야 데이터 가져오기
   const businessMenu = menuData.find(menu => menu.title === '사업분야');
   const businessItems = businessMenu ? businessMenu.submenus : [];
+  
+  // 사업분야별 설명
+  const businessDescriptions = [
+    '지반의 거동을 예측하는 토질 역학과 구조물의 내구성을 보장하는 구조 설계의 조화를 통해, 까다로운 현장 조건에서도 흔들림 없는 건설의 기반을 완성합니다.',
+    '정밀한 구조 해석과 체계적인 해체 공법을 바탕으로, 지하구조물 철거 시 발생하는 지반의 미세한 변화까지 통제하여 인접 시설물의 안전을 보장합니다.',
+    '철저한 감리 시스템과 정밀 계측 기술을 바탕으로, 보이지 않는 지반 속 위험까지 예측하여 가장 안전하고 신뢰할 수 있는 건설 환경을 제공합니다.'
+  ];
 
   // 슬라이더 이미지 데이터
   // 권장 이미지 크기: 1920x1080px (FullHD, 16:9 비율)
@@ -184,8 +192,9 @@ function MainPage() {
           </div>
         ))}
 
-        {/* Scroll down 인디케이터 */}
+        {/* Scroll down 텍스트 + 인디케이터 */}
         <div className={`scroll-indicator ${isScrolled ? 'hidden' : ''}`}>
+          <span className="scroll-down-text-span">Scroll down</span>
         </div>
 
         {/* 슬라이드 인디케이터 (왼쪽 하단) */}
@@ -213,12 +222,7 @@ function MainPage() {
         - 3개 카드 (About S-TECH, 주요사업, 사업실적)
       */}
       <section className="overview">
-        {/* Scroll down 텍스트 */}
-        <div className={`scroll-down-text ${isScrolled ? 'hidden' : ''}`}>
-          <span>Scroll down</span>
-        </div>
-
-        <h2 className="section-title">
+        <h2 className="overview-section-title">
           OVERVIEW
         </h2>
         
@@ -329,25 +333,12 @@ function MainPage() {
           <FiChevronRight />
         </button>
 
-        {/* 슬라이드 인디케이터 (동그라미 숫자) */}
-        <div className="business-slide-indicators">
-          {businessItems.map((_, index) => (
-            <button
-              key={index}
-              className={`business-slide-indicator ${index === currentBusiness ? 'active' : ''}`}
-              onClick={() => setCurrentBusiness(index)}
-            >
-              {index + 1}
-            </button>
-          ))}
-        </div>
-
         <div className="business-container">
           {/* 왼쪽: 이미지 */}
           <div className="business-image">
             <img 
               key={currentBusiness}
-              src="/menuHero2.jpg" 
+              src={`/main-business${currentBusiness + 1}.jpg`}
               alt={businessItems[currentBusiness]?.title || '사업분야'}
               className="business-image-slide"
             />
@@ -360,9 +351,7 @@ function MainPage() {
               {businessItems[currentBusiness]?.title}
             </h2>
             <p key={`desc-${currentBusiness}`} className="business-description business-fade-in">
-              사업 구성원 위한 사업 등급 및 방법 보다 소요 시간, 사업 전략 방법, 예상 공정에 대한
-              단순업체의 승인결과 과정에서 수도 건축 계획에 도출하기 위한 단순기술 중심으로
-              업무지원을 하고 있습니다.
+              {businessDescriptions[currentBusiness]}
             </p>
             
             {/* VIEW MORE 버튼 */}
@@ -440,6 +429,12 @@ function MainPage() {
           </div>
         </div>
       </section>
+
+      {/* 
+        ===== 5. Footer Section =====
+        - 푸터를 마지막 섹션으로 포함
+      */}
+      <Footer />
     </div>
   );
 }

@@ -13,18 +13,23 @@
   => children에 MainPage가 들어감
 */
 
+import { useLocation } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
 import './Layout.css';
 
 function Layout({ children }) {
+  const location = useLocation();
+  const isMainPage = location.pathname === '/';
+
   return (
     <div className="layout">
       <Header />
       <main className="main-content">
         {children}
       </main>
-      <Footer />
+      {/* 메인페이지가 아닐 때만 Footer 표시 */}
+      {!isMainPage && <Footer />}
     </div>
   );
 }

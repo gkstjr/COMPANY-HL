@@ -24,8 +24,11 @@ function Header() {
   const [openMobileSubmenu, setOpenMobileSubmenu] = useState(null);
   // hover 비활성화 상태
   const [isHoverDisabled, setIsHoverDisabled] = useState(false);
+  // 헤더 색상 변경 상태 (스크롤 위치에 따라)
+  const [isDarkHeader, setIsDarkHeader] = useState(false);
   
   const location = useLocation();
+  const isMainPage = location.pathname === '/';
 
   // 햄버거 메뉴 토글 함수
   const toggleMenu = () => {
@@ -48,6 +51,36 @@ function Header() {
     setIsHoverDisabled(true);
   }, [location.pathname]);
 
+  // 메인페이지에서 스크롤 위치에 따라 헤더 색상 변경
+  useEffect(() => {
+    if (!isMainPage) {
+      setIsDarkHeader(false);
+      return;
+    }
+
+    const handleScroll = () => {
+      // main-page 요소의 스크롤 감지
+      const mainPage = document.querySelector('.main-page');
+      if (!mainPage) return;
+
+      const scrollY = mainPage.scrollTop;
+      const heroHeight = window.innerHeight;
+
+      // hero 섹션을 벗어나면 어두운 헤더
+      if (scrollY > heroHeight * 0.5) {
+        setIsDarkHeader(true);
+      } else {
+        setIsDarkHeader(false);
+      }
+    };
+
+    const mainPage = document.querySelector('.main-page');
+    if (mainPage) {
+      mainPage.addEventListener('scroll', handleScroll);
+      return () => mainPage.removeEventListener('scroll', handleScroll);
+    }
+  }, [isMainPage]);
+
   // 메뉴 클릭 시 hover 비활성화
   const handleMenuClick = () => {
     setIsHoverDisabled(true);
@@ -61,7 +94,7 @@ function Header() {
   };
 
   return (
-    <header className="header">
+    <header className={`header ${isDarkHeader ? 'dark' : ''}`}>
       <div 
         className={`header-container ${isHoverDisabled ? 'hover-disabled' : ''}`}
         onMouseMove={handleMouseMove}
