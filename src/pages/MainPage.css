@@ -50,8 +50,6 @@
   scroll-snap-align: start;
   scroll-snap-stop: always;
   min-height: auto;
-  padding-top: calc(var(--spacing-sm) * 2 + 3rem);  /* 헤더 높이만큼 */
-  box-sizing: border-box;
 }
 
 /* 섹션 제목 */
