@@ -241,59 +241,137 @@
 
 /* 
   ===================================
-  2. OVERVIEW Section
+  2. ABOUT US Section
+  ===================================
+*/
+.about-us-section {
+  position: relative;
+  background-image: url('/main-section1.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-us-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: var(--white);
+  max-width: 1200px;
+  padding: 0 var(--spacing-md);
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.about-us-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  margin-bottom: var(--spacing-md);
+  letter-spacing: 2px;
+}
+
+.about-us-subtitle {
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  font-weight: 600;
+  margin-bottom: var(--spacing-lg);
+  line-height: 1.5;
+}
+
+.about-us-description {
+  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+  font-weight: 600;
+  line-height: 1.8;
+  color: var(--white);
+  margin-bottom: var(--spacing-xl);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.about-us-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background-color: var(--primary-color);
+  color: var(--white);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  transition: all 0.3s ease;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+.about-us-button:hover {
+  background-color: #3d4a8f;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.about-us-button .arrow-icon {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.about-us-button:hover .arrow-icon {
+  transform: translateX(5px);
+}
+
+/* 
+  ===================================
+  3. OVERVIEW Section
   ===================================
 */
 
 .overview {
-  padding: var(--spacing-lg) 0;
+  padding: calc(var(--spacing-xl) * 1.5) 0;
   background-color: var(--white);
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.overview-section-title {
-  color: var(--primary-color);
-  font-size: clamp(1.8rem, 3vw, 2.5rem);
-  font-weight: 700;
-  margin-bottom: var(--spacing-xs);
-  padding: 0 var(--spacing-md);  /* 좌우 패딩 추가 */
-  text-align: center;  /* 가운데 정렬 */
+/* 헤더 영역 */
+.overview-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1400px;
+  margin: 0 auto var(--spacing-lg);
+  padding: 0 var(--spacing-lg);
+  width: 100%;
 }
 
-.overview-description {
-  text-align: center;
-  color: var(--text-gray);
-  margin-bottom: var(--spacing-lg);
-  line-height: 1.8;
-  font-size: var(--font-base);
-  padding: 0 var(--spacing-md);  /* 좌우 패딩 추가 */
-  max-width: 1200px;              /* 설명문은 너무 넓지 않게 */
-  margin-left: auto;
-  margin-right: auto;
+.overview-title {
+  color: var(--primary-color);
+  font-size: clamp(1.8rem, 3vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin: 0;
 }
 
 .overview-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--spacing-md);
-  max-width: 1450px;  /* 각 카드 너비 약 460px */
+  gap: var(--spacing-lg);
+  max-width: 1600px;
   margin: 0 auto;
-  padding: 0 var(--spacing-md);  /* 좌우 여백 추가 */
+  padding: 0 var(--spacing-md);
+  width: 100%;
 }
 
 .overview-card {
   background-color: var(--white);
-  border-radius: var(--border-radius);
+  border-radius: 0;
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: var(--transition);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s ease;
   
   /* 초기 상태: 투명하고 아래에 위치 */
   opacity: 0;
   transform: translateY(50px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out, box-shadow 0.3s ease;
 }
 
 /* visible 클래스가 추가되면 나타남 */
@@ -303,159 +381,177 @@
 }
 
 .overview-card:hover {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  transform: translateY(-8px);
 }
 
 /* hover 시에도 visible 상태 유지 */
 .overview-card.visible:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
 }
 
-/* 이미지 + 제목 래퍼 */
-.overview-image-wrapper {
-  position: relative;
+/* 카드 이미지 */
+.overview-card-image {
   width: 100%;
-  height: 500px;                    /* 450px → 500px (50px 증가) */
+  height: 380px;
   overflow: hidden;
-}
-
-.overview-image {
-  width: 100%;
-  height: 100%;
-}
-
-.placeholder-img {
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
   position: relative;
 }
 
-/* data-label이 있는 경우에만 텍스트 표시 (실제 이미지가 없는 더미 상태) */
-/* 이미지를 교체하면 data-label과 data-size를 제거하면 자동으로 텍스트가 사라집니다 */
-.placeholder-img[data-label]::before {
-  content: attr(data-label);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -60%);
-  color: var(--white);
-  font-size: var(--font-medium);
-  font-weight: 700;
-  text-align: center;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+.overview-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
 }
 
-.placeholder-img[data-size]::after {
-  content: attr(data-size);
-  position: absolute;
-  top: 55%;
-  left: 50%;
-  transform: translate(-50%, 0);
-  color: var(--white);
-  font-size: var(--font-small);
-  font-weight: 500;
-  text-align: center;
-  opacity: 0.9;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+/* 이미지 호버 시 확대 효과 */
+.overview-card:hover .overview-card-image img {
+  transform: scale(1.08);
 }
 
-/* 제목 오버레이 (이미지 하단) */
-.overview-title {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: var(--white);   /* 하얀 배경 */
+/* 카드 콘텐츠 */
+.overview-card-content {
   padding: var(--spacing-md);
-  /* border-top: 3px solid var(--primary-color);  상단 보라색 라인 */
-}
-
-.overview-title h3 {
-  color: var(--primary-color);      /* 보라색 글자 */
-  font-size: var(--font-medium);
-  font-weight: 700;                 /* 굵게 */
-  margin: 0;
-}
-
-/* 구분선 */
-.overview-divider {
-  width: 80%;
-  height: 1px;
-  background-color: #E0E0E0;
-  margin: 0 auto;
-}
-
-/* 카드 콘텐츠 (텍스트) */
-.overview-content {
-  padding: 0 var(--spacing-md) var(--spacing-md) var(--spacing-md);  /* 위 / 오른쪽 / 아래 / 왼쪽 */
   background-color: var(--white);
 }
 
-.overview-content p {
-  font-size: var(--font-small);
-  color: var(--text-dark);          /* 검은색 */
-  font-weight: 600;                 /* 굵은 글씨 */
-  line-height: 1.8;
+.overview-card-title {
+  color: var(--primary-color);
+  font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+  font-weight: 700;
   margin: 0;
+  letter-spacing: 0.5px;
 }
 
 /* 
   ===================================
-  3. INFORMATION Section
+  5. RECRUIT Section
   ===================================
 */
-.information {
-  padding: var(--spacing-xl) 0;
-  background-color: #f2f4f8;  /* 밝은 회색 배경 */
-}
-.information .section-title {
-  color: var(--primary-color);
+.recruit {
+  padding: calc(var(--spacing-xl) * 2) 0;
+  background-color: var(--white);
 }
 
-.info-grid {
+.recruit-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr 1fr;
+  gap: calc(var(--spacing-xl) * 2);
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: calc(var(--spacing-xl) * 1.5) var(--spacing-lg) 0;
+  align-items: center;
+}
+
+/* 왼쪽: 콘텐츠 */
+.recruit-content {
+  display: flex;
+  flex-direction: column;
   gap: var(--spacing-md);
 }
 
-.info-card {
-  text-align: center;
-  padding: var(--spacing-md) 0;  /* 상하만 패딩, 좌우는 0 */
+.recruit-title {
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 700;
+  color: var(--primary-color);
+  margin: 0 0 var(--spacing-md) 0;
+  letter-spacing: 2px;
+}
+
+.recruit-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.recruit-highlight {
+  color: var(--text-dark);
+  font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+  font-weight: 600;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.recruit-subtitle {
+  color: #d32f2f;
+  font-size: clamp(1rem, 1.3vw, 1.15rem);
+  font-weight: 700;
+  margin: var(--spacing-sm) 0 0 0;
+}
+
+.recruit-description {
+  color: var(--text-dark);
+  font-size: clamp(0.9rem, 1.1vw, 1rem);
+  line-height: 1.7;
+  margin: calc(var(--spacing-xs) * 0.5) 0 0 0;
+}
+
+.recruit-buttons {
+  display: flex;
+  gap: var(--spacing-md);
+  margin: var(--spacing-md) 0;
+}
+
+.recruit-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: calc(var(--spacing-sm) * 1.2) calc(var(--spacing-md) * 1.5);
+  background-color: var(--white);
+  border: 2px solid #e0e0e0;
   border-radius: var(--border-radius);
-  transition: var(--transition);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
 }
 
-.info-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--box-shadow);
+.recruit-btn:hover {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.info-icon {
-  font-size: 3.5rem;  /* outline 스타일은 조금 더 크게 */
-  color: var(--primary-color);
-  transition: var(--transition);
-  stroke-width: 1.5;  /* outline 아이콘의 선 굵기 */
+.recruit-btn .btn-icon {
+  font-size: 1.2rem;
 }
 
-.info-card:hover .info-icon {
-  color: var(--secondary-color);
-  transform: scale(1.1);
+.recruit-btn .arrow-icon {
+  font-size: 1rem;
+  margin-left: auto;
 }
 
-.info-card h3 {
-  font-size: var(--font-medium);
-  font-weight: bold;
-  color: var(--primary-color);
-  margin-bottom: var(--spacing-xs);
-}
-
-.info-description {
-  font-size: var(--font-base);  /* font-small → font-base로 증가 */
-  color: var(--text-gray);
+.recruit-notice {
+  color: var(--text-dark);
+  font-size: 0.9rem;
   line-height: 1.6;
+  margin: 0;
+}
+
+/* 오른쪽: 이미지 */
+.recruit-image {
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  border-radius: var(--border-radius);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.recruit-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.recruit-image:hover img {
+  transform: scale(1.05);
 }
 
 /* 
@@ -695,12 +791,21 @@
 @media (max-width: 1024px) {
   /* OVERVIEW 섹션 - 태블릿 */
   .overview-grid {
-    grid-template-columns: repeat(2, 1fr);  /* 2열 */
-    gap: var(--spacing-md);
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+  }
+  
+  .overview-card-image {
+    height: 300px;
   }
 
-  .info-grid {
-    grid-template-columns: repeat(2, 1fr);
+  /* RECRUIT 섹션 - 태블릿 */
+  .recruit-container {
+    gap: var(--spacing-xl);
+  }
+  
+  .recruit-image {
+    height: 400px;
   }
 
   .business-preview {
@@ -790,20 +895,37 @@
 
   /* OVERVIEW 섹션 - 모바일 */
   .overview-grid {
-    grid-template-columns: 1fr;  /* 1열 */
-    gap: var(--spacing-md);
-  }
-
-  .overview-image-wrapper {
-    height: 280px;  /* 모바일: 데스크톱 비율 유지 (500px의 56%) */
-  }
-
-  .overview-content {
-    padding: var(--spacing-sm);
-  }
-
-  .info-grid {
     grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+
+  .overview-card-image {
+    height: 250px;
+  }
+  
+  .overview-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  /* RECRUIT 섹션 - 모바일 */
+  .recruit-container {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+  
+  .recruit-image {
+    height: 300px;
+    order: -1;
+  }
+  
+  .recruit-buttons {
+    flex-direction: column;
+  }
+  
+  .recruit-btn {
+    width: 100%;
   }
 
   .business-preview {

@@ -218,18 +218,33 @@ function MainPage() {
       </section>
 
       {/* 
-        ===== 2. OVERVIEW Section =====
+        ===== 2. ABOUT US Section =====
+        - 회사 소개 배너
+      */}
+      <section className="about-us-section">
+        <div className="about-us-content">
+          <h2 className="about-us-title">ABOUT US</h2>
+          <p className="about-us-subtitle">설계부터 철거까지, 현장을 가장 잘 아는 든든한 파트너</p>
+          <p className="about-us-description">
+            (주)한일지오이엔지는 단순한 도면 작성을 넘어, 철저한 지반 조사와 구조적 안정성 검토를<br />
+            거쳐 실제 시공 시 발생할 수 있는 오차를 제로화하는 실무 중심의 맞춤형 설계를 수행합니다.
+          </p>
+          <Link to="/menu1" className="about-us-button">
+            VIEW MORE
+            <FiArrowRight className="arrow-icon" />
+          </Link>
+        </div>
+      </section>
+
+      {/* 
+        ===== 3. OVERVIEW Section =====
         - 3개 카드 (About S-TECH, 주요사업, 사업실적)
       */}
       <section className="overview">
-        <h2 className="overview-section-title">
-          OVERVIEW
-        </h2>
-        
-        <p className="overview-description">
-          에스텍엔지니어링을 축적된 지반분야 기술력과 지속적인 관리의 서비스를 통해<br />
-          고객만족을 최선을 다하는 철학 업을하입니다.
-        </p>
+        {/* 헤더 영역 */}
+        <div className="overview-header">
+          <h2 className="overview-title">OVERVIEW</h2>
+        </div>
 
         <div className="overview-grid">
             {/* About S-TECH 카드 */}
@@ -237,26 +252,11 @@ function MainPage() {
               className={`overview-card ${visibleCards[0] ? 'visible' : ''}`}
               ref={(el) => (cardRefs.current[0] = el)}
             >
-              <div className="overview-image-wrapper">
-                <div className="overview-image">
-                  <div 
-                    className="placeholder-img" 
-                    style={{ 
-                      backgroundImage: 'url(/overviewImage1.jpg)',
-                      backgroundSize: 'cover',
-                      backgroundPosition: 'center'
-                    }}
-                  ></div>
-                </div>
-                <div className="overview-title">
-                  <h3>About S-TECH</h3>
-                </div>
+              <div className="overview-card-image">
+                <img src="/main-section2-1.jpg" alt="About S-TECH" />
               </div>
-              <div className="overview-divider"></div>
-              <div className="overview-content">
-                <p>
-                  동종업계로서 관련분야 역사 및 기술력을 바탕으로 내수는 외극보시를 보안하기 2042년부터 축적된 노하우를 기준으로 반출하고 있습니다. 신회사와 협력한 업적은 노하우를 기반으로 2024년부터 이루어져 노하리더 거듭되었습니다.
-                </p>
+              <div className="overview-card-content">
+                <h3 className="overview-card-title">송도세브란스병원 정밀안전진단</h3>
               </div>
             </div>
 
@@ -265,26 +265,11 @@ function MainPage() {
               className={`overview-card ${visibleCards[1] ? 'visible' : ''}`}
               ref={(el) => (cardRefs.current[1] = el)}
             >
-              <div className="overview-image-wrapper">
-                <div className="overview-image">
-                  <div 
-                    className="placeholder-img" 
-                    style={{ 
-                      backgroundImage: 'url(/overviewImage2.jpg)',
-                      backgroundSize: 'cover',
-                      backgroundPosition: 'center'
-                    }}
-                  ></div>
-                </div>
-                <div className="overview-title">
-                  <h3>주요사업</h3>
-                </div>
+              <div className="overview-card-image">
+                <img src="/main-section2-2.jpg" alt="주요사업" />
               </div>
-              <div className="overview-divider"></div>
-              <div className="overview-content">
-                <p>
-                  지반공사와 부수로 중진으로 고속도로, 기초, 토목과 비탈등을 받은 안전분야 지하반전성옹지, 사유 등 기술이용, 사업 전문적인 회사가 토대로선대로 시공하는즉좋을일금하여 관리하고 있니다.
-                </p>
+              <div className="overview-card-content">
+                <h3 className="overview-card-title">소금창고</h3>
               </div>
             </div>
 
@@ -293,33 +278,18 @@ function MainPage() {
               className={`overview-card ${visibleCards[2] ? 'visible' : ''}`}
               ref={(el) => (cardRefs.current[2] = el)}
             >
-              <div className="overview-image-wrapper">
-                <div className="overview-image">
-                  <div 
-                    className="placeholder-img" 
-                    style={{ 
-                      backgroundImage: 'url(/overviewImage3.jpg)',
-                      backgroundSize: 'cover',
-                      backgroundPosition: 'center'
-                    }}
-                  ></div>
-                </div>
-                <div className="overview-title">
-                  <h3>사업실적</h3>
-                </div>
+              <div className="overview-card-image">
+                <img src="/main-section2-3.jpg" alt="사업실적" />
               </div>
-              <div className="overview-divider"></div>
-              <div className="overview-content">
-                <p>
-                  2001년 창업으로 지하철공사와 관리로부터 약 2,000여건 사업기간활 활고 약 700여건, 기초굴착 약 2,000건엄, 비탈등양 약 200건, 지반안전정방공사 약 300건으로 성공으로 달성하였습니다.
-                </p>
+              <div className="overview-card-content">
+                <h3 className="overview-card-title">옹벽</h3>
               </div>
             </div>
           </div>
       </section>
 
       {/* 
-        ===== 3. BUSINESS Section =====
+        ===== 4. BUSINESS Section =====
         - 사업분야 프리뷰 슬라이더
       */}
       <section className="business-preview">
@@ -368,64 +338,46 @@ function MainPage() {
       </section>
 
       {/* 
-        ===== 4. INFORMATION Section =====
-        - 4개 아이콘 카드
+        ===== 5. RECRUIT Section =====
+        - 왼쪽: 텍스트 콘텐츠 + 버튼
+        - 오른쪽: 이미지
       */}
-      <section className="information">
-        <div className="container">
-          <h2 className="section-title">
-            INFORMATION
-            <span className="title-underline"></span>
-          </h2>
-          
-          <div className="info-grid">
-            {/* About 카드 */}
-            <div className="info-card">
-              <div className="info-icon">
-                <FiHome />
-              </div>
-              <h3>About</h3>
-              <p className="info-description">
-                20년 축적된 기술력을 통해<br />
-                지반분석분야를 선도하는 기업입니다.
+      <section className="recruit">
+        <div className="recruit-container">
+          {/* 왼쪽: 콘텐츠 */}
+          <div className="recruit-content">
+            <h2 className="recruit-title">RECRUIT</h2>
+            
+            <div className="recruit-text">
+              <p className="recruit-highlight">
+                (주)한일지오이엔지와 함께 전문성과 책임감을 바탕으로<br />
+                협업과 혁신을 통해 함께 성장하는 인재를 찾습니다.
+              </p>
+              
+              <p className="recruit-description">
+                최상의 엔지니어링 기술자들이 모인 (주)한일지오이엔지에서 경력을 쌓아가고  <br />
+                싶으시다면 지원해주시면 그에 보답하겠습니다.            
               </p>
             </div>
 
-            {/* Business 카드 */}
-            <div className="info-card">
-              <div className="info-icon">
-                <FiTrendingUp />
-              </div>
-              <h3>Business</h3>
-              <p className="info-description">
-                지반보강을 중심으로 토목분야 다양한<br />
-                사업영역을 보유한 기업입니다.
-              </p>
+            <div className="recruit-buttons">
+              <Link to="/menu4" className="recruit-btn">
+                <FiUsers className="btn-icon" />
+                <span>인재상</span>
+                <FiArrowRight className="arrow-icon" />
+              </Link>
+              <Link to="/menu4-2" className="recruit-btn">
+                <FiUsers className="btn-icon" />
+                <span>채용안내</span>
+                <FiArrowRight className="arrow-icon" />
+              </Link>
             </div>
 
-            {/* Project 카드 */}
-            <div className="info-card">
-              <div className="info-icon">
-                <FiSettings />
-              </div>
-              <h3>Project</h3>
-              <p className="info-description">
-                기술과 경험으로 다양한 프로젝트를<br />
-                성공적으로 수행한 기업입니다.
-              </p>
-            </div>
+          </div>
 
-            {/* Recruit 카드 */}
-            <div className="info-card">
-              <div className="info-icon">
-                <FiUsers />
-              </div>
-              <h3>Recruit</h3>
-              <p className="info-description">
-                가능성이 높은 인재를<br />
-                기다리고 있습니다.
-              </p>
-            </div>
+          {/* 오른쪽: 이미지 */}
+          <div className="recruit-image">
+            <img src="/main-section2-1.jpg" alt="채용 이미지" />
           </div>
         </div>
       </section>
