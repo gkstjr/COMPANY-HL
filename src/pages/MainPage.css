@@ -22,6 +22,7 @@
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
   height: 100vh;
+  position: relative;
   /* 스크롤바 숨기기 */
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE and Edge */
@@ -30,6 +31,92 @@
 /* 스크롤바 숨기기 - Webkit (Chrome, Safari) */
 .main-page::-webkit-scrollbar {
   display: none;
+}
+
+/* 
+  ===================================
+  섹션 네비게이션 인디케이터
+  ===================================
+*/
+.section-nav-indicator {
+  position: fixed;
+  right: 2.5rem;
+  bottom: 8vh;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.section-nav-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.section-nav-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 2px solid rgba(100, 100, 100, 0.4);
+  transition: all 0.3s ease;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0.1);
+}
+
+.section-nav-item.active .section-nav-dot {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  transform: scale(1.4);
+  box-shadow: 0 0 8px rgba(99, 102, 241, 0.4);
+}
+
+/* Hero(0)와 About Us(1) 섹션일 때 모든 점을 흰색 테두리로 */
+.section-nav-indicator:has(.section-nav-item:nth-child(1).active) .section-nav-dot,
+.section-nav-indicator:has(.section-nav-item:nth-child(2).active) .section-nav-dot {
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+/* Hero(0)와 About Us(1) 섹션에서 활성화된 점은 흰색으로 채움 */
+.section-nav-indicator:has(.section-nav-item:nth-child(1).active) .section-nav-item:nth-child(1) .section-nav-dot,
+.section-nav-indicator:has(.section-nav-item:nth-child(2).active) .section-nav-item:nth-child(2) .section-nav-dot {
+  background-color: var(--white);
+  border-color: var(--white);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+}
+
+.section-nav-item:hover .section-nav-dot {
+  border-color: var(--primary-color);
+  transform: scale(1.2);
+}
+
+.section-nav-label {
+  position: absolute;
+  right: 100%;
+  margin-right: 1.3rem;
+  white-space: nowrap;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  opacity: 0;
+  transform: translateX(10px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 0.3rem 0.8rem;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.section-nav-item:hover .section-nav-label {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.section-nav-item.active .section-nav-label {
+  opacity: 0.95;
 }
 
 .main-page > section {
@@ -265,14 +352,14 @@
 }
 
 .about-us-title {
-  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
   font-weight: 700;
   margin-bottom: var(--spacing-md);
   letter-spacing: 2px;
 }
 
 .about-us-subtitle {
-  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  font-size: clamp(1rem, 1.8vw, 1.5rem);
   font-weight: 600;
   margin-bottom: var(--spacing-lg);
   line-height: 1.5;
@@ -340,7 +427,7 @@
   justify-content: center;
   max-width: 1400px;
   margin: 0 auto var(--spacing-lg);
-  padding: 0 var(--spacing-lg);
+  padding: calc(var(--spacing-md) * 2.0) var(--spacing-lg) 0;
   width: 100%;
 }
 
@@ -393,7 +480,8 @@
 /* 카드 이미지 */
 .overview-card-image {
   width: 100%;
-  height: 380px;
+  height: 50vh;
+  max-height: 500px;
   overflow: hidden;
   position: relative;
 }
@@ -452,11 +540,11 @@
 }
 
 .recruit-title {
-  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-size: clamp(1.8rem, 3vw, 2.2rem);
   font-weight: 700;
   color: var(--primary-color);
   margin: 0 0 var(--spacing-md) 0;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
 }
 
 .recruit-text {
@@ -614,10 +702,10 @@
 }
 
 .business-label {
-  font-size: var(--font-small);
-  font-weight: 600;
+  font-size: clamp(1.8rem, 3vw, 2.2rem);
+  font-weight: 700;
   color: var(--primary-color);
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   margin-bottom: var(--spacing-sm);
 }
 
@@ -796,7 +884,8 @@
   }
   
   .overview-card-image {
-    height: 300px;
+    height: 45vh;
+    max-height: 400px;
   }
 
   /* RECRUIT 섹션 - 태블릿 */
@@ -900,7 +989,8 @@
   }
 
   .overview-card-image {
-    height: 250px;
+    height: 40vh;
+    max-height: 300px;
   }
   
   .overview-header {

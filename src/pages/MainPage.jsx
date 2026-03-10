@@ -30,6 +30,9 @@ function MainPage() {
   // 사업분야 슬라이더 상태 관리
   const [currentBusiness, setCurrentBusiness] = useState(0);
   
+  // 섹션 인디케이터 상태 관리
+  const [currentSection, setCurrentSection] = useState(0);
+  
   // 사업분야 데이터 가져오기
   const businessMenu = menuData.find(menu => menu.title === '사업분야');
   const businessItems = businessMenu ? businessMenu.submenus : [];
@@ -96,18 +99,35 @@ function MainPage() {
     return () => clearInterval(businessTimer);
   }, [businessItems.length]);
 
-  // 스크롤 감지 (Scroll Indicator 숨김 처리)
+  // 섹션 스크롤 감지 (현재 섹션 추적)
   useEffect(() => {
+    const mainPageElement = document.querySelector('.main-page');
+    if (!mainPageElement) return;
+
     const handleScroll = () => {
-      if (window.scrollY > 0) {
+      const scrollTop = mainPageElement.scrollTop;
+      const scrollHeight = mainPageElement.scrollHeight;
+      const windowHeight = window.innerHeight;
+      
+      // 현재 섹션 계산 (0: Hero, 1: About, 2: Overview, 3: Business, 4: Recruit, 5: Footer)
+      // 마지막 섹션(Footer) 감지를 위해 하단 근처면 5로 설정
+      if (scrollTop + windowHeight >= scrollHeight - 50) {
+        setCurrentSection(5); // Footer
+      } else {
+        const sectionIndex = Math.round(scrollTop / windowHeight);
+        setCurrentSection(Math.min(sectionIndex, 4)); // 최대 4까지만
+      }
+      
+      // Scroll Indicator 숨김 처리
+      if (scrollTop > 0) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    mainPageElement.addEventListener('scroll', handleScroll);
+    return () => mainPageElement.removeEventListener('scroll', handleScroll);
   }, []);
 
   // 인디케이터 클릭
@@ -126,6 +146,8 @@ function MainPage() {
 
   // 스크롤 애니메이션 (Intersection Observer)
   useEffect(() => {
+    const mainPageElement = document.querySelector('.main-page');
+    
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -152,6 +174,7 @@ function MainPage() {
         });
       },
       {
+        root: mainPageElement, // 스크롤 컨테이너 지정
         threshold: 0.2, // 카드의 20%가 보이면 트리거
         rootMargin: '0px'
       }
@@ -170,8 +193,43 @@ function MainPage() {
     };
   }, []);
 
+  // 섹션 정의
+  const sections = [
+    { id: 0, label: 'HOME' },
+    { id: 1, label: 'ABOUT' },
+    { id: 2, label: 'OVERVIEW' },
+    { id: 3, label: 'BUSINESS' },
+    { id: 4, label: 'RECRUIT' },
+    { id: 5, label: 'CONTACT' }
+  ];
+
+  // 섹션 클릭 핸들러
+  const handleSectionClick = (index) => {
+    const mainPageElement = document.querySelector('.main-page');
+    if (mainPageElement) {
+      mainPageElement.scrollTo({
+        top: index * window.innerHeight,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <div className="main-page">
+      {/* 섹션 네비게이션 인디케이터 */}
+      <div className="section-nav-indicator">
+        {sections.map((section) => (
+          <div
+            key={section.id}
+            className={`section-nav-item ${currentSection === section.id ? 'active' : ''}`}
+            onClick={() => handleSectionClick(section.id)}
+          >
+            <span className="section-nav-dot"></span>
+            <span className="section-nav-label">{section.label}</span>
+          </div>
+        ))}
+      </div>
+
       {/* 
         ===== 1. Hero Section (슬라이더) =====
         - 5개 이미지 자동 전환
@@ -377,7 +435,7 @@ function MainPage() {
 
           {/* 오른쪽: 이미지 */}
           <div className="recruit-image">
-            <img src="/main-section2-1.jpg" alt="채용 이미지" />
+            <img src="/main-section4.jpg" alt="채용 이미지" />
           </div>
         </div>
       </section>
