@@ -301,7 +301,7 @@ function MainPage() {
       <section className="overview">
         {/* 헤더 영역 */}
         <div className="overview-header">
-          <h2 className="overview-title">OVERVIEW</h2>
+          <h2 className="overview-title">PROJECTS</h2>
         </div>
 
         <div className="overview-grid">
