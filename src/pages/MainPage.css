@@ -520,6 +520,8 @@
 .recruit {
   padding: 0;
   background-color: var(--white);
+  display: flex;
+  flex-direction: column;
 }
 
 .recruit-container {
@@ -529,7 +531,8 @@
   max-width: 100%;
   margin: 0 auto;
   padding: 0;
-  min-height: 100vh;
+  flex: 1;
+  min-height: 0;
   align-items: stretch;
 }
 
@@ -537,8 +540,8 @@
 .recruit-content {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-md);
-  padding: calc(var(--spacing-xl) * 1.5) calc(var(--spacing-xl) * 1.5) calc(var(--spacing-xl) * 2);
+  gap: var(--spacing-sm);
+  padding: calc(var(--spacing-xl) * 1.2) calc(var(--spacing-xl) * 1.5);
   justify-content: center;
 }
 
@@ -641,6 +644,46 @@
 
 .recruit-image:hover img {
   transform: scale(1.05);
+}
+
+/* 협업사 로고 띠 */
+.partners-strip {
+  background-color: var(--white);
+  border-top: 1px solid #e0e0e0;
+  padding: var(--spacing-md) 0;
+  flex-shrink: 0;
+}
+
+.partners-container {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: var(--spacing-lg);
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+  align-items: center;
+}
+
+.partner-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xs);
+}
+
+.partner-logo img {
+  width: 100%;
+  height: auto;
+  max-height: 50px;
+  object-fit: contain;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+  filter: grayscale(100%);
+}
+
+.partner-logo:hover img {
+  opacity: 1;
+  filter: grayscale(0%);
 }
 
 /* 
@@ -894,6 +937,12 @@
     padding: calc(var(--spacing-xl) * 1.5) var(--spacing-xl);
   }
 
+  /* 협업사 로고 - 태블릿 */
+  .partners-container {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-md);
+  }
+
   .business-preview {
     height: 600px;
   }
@@ -1017,6 +1066,16 @@
 
   .recruit-btn {
     width: 100%;
+  }
+
+  /* 협업사 로고 - 모바일 */
+  .partners-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-sm);
+  }
+
+  .partner-logo img {
+    max-height: 40px;
   }
 
   .business-preview {

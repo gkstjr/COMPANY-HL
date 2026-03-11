@@ -438,6 +438,17 @@ function MainPage() {
             <img src="/main-section4.jpg" alt="채용 이미지" />
           </div>
         </div>
+
+        {/* 협업사 로고 띠 */}
+        <div className="partners-strip">
+          <div className="partners-container">
+            {[1, 2, 3, 4, 5, 6, 7].map((index) => (
+              <div key={index} className="partner-logo">
+                <img src="/logo.png" alt={`협업사 ${index}`} />
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* 
