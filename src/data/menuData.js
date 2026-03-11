@@ -24,7 +24,7 @@ export const menuData = [
     submenus: [
       { title: "지반·구조 설계", link: "/menu2" },
       { title: "지하구조물 철거", link: "/menu2-2" },
-      { title: "감리·계측", link: "/menu2-3" },
+      { title: "감리·안전진단", link: "/menu2-3" },
     ]
   },
   {

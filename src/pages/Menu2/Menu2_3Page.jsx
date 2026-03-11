@@ -1,8 +1,8 @@
-/* 
+/*
   ============================================
-  Menu2_3Page (사업분야 - 감리·계측)
+  Menu2_3Page (사업분야 - 감리·안전진단)
   ============================================
-  - menu2-3: 사업분야 > 감리·계측
+  - menu2-3: 사업분야 > 감리·안전진단
   - Hero 배너 + 탭 메뉴 + 이미지 기반 디자인
 */
 
@@ -57,7 +57,7 @@ function Menu2_3Page() {
       <section className="menu-content">
         <div className="container">
           <Breadcrumb />
-          <h2 className="content-title">감리·계측</h2>
+          <h2 className="content-title">감리·안전진단</h2>
           
           {/* 주요업무 섹션 (맨 위) */}
           <div className="section-wrapper">
@@ -65,7 +65,7 @@ function Menu2_3Page() {
             <div className="section-content">
               <p>
                 지반굴착공사와 지하층 철거공사는 눈에 보이지 않는 지하 공간을 다루기에 설계와 실제 현장 조건 사이의 불확실성이 항상 존재합니다.
-                저희 감리·계측사업부는 이러한 불확실성을 사전에 감지하여 대처하도록 하기 때문에 프로젝트의 완벽한 안전을 담보하는 역할을 수행합니다.
+                저희 감리·안전진단사업부는 이러한 불확실성을 사전에 감지하여 대처하도록 하기 때문에 프로젝트의 완벽한 안전을 담보하는 역할을 수행합니다.
               </p>
               <p>
                 오랜 경험을 가진 지반 분야 특급 기술자들과 최첨단 IoT 기반 자동화 계측 시스템을 융합하여, 굴착 중 발생하는
@@ -82,10 +82,10 @@ function Menu2_3Page() {
           {/* 이미지 섹션 (2개 이미지) */}
           <div className="business-images-section">
             <div className="business-image-item">
-              <img src="/businessIntro3-1.jpg" alt="감리·계측 이미지 1" />
+              <img src="/businessIntro3-1.jpg" alt="감리·안전진단 이미지 1" />
             </div>
             <div className="business-image-item">
-              <img src="/businessIntro3-2.jpg" alt="감리·계측 이미지 2" />
+              <img src="/businessIntro3-2.jpg" alt="감리·안전진단 이미지 2" />
             </div>
           </div>
 
@@ -93,7 +93,7 @@ function Menu2_3Page() {
           <div className="section-wrapper">
             <h3 className="section-title">사업영역</h3>
             <div className="business-intro-image">
-              <img src="/businessIntro3-3.jpg" alt="감리·계측 사업소개" />
+              <img src="/businessIntro3-3.jpg" alt="감리·안전진단 사업소개" />
             </div>
           </div>
         </div>
