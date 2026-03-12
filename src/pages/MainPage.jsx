@@ -444,7 +444,7 @@ function MainPage() {
           <div className="partners-container">
             {[1, 2, 3, 4, 5, 6, 7].map((index) => (
               <div key={index} className="partner-logo">
-                <img src="/logo.png" alt={`협업사 ${index}`} />
+                <img src={`/partners${index}.png`} alt={`협업사 ${index}`} />
               </div>
             ))}
           </div>
