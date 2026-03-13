@@ -344,6 +344,14 @@ function MainPage() {
               </div>
             </div>
           </div>
+
+        {/* VIEW MORE 버튼 */}
+        <div className="overview-button-container">
+          <Link to="/menu3" className="overview-view-more">
+            VIEW MORE
+            <FiArrowRight className="arrow-icon" />
+          </Link>
+        </div>
       </section>
 
       {/* 

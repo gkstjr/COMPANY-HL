@@ -413,7 +413,7 @@
 */
 
 .overview {
-  padding: calc(var(--spacing-xl) * 1.5) 0;
+  padding: calc(var(--spacing-xl) * 1) 0;
   background-color: var(--white);
   display: flex;
   flex-direction: column;
@@ -480,8 +480,8 @@
 /* 카드 이미지 */
 .overview-card-image {
   width: 100%;
-  height: 50vh;
-  max-height: 500px;
+  height: 42vh;
+  max-height: 420px;
   overflow: hidden;
   position: relative;
 }
@@ -510,6 +510,47 @@
   font-weight: 700;
   margin: 0;
   letter-spacing: 0.5px;
+}
+
+/* VIEW MORE 버튼 컨테이너 */
+.overview-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--spacing-lg);
+  padding: 0 var(--spacing-lg);
+}
+
+/* VIEW MORE 버튼 */
+.overview-view-more {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background-color: var(--primary-color);
+  color: var(--white);
+  text-decoration: none;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+.overview-view-more:hover {
+  background-color: #3d4a8f;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.overview-view-more .arrow-icon {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.overview-view-more:hover .arrow-icon {
+  transform: translateX(5px);
 }
 
 /* 
