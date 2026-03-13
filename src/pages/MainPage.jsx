@@ -314,7 +314,7 @@ function MainPage() {
                 <img src="/main-section2-1.jpg" alt="About S-TECH" />
               </div>
               <div className="overview-card-content">
-                <h3 className="overview-card-title">송도세브란스병원 정밀안전진단</h3>
+                <h3 className="overview-card-title">양양 수리풍력단지 옹벽 구조물 변경설계</h3>
               </div>
             </div>
 
@@ -327,7 +327,7 @@ function MainPage() {
                 <img src="/main-section2-2.jpg" alt="주요사업" />
               </div>
               <div className="overview-card-content">
-                <h3 className="overview-card-title">소금창고</h3>
+                <h3 className="overview-card-title">목동 KT타워 지하층 해체공사</h3>
               </div>
             </div>
 
@@ -340,7 +340,7 @@ function MainPage() {
                 <img src="/main-section2-3.jpg" alt="사업실적" />
               </div>
               <div className="overview-card-content">
-                <h3 className="overview-card-title">옹벽</h3>
+                <h3 className="overview-card-title">송도세브란스병원 정밀안전진단</h3>
               </div>
             </div>
           </div>

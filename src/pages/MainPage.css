@@ -672,9 +672,9 @@
 }
 
 .partner-logo img {
-  width: 100%;
+  max-width: 120%;
   height: auto;
-  max-height: 50px;
+  max-height: 70px;
   object-fit: contain;
   opacity: 0.9;
   transition: opacity 0.3s ease;
@@ -1073,7 +1073,7 @@
   }
 
   .partner-logo img {
-    max-height: 40px;
+    max-height: 55px;
   }
 
   .business-preview {
