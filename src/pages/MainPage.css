@@ -413,7 +413,7 @@
 */
 
 .overview {
-  padding: calc(var(--spacing-xl) * 1) 0;
+  padding: var(--spacing-xl) 0 var(--spacing-md);
   background-color: var(--white);
   display: flex;
   flex-direction: column;
@@ -426,8 +426,8 @@
   align-items: center;
   justify-content: center;
   max-width: 1400px;
-  margin: 0 auto var(--spacing-lg);
-  padding: calc(var(--spacing-md) * 2.0) var(--spacing-lg) 0;
+  margin: 0 auto var(--spacing-md);
+  padding: 0 var(--spacing-lg);
   width: 100%;
 }
 
