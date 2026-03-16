@@ -1170,13 +1170,12 @@
 /* 
   ===================================
   초대형 화면 (가로 2500px 이상) 튜닝
-  - RECRUIT 섹션 왼쪽 콘텐츠 여백 확장
   - RECRUIT 설명문의 줄바꿈(br) 제거
   ===================================
 */
 @media (min-width: 2500px) {
-
-  .recruit-description .recruit-line-break {
+  .recruit-description .recruit-line-break,
+  .recruit-highlight .recruit-line-break-highlight {
     display: none;
   }
 }
