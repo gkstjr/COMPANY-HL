@@ -194,14 +194,7 @@ function Footer() {
               </div>
 
               <div className="privacy-section">
-                <h4 className="privacy-section-title">6. 호스팅 및 유지보수</h4>
-                <p>회사는 서비스 이행을 위해 아래와 같이 외부 전문업체에 위탁하여 운영하고 있습니다.</p>
-                <p>- 위탁 대상자 : (주)?</p>
-                <p>- 위탁업무 내용 : 웹사이트 및 시스템 관리(호스팅 / 유지보수)</p>
-              </div>
-
-              <div className="privacy-section">
-                <h4 className="privacy-section-title">7. 이용자 및 법정대리인의 권리와 그 행사방법</h4>
+                <h4 className="privacy-section-title">6. 이용자 및 법정대리인의 권리와 그 행사방법</h4>
                 <p>이용자는 언제든지 등록되어 있는 자신의 개인정보를 조회하거나 수정할 수 있으며 가입해지를 요청할 수도 있습니다.</p>
                 <p>이용자들의 개인정보 조회, 수정을 위해서는 '개인정보변경'(또는 '회원정보수정' 등)을 가입해지(동의철회)를 위해서는 "회원탈퇴"를 클릭하여 본인 확인 절차를 거치신 후 직접 열람, 정정 또는 탈퇴가 가능합니다.</p>
                 <p>혹은 개인정보관리책임자에게 서면, 전화 또는 이메일로 연락하시면 지체없이 조치하겠습니다.</p>
@@ -212,7 +205,7 @@ function Footer() {
               </div>
 
               <div className="privacy-section">
-                <h4 className="privacy-section-title">8. 개인정보 자동수집 장치의 설치, 운영 및 그 거부에 관한 사항</h4>
+                <h4 className="privacy-section-title">7. 개인정보 자동수집 장치의 설치, 운영 및 그 거부에 관한 사항</h4>
                 <p>회사는 귀하의 정보를 수시로 저장하고 찾아내는 '쿠키(cookie)' 등을 운용합니다. 쿠키란 웹사이트를 운영하는데 이용되는 서버가 귀하의 브라우저에 보내는 아주 작은 텍스트 파일로서 귀하의 컴퓨터 하드디스크에 저장됩니다.</p>
                 <p>회사는 다음과 같은 목적을 위해 쿠키를 사용합니다.</p>
                 <p className="privacy-subtitle">쿠키 등 사용 목적</p>
@@ -226,7 +219,7 @@ function Footer() {
               </div>
 
               <div className="privacy-section">
-                <h4 className="privacy-section-title">9. 개인정보에 관한 민원서비스</h4>
+                <h4 className="privacy-section-title">8. 개인정보에 관한 민원서비스</h4>
                 <p>회사는 고객의 개인정보를 보호하고 개인정보와 관련한 불만을 처리하기 위하여 아래와 같이 관련 부서 및 개인정보관리책임자를 지정하고 있습니다.</p>
                 
                 <div className="privacy-contact-box">
