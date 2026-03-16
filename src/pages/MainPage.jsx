@@ -420,10 +420,11 @@ function MainPage() {
                 협업과 혁신을 통해 함께 성장하는 인재를 찾습니다.
               </p>
               
-              <p className="recruit-description">
-                최상의 엔지니어링 기술자들이 모인 (주)한일지오이엔지에서 경력을 쌓아가고  <br />
-                싶으시다면 지원해주시면 그에 보답하겠습니다.            
-              </p>
+        <p className="recruit-description">
+          최상의 엔지니어링 기술자들이 모인 (주)한일지오이엔지에서 경력을 쌓아가고
+          <br className="recruit-line-break" />
+          싶으시다면 지원해주시면 그에 보답하겠습니다.
+        </p>
             </div>
 
             <div className="recruit-buttons">
