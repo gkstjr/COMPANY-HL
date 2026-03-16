@@ -1166,3 +1166,15 @@
     font-size: var(--font-small);
   }
 }
+
+/* 
+  ===================================
+  초대형 화면 (가로 2500px 이상) 튜닝
+  - RECRUIT 섹션 왼쪽 콘텐츠 여백 확장
+  ===================================
+*/
+@media (min-width: 2500px) {
+  .recruit-content {
+    padding-left: calc(var(--spacing-xl) * 2.5);
+  }
+}
