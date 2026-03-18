@@ -646,12 +646,12 @@
 
   /* 로고 이미지 크기 조정 (모바일) */
   .logo-img {
-    height: clamp(0.85rem, 1.2vw, 0.95rem);  /* 모바일에서 적절한 크기 */
+    height: clamp(1.3rem, 5vw, 1.6rem);  /* 모바일에서 조금 더 크게 */
   }
 
   /* 로고 텍스트 이미지 크기 조정 (모바일) */
   .logo-text-img {
-    height: clamp(0.85rem, 1.2vw, 0.95rem);  /* 모바일에서 적절한 크기 */
+    height: clamp(1.0rem, 4vw, 1.35rem);  /* 모바일에서 조금 더 크게 */
   }
 
   /* 전체메뉴 버튼 숨김 */
