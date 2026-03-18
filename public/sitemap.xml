@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!--
+    NOTE:
+    - Sitemap requires absolute URLs.
+    - Keep these URLs in sync with your production domain.
+  -->
+  <url>
+    <loc>https://www.hanilgeo.co.kr/</loc>
+  </url>
+  <url>
+    <loc>https://www.hanilgeo.co.kr/menu1</loc>
+  </url>
+  <url>
+    <loc>https://www.hanilgeo.co.kr/menu1-3</loc>
+  </url>
+  <url>
+    <loc>https://www.hanilgeo.co.kr/menu1-4</loc>
+  </url>
+  <url>
+    <loc>https://www.hanilgeo.co.kr/menu2</loc>
+  </url>
+  <url>
+    <loc>https://www.hanilgeo.co.kr/menu2-2</loc>
+  </url>
+  <url>
+    <loc>https://www.hanilgeo.co.kr/menu2-3</loc>
+  </url>
+  <url>
+    <loc>https://www.hanilgeo.co.kr/menu3</loc>
+  </url>
+  <url>
+    <loc>https://www.hanilgeo.co.kr/menu4</loc>
+  </url>
+  <url>
+    <loc>https://www.hanilgeo.co.kr/menu4-2</loc>
+  </url>
+  <url>
+    <loc>https://www.hanilgeo.co.kr/menu5</loc>
+  </url>
+</urlset>
