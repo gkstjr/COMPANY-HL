@@ -316,6 +316,10 @@
   background: transparent;
   border: none;
   cursor: pointer;
+  width: 34px;
+  height: 34px;
+  align-items: center;
+  justify-content: center;
 }
 
 .hamburger span {
@@ -323,6 +327,42 @@
   height: 3px;
   background-color: var(--white);  /* 데스크톱 메뉴와 동일한 흰색 */
   transition: var(--transition);
+  border-radius: 2px;
+}
+
+/* 열림 상태: X 아이콘 */
+.hamburger.active {
+  position: relative;
+  gap: 0;
+}
+
+.hamburger.active span:nth-child(1) {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.hamburger.active span:nth-child(3) {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+/* 어두운 헤더 상태에서 햄버거 아이콘은 검은색 */
+.header.dark .hamburger span {
+  background-color: var(--text-dark);
+}
+
+/* hover(헤더 호버) 시에는 스타일 통일: 흰색 */
+.header-container:hover:not(.hover-disabled) .hamburger span {
+  background-color: var(--white) !important;
 }
 
 /* 
@@ -355,15 +395,16 @@
 /* 메인 메뉴 (클릭 가능) */
 .mobile-menu-main {
   display: flex;
-  justify-content: center;         /* 중앙 정렬 */
+  justify-content: space-between;  /* 텍스트 왼쪽, 화살표 오른쪽 */
   align-items: center;
-  gap: 0.5rem;                     /* 텍스트와 화살표 간격 */
+  gap: 0.75rem;                    /* 텍스트와 화살표 간격 */
   padding: var(--spacing-sm) var(--spacing-md);
   cursor: pointer;
   font-weight: 600;
   font-size: 1.1rem;
   color: var(--text-dark);
   transition: var(--transition);
+  text-align: left;
 }
 
 .mobile-menu-main:hover {
@@ -373,14 +414,26 @@
 
 /* 화살표 아이콘 */
 .mobile-arrow {
-  font-size: 0.8rem;
-  transition: transform 0.3s ease;
-  display: inline-block;
-  margin-left: 0.25rem;           /* 텍스트와의 간격 */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
 }
 
-.mobile-arrow.open {
-  transform: rotate(180deg);
+.mobile-arrow-icon {
+  width: 9px;
+  height: 9px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform 0.25s ease;
+  opacity: 0.9;
+}
+
+.mobile-arrow.open .mobile-arrow-icon {
+  transform: rotate(-135deg);
 }
 
 /* 모바일 서브메뉴 */
@@ -401,7 +454,7 @@
   color: var(--text-gray);
   font-size: 0.95rem;
   text-decoration: none;
-  text-align: center;              /* 중앙 정렬 */
+  text-align: left;
   transition: var(--transition);
 }
 

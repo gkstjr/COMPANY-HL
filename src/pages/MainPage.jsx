@@ -23,6 +23,7 @@ function MainPage() {
   // 카드 애니메이션 상태 관리
   const [visibleCards, setVisibleCards] = useState([false, false, false]);
   const cardRefs = useRef([]);
+  const partnersRef = useRef(null);
 
   // 스크롤 상태 관리 (Scroll Indicator 표시 여부)
   const [isScrolled, setIsScrolled] = useState(false);
@@ -212,6 +213,13 @@ function MainPage() {
         behavior: 'smooth'
       });
     }
+  };
+
+  const scrollPartners = (direction) => {
+    const el = partnersRef.current;
+    if (!el) return;
+    const amount = Math.max(240, Math.round(el.clientWidth * 0.75));
+    el.scrollBy({ left: direction * amount, behavior: 'smooth' });
   };
 
   return (
@@ -451,13 +459,22 @@ function MainPage() {
 
         {/* 협업사 로고 띠 */}
         <div className="partners-strip">
-          <div className="partners-container">
+          <div className="partners-container" ref={partnersRef}>
             {[1, 2, 3, 4, 5, 6, 7].map((index) => (
               <div key={index} className="partner-logo">
                 <img src={`/partners${index}.png`} alt={`협업사 ${index}`} />
               </div>
             ))}
           </div>
+
+          <button
+            type="button"
+            className="partners-arrow partners-arrow-right"
+            onClick={() => scrollPartners(1)}
+            aria-label="다음 협업사 로고"
+          >
+            <FiChevronRight />
+          </button>
         </div>
       </section>
 

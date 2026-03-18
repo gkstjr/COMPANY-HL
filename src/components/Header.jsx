@@ -147,19 +147,29 @@ function Header() {
           {menuData.map((menu, index) => (
             <div key={index} className="mobile-menu-item">
               {/* 메인 메뉴 */}
-              <div 
-                className="mobile-menu-main"
-                onClick={() => toggleMobileSubmenu(index)}
-              >
-                <span>{menu.title}</span>
-                <span className={`mobile-arrow ${openMobileSubmenu === index ? 'open' : ''}`}>
-                  ▼
-                </span>
-              </div>
+              {menu.submenus && menu.submenus.length > 0 ? (
+                <div
+                  className="mobile-menu-main"
+                  onClick={() => toggleMobileSubmenu(index)}
+                >
+                  <span>{menu.title}</span>
+                  <span className={`mobile-arrow ${openMobileSubmenu === index ? 'open' : ''}`}>
+                    <span className="mobile-arrow-icon" aria-hidden="true" />
+                  </span>
+                </div>
+              ) : (
+                <Link
+                  to={menu.link}
+                  className="mobile-menu-main"
+                  onClick={toggleMenu}
+                >
+                  <span>{menu.title}</span>
+                </Link>
+              )}
               
               {/* 서브메뉴 */}
               <div className={`mobile-submenu ${openMobileSubmenu === index ? 'open' : ''}`}>
-                {menu.submenus.map((submenu, subIndex) => (
+                {(menu.submenus || []).map((submenu, subIndex) => (
                   <Link 
                     key={subIndex} 
                     to={submenu.link}
@@ -184,7 +194,7 @@ function Header() {
         </button>
 
         {/* 햄버거 메뉴 버튼 (모바일에서만 보임) */}
-        <button className="hamburger" onClick={toggleMenu}>
+        <button className={`hamburger ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu} aria-label={isMenuOpen ? '모바일 메뉴 닫기' : '모바일 메뉴 열기'}>
           <span></span>
           <span></span>
           <span></span>
