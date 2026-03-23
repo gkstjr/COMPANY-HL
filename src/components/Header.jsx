@@ -7,7 +7,7 @@
   - 반응형: 모바일에서는 햄버거 메뉴로 변경
 */
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { menuData } from '../data/menuData';  // 전역 메뉴 데이터 import
 import './Header.css';
@@ -26,6 +26,7 @@ function Header() {
   const [isHoverDisabled, setIsHoverDisabled] = useState(false);
   // 헤더 색상 변경 상태 (스크롤 위치에 따라)
   const [isDarkHeader, setIsDarkHeader] = useState(false);
+  const headerContainerRef = useRef(null);
   
   const location = useLocation();
   const isMainPage = location.pathname === '/';
@@ -34,6 +35,8 @@ function Header() {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
     setOpenMobileSubmenu(null); // 메뉴 닫을 때 서브메뉴도 초기화
+    // 모바일에서 메뉴 열고/닫을 때 hover 잔상 제거
+    setIsHoverDisabled(true);
   };
 
   // 전체메뉴 열기/닫기
@@ -86,8 +89,32 @@ function Header() {
     setIsHoverDisabled(true);
   };
 
+  // 모바일 메뉴가 열린 상태에서 헤더 바깥을 누르면 메뉴 닫기
+  useEffect(() => {
+    if (!isMenuOpen) return;
+
+    const handleOutsideClick = (event) => {
+      if (!headerContainerRef.current) return;
+      if (!headerContainerRef.current.contains(event.target)) {
+        setIsMenuOpen(false);
+        setOpenMobileSubmenu(null);
+        setIsHoverDisabled(true);
+      }
+    };
+
+    document.addEventListener('mousedown', handleOutsideClick);
+    document.addEventListener('touchstart', handleOutsideClick, { passive: true });
+
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+      document.removeEventListener('touchstart', handleOutsideClick);
+    };
+  }, [isMenuOpen]);
+
   // header에서 마우스 이동 시 hover 활성화
   const handleMouseMove = () => {
+    // 터치 디바이스(모바일)에서는 hover 재활성화 방지
+    if (window.matchMedia('(hover: none)').matches) return;
     if (isHoverDisabled) {
       setIsHoverDisabled(false);
     }
@@ -107,6 +134,7 @@ function Header() {
   return (
     <header className={`header ${isDarkHeader ? 'dark' : ''}`}>
       <div 
+        ref={headerContainerRef}
         className={`header-container ${isHoverDisabled ? 'hover-disabled' : ''}`}
         onMouseMove={handleMouseMove}
       >
