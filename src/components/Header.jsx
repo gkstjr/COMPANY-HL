@@ -35,8 +35,6 @@ function Header() {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
     setOpenMobileSubmenu(null); // 메뉴 닫을 때 서브메뉴도 초기화
-    // 모바일에서 메뉴 열고/닫을 때 hover 잔상 제거
-    setIsHoverDisabled(true);
   };
 
   // 전체메뉴 열기/닫기
@@ -98,7 +96,6 @@ function Header() {
       if (!headerContainerRef.current.contains(event.target)) {
         setIsMenuOpen(false);
         setOpenMobileSubmenu(null);
-        setIsHoverDisabled(true);
       }
     };
 
@@ -113,8 +110,6 @@ function Header() {
 
   // header에서 마우스 이동 시 hover 활성화
   const handleMouseMove = () => {
-    // 터치 디바이스(모바일)에서는 hover 재활성화 방지
-    if (window.matchMedia('(hover: none)').matches) return;
     if (isHoverDisabled) {
       setIsHoverDisabled(false);
     }
