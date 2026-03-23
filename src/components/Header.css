@@ -635,6 +635,16 @@
   ============================================
 */
 @media (max-width: 768px) {
+  /* iOS/Safari 터치 hover 고정 방지: 모바일에서는 hover 스타일 비활성화 */
+  .header-container:hover:not(.hover-disabled) {
+    background-color: transparent !important;
+    backdrop-filter: none !important;
+  }
+
+  .header-container:hover:not(.hover-disabled) .logo-text-img {
+    filter: none !important;
+  }
+
   /* Grid를 Flex로 변경 */
   .header-container {
     display: flex;
