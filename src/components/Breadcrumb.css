@@ -39,7 +39,7 @@
 @media (max-width: 768px) {
   .breadcrumb {
     font-size: 0.8rem;
-    margin-bottom: 0.35rem;
+    margin-bottom: 0.5rem;
   }
 
   .breadcrumb-separator {
