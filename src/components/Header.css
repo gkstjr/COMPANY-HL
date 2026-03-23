@@ -85,20 +85,21 @@
 
 /* 로고 이미지 */
 .logo-img {
-  height: clamp(2rem, 2vw, 3rem);
+  height: clamp(2rem, 2.6vw, 3rem);
   margin-top: clamp(0.2rem, 1vw, 0.4rem);  
   width: auto;                      /* 가로 비율 자동 유지 */
   object-fit: contain;              /* 비율 유지하며 맞춤 */
   display: block;
-  transform: none;
+  image-orientation: none;
 }
 
 /* 로고 텍스트 이미지 */
 .logo-text-img {
-  height: clamp(1.125rem, 1.5vw, 1.5rem);  /* 헤더 메뉴 글자 크기와 동일 */
+  height: clamp(1.125rem, 1.8vw, 1.5rem);  /* 헤더 메뉴 글자 크기와 동일 */
   width: auto;                      /* 가로 비율 자동 유지 */
   object-fit: contain;              /* 비율 유지하며 맞춤 */
   display: block;
+  image-orientation: none;
 }
 
 /* 네비게이션 메뉴 (데스크톱 - 화면 정중앙) */
