@@ -468,13 +468,13 @@
 }
 
 .overview-card:hover {
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-  transform: translateY(-8px);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  transform: none;
 }
 
 /* hover 시에도 visible 상태 유지 */
 .overview-card.visible:hover {
-  transform: translateY(-8px);
+  transform: none;
 }
 
 /* 카드 이미지 */
@@ -495,7 +495,7 @@
 
 /* 이미지 호버 시 확대 효과 */
 .overview-card:hover .overview-card-image img {
-  transform: scale(1.08);
+  transform: none;
 }
 
 /* 카드 콘텐츠 */
@@ -684,7 +684,7 @@
 }
 
 .recruit-image:hover img {
-  transform: scale(1.05);
+  transform: none;
 }
 
 /* 협업사 로고 띠 */
@@ -792,7 +792,7 @@
 }
 
 .business-image:hover img {
-  transform: scale(1.05);
+  transform: none;
 }
 
 /* 이미지 슬라이드 애니메이션 */
