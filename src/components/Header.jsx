@@ -135,8 +135,8 @@ function Header() {
       >
         {/* 로고 영역 (왼쪽) */}
         <Link to="/" className="logo" onClick={handleLogoClick}>
-          <img src="/logoImage.png" alt="한일지오이엔지" className="logo-img" />
-          <img src="/logoText.png" alt="한일지오이엔지" className="logo-text-img" />
+          <img src="/logoImage.webp" alt="한일지오이엔지" className="logo-img" />
+          <img src="/logoText.webp" alt="한일지오이엔지" className="logo-text-img" />
         </Link>
 
         {/* 네비게이션 메뉴 (가운데) - 데스크톱용 */}

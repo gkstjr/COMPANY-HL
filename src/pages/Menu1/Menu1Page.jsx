@@ -63,7 +63,7 @@ function Menu1Page() {
           <div className="greeting-section">
             {/* 왼쪽: 이미지 */}
             <div className="greeting-image">
-              <img src="/ceoImage.png" alt="한일지오이엔지" />
+              <img src="/ceoImage.webp" alt="한일지오이엔지" />
             </div>
 
             {/* 오른쪽: 텍스트 내용 */}

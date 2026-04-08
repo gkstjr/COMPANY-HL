@@ -10,7 +10,7 @@ export const menuData = [
   {
     title: "회사소개",
     link: "/menu1",  // 첫 번째는 _1 없이
-    heroImage: "/menuHero1.jpg",
+    heroImage: "/menuHero1.webp",
     submenus: [
       { title: "인사말", link: "/menu1" },
       { title: "조직도", link: "/menu1-3" },
@@ -20,7 +20,7 @@ export const menuData = [
   {
     title: "사업분야",
     link: "/menu2",  // 첫 번째는 _1 없이
-    heroImage: "/menuHero2.jpg",
+    heroImage: "/menuHero2.webp",
     submenus: [
       { title: "지반·구조 설계", link: "/menu2" },
       { title: "지하구조물 철거", link: "/menu2-2" },
@@ -30,7 +30,7 @@ export const menuData = [
   {
     title: "사업실적",
     link: "/menu3",  // 첫 번째는 _1 없이
-    heroImage: "/menuHero3.jpg",
+    heroImage: "/menuHero3.webp",
     submenus: [
       // { title: "사업실적", link: "/menu3" },
     ]
@@ -38,7 +38,7 @@ export const menuData = [
   {
     title: "채용안내",
     link: "/menu4",  // 첫 번째는 _1 없이
-    heroImage: "/menuHero4.jpg",
+    heroImage: "/menuHero4.webp",
     submenus: [
       { title: "인재상", link: "/menu4" },
       { title: "채용프로세스", link: "/menu4-2" },
@@ -47,7 +47,7 @@ export const menuData = [
   {
     title: "고객지원",
     link: "/menu5",  // 첫 번째는 _1 없이
-    heroImage: "/menuHero5.jpg",
+    heroImage: "/menuHero5.webp",
     submenus: [
       { title: "온라인 문의", link: "/menu5" },
     ]
@@ -58,16 +58,16 @@ export const menuData = [
 export const getMenuHeroImage = (pathname) => {
   // 메인 메뉴 경로 매핑
   const menuMap = {
-    '/menu1': '/menuHero1.jpg',
-    '/menu1-3': '/menuHero1.jpg',
-    '/menu1-4': '/menuHero1.jpg',
-    '/menu2': '/menuHero2.jpg',
-    '/menu2-2': '/menuHero2.jpg',
-    '/menu2-3': '/menuHero2.jpg',
-    '/menu3': '/menuHero3.jpg',
-    '/menu4': '/menuHero4.jpg',
-    '/menu4-2': '/menuHero4.jpg',
-    '/menu5': '/menuHero5.jpg',
+    '/menu1': '/menuHero1.webp',
+    '/menu1-3': '/menuHero1.webp',
+    '/menu1-4': '/menuHero1.webp',
+    '/menu2': '/menuHero2.webp',
+    '/menu2-2': '/menuHero2.webp',
+    '/menu2-3': '/menuHero2.webp',
+    '/menu3': '/menuHero3.webp',
+    '/menu4': '/menuHero4.webp',
+    '/menu4-2': '/menuHero4.webp',
+    '/menu5': '/menuHero5.webp',
   };
 
   // 정확한 경로 매칭
@@ -81,6 +81,6 @@ export const getMenuHeroImage = (pathname) => {
     return m.submenus.some(sub => sub.link === pathname);
   });
 
-  return menu ? menu.heroImage : '/menuhero.jpg'; // 기본값
+  return menu ? menu.heroImage : '/menuhero.webp'; // 기본값
 };
 

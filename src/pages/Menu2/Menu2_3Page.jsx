@@ -82,10 +82,10 @@ function Menu2_3Page() {
           {/* 이미지 섹션 (2개 이미지) */}
           <div className="business-images-section">
             <div className="business-image-item">
-              <img src="/businessIntro3-1.jpg" alt="감리·안전진단 이미지 1" />
+              <img src="/businessIntro3-1.webp" alt="감리·안전진단 이미지 1" />
             </div>
             <div className="business-image-item">
-              <img src="/businessIntro3-2.jpg" alt="감리·안전진단 이미지 2" />
+              <img src="/businessIntro3-2.webp" alt="감리·안전진단 이미지 2" />
             </div>
           </div>
 
@@ -93,7 +93,7 @@ function Menu2_3Page() {
           <div className="section-wrapper">
             <h3 className="section-title">사업영역</h3>
             <div className="business-intro-image">
-              <img src="/businessIntro3-3.jpg" alt="감리·안전진단 사업소개" />
+              <img src="/businessIntro3-3.webp" alt="감리·안전진단 사업소개" />
             </div>
           </div>
         </div>

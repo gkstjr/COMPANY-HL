@@ -333,7 +333,7 @@
 */
 .about-us-section {
   position: relative;
-  background-image: url('/main-section1.jpg');
+  background-image: url('/main-section1.webp');
   background-size: cover;
   background-position: center;
   display: flex;

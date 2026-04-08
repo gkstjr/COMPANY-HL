@@ -79,10 +79,10 @@ function Menu2Page() {
           {/* 이미지 섹션 (2개 이미지) */}
           <div className="business-images-section">
             <div className="business-image-item">
-              <img src="/businessIntro1-1.jpg" alt="지반·구조 설계 이미지 1" />
+              <img src="/businessIntro1-1.webp" alt="지반·구조 설계 이미지 1" />
             </div>
             <div className="business-image-item">
-              <img src="/businessIntro1-2.jpg" alt="지반·구조 설계 이미지 2" />
+              <img src="/businessIntro1-2.webp" alt="지반·구조 설계 이미지 2" />
             </div>
           </div>
 
@@ -90,7 +90,7 @@ function Menu2Page() {
           <div className="section-wrapper">
             <h3 className="section-title">사업영역</h3>
             <div className="business-intro-image">
-              <img src="/businessIntro1-3.jpg" alt="지반·구조 설계 사업소개" />
+              <img src="/businessIntro1-3.webp" alt="지반·구조 설계 사업소개" />
             </div>
           </div>
         </div>

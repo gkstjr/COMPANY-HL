@@ -53,31 +53,31 @@ function MainPage() {
     {
       title: "한일지오이엔지",
       // subtitle: "1920x1080px 권장",
-      image: "/mainSlide1.jpg",  // public 폴더에 저장
+      image: "/mainSlide1.webp",  // public 폴더에 저장
       name: "애니메이션1"
     },
     {
       title: "한일지오이엔지",
       // subtitle: "1920x1080px 권장",
-      image: "/mainSlide2.jpg",  // public 폴더에 저장
+      image: "/mainSlide2.webp",  // public 폴더에 저장
       name: "애니메이션2"
     },
     {
       title: "한일지오이엔지",
       // subtitle: "1920x1080px 권장",
-      image: "/mainSlide3.jpg",  // public 폴더에 저장
+      image: "/mainSlide3.webp",  // public 폴더에 저장
       name: "애니메이션3"
     },
     {
       title: "한일지오이엔지",
       // subtitle: "1920x1080px 권장",
-      image: "/mainSlide4.jpg",  // public 폴더에 저장
+      image: "/mainSlide4.webp",  // public 폴더에 저장
       name: "애니메이션4"
     },
     {
       title: "한일지오이엔지",
       // subtitle: "1920x1080px 권장",
-      image: "/mainSlide5.jpg",  // public 폴더에 저장
+      image: "/mainSlide5.webp",  // public 폴더에 저장
       name: "애니메이션5"
     }
   ];
@@ -319,7 +319,7 @@ function MainPage() {
               ref={(el) => (cardRefs.current[0] = el)}
             >
               <div className="overview-card-image">
-                <img src="/main-section2-1.jpg" alt="About S-TECH" />
+                <img src="/main-section2-1.webp" alt="About S-TECH" />
               </div>
               <div className="overview-card-content">
                 <h3 className="overview-card-title">양양 수리풍력단지 옹벽 구조물 변경설계</h3>
@@ -332,7 +332,7 @@ function MainPage() {
               ref={(el) => (cardRefs.current[1] = el)}
             >
               <div className="overview-card-image">
-                <img src="/main-section2-2.jpg" alt="주요사업" />
+                <img src="/main-section2-2.webp" alt="주요사업" />
               </div>
               <div className="overview-card-content">
                 <h3 className="overview-card-title">목동 KT타워 지하층 해체공사</h3>
@@ -345,7 +345,7 @@ function MainPage() {
               ref={(el) => (cardRefs.current[2] = el)}
             >
               <div className="overview-card-image">
-                <img src="/main-section2-3.jpg" alt="사업실적" />
+                <img src="/main-section2-3.webp" alt="사업실적" />
               </div>
               <div className="overview-card-content">
                 <h3 className="overview-card-title">송도세브란스병원 정밀안전진단</h3>
@@ -382,7 +382,7 @@ function MainPage() {
           <div className="business-image">
             <img 
               key={currentBusiness}
-              src={`/main-business${currentBusiness + 1}.jpg`}
+              src={`/main-business${currentBusiness + 1}.webp`}
               alt={businessItems[currentBusiness]?.title || '사업분야'}
               className="business-image-slide"
             />
@@ -453,7 +453,7 @@ function MainPage() {
 
           {/* 오른쪽: 이미지 */}
           <div className="recruit-image">
-            <img src="/main-section4.jpg" alt="채용 이미지" />
+            <img src="/main-section4.webp" alt="채용 이미지" />
           </div>
         </div>
 
@@ -462,7 +462,7 @@ function MainPage() {
           <div className="partners-container" ref={partnersRef}>
             {[1, 2, 3, 4, 5, 6, 7].map((index) => (
               <div key={index} className="partner-logo">
-                <img src={`/partners${index}.png`} alt={`협업사 ${index}`} />
+                <img src={`/partners${index}.webp`} alt={`협업사 ${index}`} />
               </div>
             ))}
           </div>

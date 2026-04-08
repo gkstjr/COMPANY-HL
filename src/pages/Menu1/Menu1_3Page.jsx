@@ -62,7 +62,7 @@ function Menu1_3Page() {
           {/* 조직도 이미지 */}
           <div className="organization-wrapper">
             <img 
-              src="/menu1_3Image.jpeg" 
+              src="/menu1_3Image.webp" 
               alt="한일지오이엔지 조직도" 
               className="organization-image"
             />

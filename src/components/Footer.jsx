@@ -39,7 +39,7 @@ function Footer() {
         <div className="footer-left">
           <div className="footer-logo">
             <div className="logo-icon">
-              <img src="/logoImage.png" alt="한일지오이엔지 로고" />
+              <img src="/logoImage.webp" alt="한일지오이엔지 로고" />
             </div>
             <div className="logo-text-container">
               <span className="logo-text-footer">(주)한일지오이엔지</span>
